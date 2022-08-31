@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/CR/CR503210.aspx" hash="fffffff44bb1fa49" filehash="d6782f69f608d9a5" flags="110000" assembly="App_Web_f234k2ki" type="ASP.pages_cr_cr503210_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/ListView.master" />
+        <filedep name="/MasterPages/ListView.master.cs" />
+        <filedep name="/Pages/CR/CR503210.aspx" />
+        <filedep name="/Pages/CR/CR503210.aspx.cs" />
+    </filedeps>
+</preserve>

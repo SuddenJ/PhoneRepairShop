@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/HS/LoggedIn.aspx" hash="fffffff44bb1fa49" filehash="ff7ea9f101da0bac" flags="110000" assembly="App_Web_ui0pcpxu" type="ASP.pages_hs_loggedin_aspx">
+    <filedeps>
+        <filedep name="/Pages/HS/LoggedIn.aspx" />
+        <filedep name="/Pages/HS/LoggedIn.aspx.cs" />
+    </filedeps>
+</preserve>

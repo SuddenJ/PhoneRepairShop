@@ -1,0 +1,7 @@
+﻿C:\Users\Josh\Documents\AcumaticaLearning\PhoneRepairShop\ExtensionLibrary\PhoneRepairShop> "C:\Users\Josh\Documents\AcumaticaLearning\PhoneRepairShop\bin\roslyn\csc.exe" /shared /keepalive:"10" /noconfig  /fullpaths @"C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\root\98117d5f\b4975921\0gu1ghfy.cmdline"
+
+
+Microsoft (R) Visual C# Compiler version 2.9.0.63208 (958f2354)
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\root\98117d5f\b4975921\App_Web_0gu1ghfy.0.cs(179,79): warning CS0436: The type 'Page_FS300400' in 'C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\root\98117d5f\b4975921\App_Web_0gu1ghfy.0.cs' conflicts with the imported type 'Page_FS300400' in 'PX.Objects.FS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in 'C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\root\98117d5f\b4975921\App_Web_0gu1ghfy.0.cs'.

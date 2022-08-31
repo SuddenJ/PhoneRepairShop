@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/GL/GL201000.aspx" hash="fffffff44bb1fa49" filehash="97a3734b54535a3c" flags="110000" assembly="App_Web_no2djmtx" type="ASP.pages_gl_gl201000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormDetail.master" />
+        <filedep name="/MasterPages/FormDetail.master.cs" />
+        <filedep name="/Pages/GL/GL201000.aspx" />
+        <filedep name="/Pages/GL/GL201000.aspx.cs" />
+    </filedeps>
+</preserve>

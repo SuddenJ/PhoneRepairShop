@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="2" virtualPath="/Api/ServiceGate.asmx" hash="ffffffffa46abde8" filehash="41f19e9d12b9" flags="130000" assembly="PX.Data" type="PX.Api.ServiceGate">
+    <filedeps>
+        <filedep name="/Api/ServiceGate.asmx" />
+    </filedeps>
+</preserve>

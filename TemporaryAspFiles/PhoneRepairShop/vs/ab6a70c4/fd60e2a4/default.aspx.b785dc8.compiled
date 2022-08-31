@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Frames/Default.aspx" hash="fffffff44bb1fa49" filehash="69e747250fefb4d6" flags="110000" assembly="App_Web_ew5312yw" type="ASP.frames_default_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/Frames/Default.aspx" />
+        <filedep name="/Frames/Default.aspx.cs" />
+        <filedep name="/MasterPages/Workspace.master" />
+        <filedep name="/MasterPages/Workspace.master.cs" />
+    </filedeps>
+</preserve>

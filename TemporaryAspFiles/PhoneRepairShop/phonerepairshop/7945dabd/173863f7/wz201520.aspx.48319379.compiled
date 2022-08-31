@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Pages/WZ/WZ201520.aspx" hash="fffffff44bb1fa49" filehash="37fb253c90e9e469" flags="110000" assembly="App_Web_jhdhosh5" type="ASP.pages_wz_wz201520_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Pages/WZ/WZ201520.aspx" />
+        <filedep name="/PhoneRepairShop/Pages/WZ/WZ201520.aspx.cs" />
+    </filedeps>
+</preserve>

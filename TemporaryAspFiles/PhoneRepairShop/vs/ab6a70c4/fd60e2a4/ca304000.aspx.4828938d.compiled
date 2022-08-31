@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/CA/CA304000.aspx" hash="fffffff44bb1fa49" filehash="5c03afd5be9ebd6e" flags="110000" assembly="App_Web_brnctwcl" type="ASP.pages_ca_ca304000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormDetail.master" />
+        <filedep name="/MasterPages/FormDetail.master.cs" />
+        <filedep name="/Pages/CA/CA304000.aspx" />
+        <filedep name="/Pages/CA/CA304000.aspx.cs" />
+        <filedep name="/Pages/Includes/CRApprovalReasonPanel.inc" />
+    </filedeps>
+</preserve>

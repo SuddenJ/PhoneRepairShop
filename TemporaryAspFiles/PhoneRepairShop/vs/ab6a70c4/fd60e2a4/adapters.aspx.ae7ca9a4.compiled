@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/Adapters.aspx" hash="fffffff44bb1fa49" filehash="31f79b24e6b64b9" flags="110000" assembly="App_Web_bwq4vd5e" type="ASP.api_adapters_aspx">
+    <filedeps>
+        <filedep name="/Api/Adapters.aspx" />
+        <filedep name="/Api/Adapters.aspx.cs" />
+    </filedeps>
+</preserve>

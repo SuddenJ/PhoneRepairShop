@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Wiki/AnnouncementEdit.aspx" hash="fffffff44bb1fa49" filehash="ff0141fa830774b3" flags="110000" assembly="App_Web_fweiy13j" type="ASP.wiki_announcementedit_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/TabView.master" />
+        <filedep name="/MasterPages/TabView.master.cs" />
+        <filedep name="/Wiki/AnnouncementEdit.aspx" />
+        <filedep name="/Wiki/AnnouncementEdit.aspx.cs" />
+    </filedeps>
+</preserve>

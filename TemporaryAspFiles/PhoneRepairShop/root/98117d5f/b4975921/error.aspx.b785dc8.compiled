@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Frames/Error.aspx" hash="fffffff44bb1fa49" filehash="84d2be0e46e1f267" flags="110000" assembly="App_Web_wvgqoyl1" type="ASP.frames_error_aspx">
+    <filedeps>
+        <filedep name="/Frames/Error.aspx" />
+        <filedep name="/Frames/Error.aspx.cs" />
+    </filedeps>
+</preserve>

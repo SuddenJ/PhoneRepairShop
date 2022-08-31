@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/PO/PO303000.aspx" hash="fffffff44bb1fa49" filehash="2da79b5154154a75" flags="110000" assembly="App_Web_q5cdie5a" type="ASP.pages_po_po303000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormDetail.master" />
+        <filedep name="/MasterPages/FormDetail.master.cs" />
+        <filedep name="/Pages/PO/PO303000.aspx" />
+        <filedep name="/Pages/PO/PO303000.aspx.cs" />
+    </filedeps>
+</preserve>

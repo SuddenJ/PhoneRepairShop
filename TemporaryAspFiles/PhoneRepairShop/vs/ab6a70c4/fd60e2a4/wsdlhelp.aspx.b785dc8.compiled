@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Frames/WsdlHelp.aspx" hash="fffffff44bb1fa49" filehash="2a00da48f4c8aa93" flags="110000" assembly="App_Web_ew5312yw" type="ASP.frames_wsdlhelp_aspx">
+    <filedeps>
+        <filedep name="/Frames/WsdlHelp.aspx" />
+        <filedep name="/Frames/WsdlHelp.aspx.cs" />
+    </filedeps>
+</preserve>

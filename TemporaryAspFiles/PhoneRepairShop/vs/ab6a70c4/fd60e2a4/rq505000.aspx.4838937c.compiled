@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/RQ/RQ505000.aspx" hash="fffffff44bb1fa49" filehash="c99cfcdb272d00d6" flags="110000" assembly="App_Web_bf5dk3ay" type="ASP.pages_rq_rq505000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormDetail.master" />
+        <filedep name="/MasterPages/FormDetail.master.cs" />
+        <filedep name="/Pages/RQ/RQ505000.aspx" />
+        <filedep name="/Pages/RQ/RQ505000.aspx.cs" />
+    </filedeps>
+</preserve>

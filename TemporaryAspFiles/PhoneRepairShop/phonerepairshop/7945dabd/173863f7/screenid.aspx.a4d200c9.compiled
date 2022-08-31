@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/App_Data/Templates/Form/Pages/ScreenID.aspx" hash="fffffff44bb1fa49" filehash="c1346cc8661ca8bd" flags="110000" assembly="App_Web_ivb2rgza" type="ASP.app_data_templates_form_pages_screenid_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/App_Data/Templates/Form/Pages/ScreenID.aspx" />
+        <filedep name="/PhoneRepairShop/App_Data/Templates/Form/Pages/ScreenID.aspx.cs" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormView.master" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormView.master.cs" />
+    </filedeps>
+</preserve>

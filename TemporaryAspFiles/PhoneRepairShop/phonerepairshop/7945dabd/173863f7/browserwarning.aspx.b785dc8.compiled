@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Frames/BrowserWarning.aspx" hash="fffffff44bb1fa49" filehash="86d95ef42040a32c" flags="110000" assembly="App_Web_qox2eua5" type="ASP.frames_browserwarning_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Frames/BrowserWarning.aspx" />
+        <filedep name="/PhoneRepairShop/Frames/BrowserWarning.aspx.cs" />
+    </filedeps>
+</preserve>

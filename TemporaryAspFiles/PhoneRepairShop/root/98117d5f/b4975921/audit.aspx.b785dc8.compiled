@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Frames/Audit.aspx" hash="fffffff44bb1fa49" filehash="e1638985cc6dbd16" flags="110000" assembly="App_Web_uul5logw" type="ASP.frames_audit_aspx">
+    <filedeps>
+        <filedep name="/Controls/TraceItem.ascx" />
+        <filedep name="/Controls/TraceItem.ascx.cs" />
+        <filedep name="/Frames/Audit.aspx" />
+        <filedep name="/Frames/Audit.aspx.cs" />
+    </filedeps>
+</preserve>

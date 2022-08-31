@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Pages/FS/Calendars/CalendarPreferences/FS100200.aspx" hash="fffffff44bb1fa49" filehash="980cbe9f3732d230" flags="110000" assembly="App_Web_5aq2afpd" type="ASP.pages_fs_calendars_calendarpreferences_fs100200_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+        <filedep name="/PhoneRepairShop/Pages/FS/Calendars/CalendarPreferences/FS100200.aspx" />
+        <filedep name="/PhoneRepairShop/Pages/FS/Calendars/CalendarPreferences/FS100200.aspx.cs" />
+    </filedeps>
+</preserve>

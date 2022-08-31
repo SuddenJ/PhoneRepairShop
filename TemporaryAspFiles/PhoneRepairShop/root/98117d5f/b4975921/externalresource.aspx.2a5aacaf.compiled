@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/ExternalResource/ExternalResource.aspx" hash="fffffff44bb1fa49" filehash="20e953648bfef93a" flags="110000" assembly="App_Web_iwzikr2c" type="ASP.externalresource_externalresource_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/ExternalResource/ExternalResource.aspx" />
+        <filedep name="/ExternalResource/ExternalResource.aspx.cs" />
+        <filedep name="/MasterPages/Workspace.master" />
+        <filedep name="/MasterPages/Workspace.master.cs" />
+    </filedeps>
+</preserve>

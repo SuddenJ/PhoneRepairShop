@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Pages/FS/FS300230.aspx" hash="fffffff44bb1fa49" filehash="2d0d8697da40f85a" flags="110000" assembly="App_Web_xpi4gfqy" type="ASP.pages_fs_fs300230_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormTab.master" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormTab.master.cs" />
+        <filedep name="/PhoneRepairShop/Pages/FS/FS300230.aspx" />
+        <filedep name="/PhoneRepairShop/Pages/FS/FS300230.aspx.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,7 @@
+﻿C:\Program Files\IIS Express> "C:\Users\Josh\Documents\AcumaticaLearning\PhoneRepairShop\bin\roslyn\csc.exe" /shared /keepalive:"900" /noconfig  /fullpaths @"C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\vs\ab6a70c4\fd60e2a4\0ioi51sf.cmdline"
+
+
+Microsoft (R) Visual C# Compiler version 2.9.0.63208 (958f2354)
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+C:\Users\Josh\Documents\AcumaticaLearning\PhoneRepairShop\Pages\AU\AU201020.aspx(90,44): warning CS0108: 'Page_AU201020.Form' hides inherited member 'Page.Form'. Use the new keyword if hiding was intended.

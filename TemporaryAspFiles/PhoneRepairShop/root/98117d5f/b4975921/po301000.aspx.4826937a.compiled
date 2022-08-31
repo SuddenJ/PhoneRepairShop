@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/PO/PO301000.aspx" hash="fffffff44bb1fa49" filehash="9e9f6b9db31bc72" flags="110000" assembly="App_Web_q4nbrawj" type="ASP.pages_po_po301000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormDetail.master" />
+        <filedep name="/MasterPages/FormDetail.master.cs" />
+        <filedep name="/Pages/Includes/CRApprovalReasonPanel.inc" />
+        <filedep name="/Pages/Includes/InventoryMatrixEntrySmartPanel.inc" />
+        <filedep name="/Pages/PO/PO301000.aspx" />
+        <filedep name="/Pages/PO/PO301000.aspx.cs" />
+    </filedeps>
+</preserve>

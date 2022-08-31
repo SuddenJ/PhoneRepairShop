@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/App_Data/Templates/TabGrid/Pages/ScreenID.aspx" hash="fffffff44bb1fa49" filehash="16968359bb14fbbf" flags="110000" assembly="App_Web_rwbqs0jx" type="ASP.app_data_templates_tabgrid_pages_screenid_aspx">
+    <filedeps>
+        <filedep name="/App_Data/Templates/TabGrid/Pages/ScreenID.aspx" />
+        <filedep name="/App_Data/Templates/TabGrid/Pages/ScreenID.aspx.cs" />
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/TabDetail.master" />
+        <filedep name="/MasterPages/TabDetail.master.cs" />
+    </filedeps>
+</preserve>

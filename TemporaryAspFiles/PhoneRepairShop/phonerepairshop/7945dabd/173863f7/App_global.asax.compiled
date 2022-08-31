@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="8" virtualPath="/PhoneRepairShop/global.asax" hash="ffffffffa46abde8" filehash="101d4b69f696" flags="150000" assembly="App_global.asax.xob_rdnp" type="ASP.global_asax">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/global.asax" />
+    </filedeps>
+</preserve>

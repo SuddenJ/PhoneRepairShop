@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/CA/CA401000.aspx" hash="fffffff44bb1fa49" filehash="ffa98fc9a35785e8" flags="110000" assembly="App_Web_dnfgmeda" type="ASP.pages_ca_ca401000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormDetail.master" />
+        <filedep name="/MasterPages/FormDetail.master.cs" />
+        <filedep name="/Pages/CA/CA401000.aspx" />
+        <filedep name="/Pages/CA/CA401000.aspx.cs" />
+    </filedeps>
+</preserve>

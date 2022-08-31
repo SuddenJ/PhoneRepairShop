@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pivot/Pivot.aspx" hash="fffffff44bb1fa49" filehash="ae6780d9c1accb59" flags="110000" assembly="App_Web_upkhj2kj" type="ASP.pivot_pivot_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/Workspace.master" />
+        <filedep name="/MasterPages/Workspace.master.cs" />
+        <filedep name="/Pivot/Pivot.aspx" />
+        <filedep name="/Pivot/Pivot.aspx.cs" />
+    </filedeps>
+</preserve>

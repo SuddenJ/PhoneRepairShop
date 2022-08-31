@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Controls/PageTitle.ascx" hash="fffffff44bb1fa49" filehash="775bd1b5122dbeec" flags="110000" assembly="App_Web_xq5g1jwp" type="ASP.controls_pagetitle_ascx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+    </filedeps>
+</preserve>

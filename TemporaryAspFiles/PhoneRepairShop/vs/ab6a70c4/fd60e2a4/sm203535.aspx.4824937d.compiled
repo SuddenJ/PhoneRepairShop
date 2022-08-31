@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/SM/SM203535.aspx" hash="fffffff44bb1fa49" filehash="e59cf2d47e0cb752" flags="110000" assembly="App_Web_iw3fi2vc" type="ASP.pages_sm_sm203535_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormDetail.master" />
+        <filedep name="/MasterPages/FormDetail.master.cs" />
+        <filedep name="/Pages/SM/SM203535.aspx" />
+        <filedep name="/Pages/SM/SM203535.aspx.cs" />
+    </filedeps>
+</preserve>

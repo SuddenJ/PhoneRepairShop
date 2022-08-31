@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Pages/CR/CR306030.aspx" hash="fffffff44bb1fa49" filehash="d2a23efb1bef7e14" flags="110000" assembly="App_Web_n1e3acmx" type="ASP.pages_cr_cr306030_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormView.master" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormView.master.cs" />
+        <filedep name="/PhoneRepairShop/Pages/CR/CR306030.aspx" />
+        <filedep name="/PhoneRepairShop/Pages/CR/CR306030.aspx.cs" />
+    </filedeps>
+</preserve>

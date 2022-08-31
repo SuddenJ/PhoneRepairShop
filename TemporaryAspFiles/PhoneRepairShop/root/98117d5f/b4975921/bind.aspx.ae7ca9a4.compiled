@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/Bind.aspx" hash="fffffff44bb1fa49" filehash="810a31fd3a83e996" flags="110000" assembly="App_Web_ymjdn3ak" type="ASP.api_bind_aspx">
+    <filedeps>
+        <filedep name="/Api/Bind.aspx" />
+        <filedep name="/Api/Bind.aspx.cs" />
+    </filedeps>
+</preserve>

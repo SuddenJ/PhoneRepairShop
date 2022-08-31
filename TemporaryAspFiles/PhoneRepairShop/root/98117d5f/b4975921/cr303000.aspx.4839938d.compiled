@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/CR/CR303000.aspx" hash="fffffff44bb1fa49" filehash="b0786d17ffa29aa2" flags="110000" assembly="App_Web_31fxdcsu" type="ASP.pages_cr_cr303000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormTab.master" />
+        <filedep name="/MasterPages/FormTab.master.cs" />
+        <filedep name="/Pages/CR/CR303000.aspx" />
+        <filedep name="/Pages/CR/CR303000.aspx.cs" />
+        <filedep name="/Pages/CR/Includes/CRDuplicateEntityMergePanel.inc" />
+        <filedep name="/Pages/CR/Includes/CRDuplicateEntityTab.inc" />
+        <filedep name="/Pages/HS/HubSpotTab.inc" />
+    </filedeps>
+</preserve>

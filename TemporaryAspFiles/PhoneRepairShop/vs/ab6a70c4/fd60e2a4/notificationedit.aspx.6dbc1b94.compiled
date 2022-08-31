@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Wiki/NotificationEdit.aspx" hash="fffffff44bb1fa49" filehash="11c4c3bdc0175723" flags="110000" assembly="App_Web_0gpza2zo" type="ASP.wiki_notificationedit_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/TabView.master" />
+        <filedep name="/MasterPages/TabView.master.cs" />
+        <filedep name="/Wiki/NotificationEdit.aspx" />
+        <filedep name="/Wiki/NotificationEdit.aspx.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Frames/Maintenance.aspx" hash="fffffff44bb1fa49" filehash="82741d31bcdf484d" flags="110000" assembly="App_Web_qox2eua5" type="ASP.frames_maintenance_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Frames/Maintenance.aspx" />
+        <filedep name="/PhoneRepairShop/Frames/Maintenance.aspx.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="2" virtualPath="/PhoneRepairShop/Api/TypelessGate.asmx" hash="ffffffffa46abde8" filehash="ffffd5ed8d3ea370" flags="130000" assembly="PX.Data" type="PX.Api.TypelessGate">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Api/TypelessGate.asmx" />
+    </filedeps>
+</preserve>

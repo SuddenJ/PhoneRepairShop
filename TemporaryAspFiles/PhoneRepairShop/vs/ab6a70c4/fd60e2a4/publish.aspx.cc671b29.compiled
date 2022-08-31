@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Controls/Publish.aspx" hash="fffffff44bb1fa49" filehash="1505" flags="100000" assembly="App_Web_publish.aspx.cc671b29.b0o-5t3z" type="ASP.controls_publish_aspx">
+    <filedeps>
+        <filedep name="/Controls/Publish.aspx" />
+    </filedeps>
+</preserve>

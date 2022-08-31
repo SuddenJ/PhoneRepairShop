@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/PR/PR101000.aspx" hash="fffffff44bb1fa49" filehash="23de67944d77db20" flags="110000" assembly="App_Web_xsuioyqo" type="ASP.pages_pr_pr101000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/TabView.master" />
+        <filedep name="/MasterPages/TabView.master.cs" />
+        <filedep name="/Pages/PR/PR101000.aspx" />
+        <filedep name="/Pages/PR/PR101000.aspx.cs" />
+    </filedeps>
+</preserve>

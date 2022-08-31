@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/WebSiteValidationDomain/ExternalResource/ExternalResource.aspx" hash="fffffff44bb1fa49" filehash="627cc4d53c5aec29" flags="110000" assembly="App_Web_yy44oyva" type="ASP.externalresource_externalresource_aspx">
+    <filedeps>
+        <filedep name="/WebSiteValidationDomain/Controls/PageTitle.ascx" />
+        <filedep name="/WebSiteValidationDomain/Controls/PageTitle.ascx.cs" />
+        <filedep name="/WebSiteValidationDomain/ExternalResource/ExternalResource.aspx" />
+        <filedep name="/WebSiteValidationDomain/ExternalResource/ExternalResource.aspx.cs" />
+        <filedep name="/WebSiteValidationDomain/MasterPages/Workspace.master" />
+        <filedep name="/WebSiteValidationDomain/MasterPages/Workspace.master.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Frames/MobileAuth.aspx" hash="fffffff44bb1fa49" filehash="ea2fb04cd5a4f80a" flags="110000" assembly="App_Web_uul5logw" type="ASP.frames_mobileauth_aspx">
+    <filedeps>
+        <filedep name="/Frames/MobileAuth.aspx" />
+        <filedep name="/Frames/MobileAuth.aspx.cs" />
+    </filedeps>
+</preserve>

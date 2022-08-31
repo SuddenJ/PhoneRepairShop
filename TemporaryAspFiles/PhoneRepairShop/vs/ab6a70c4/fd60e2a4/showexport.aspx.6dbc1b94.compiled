@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Wiki/ShowExport.aspx" hash="fffffff44bb1fa49" filehash="de43babec131112c" flags="110000" assembly="App_Web_sietpn2r" type="ASP.wiki_showexport_aspx">
+    <filedeps>
+        <filedep name="/Wiki/ShowExport.aspx" />
+        <filedep name="/Wiki/ShowExport.aspx.cs" />
+    </filedeps>
+</preserve>

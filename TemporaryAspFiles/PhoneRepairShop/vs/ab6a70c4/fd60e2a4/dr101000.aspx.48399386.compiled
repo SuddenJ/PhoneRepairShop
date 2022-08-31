@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/DR/DR101000.aspx" hash="fffffff44bb1fa49" filehash="41bced09915b391f" flags="110000" assembly="App_Web_ewmhs1fm" type="ASP.pages_dr_dr101000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormView.master" />
+        <filedep name="/MasterPages/FormView.master.cs" />
+        <filedep name="/Pages/DR/DR101000.aspx" />
+        <filedep name="/Pages/DR/DR101000.aspx.cs" />
+    </filedeps>
+</preserve>

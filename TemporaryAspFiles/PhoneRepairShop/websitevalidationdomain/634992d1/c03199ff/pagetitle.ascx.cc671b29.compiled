@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/WebSiteValidationDomain/Controls/PageTitle.ascx" hash="fffffff44bb1fa49" filehash="622cec5284959508" flags="110000" assembly="App_Web_01tclcfb" type="ASP.controls_pagetitle_ascx">
+    <filedeps>
+        <filedep name="/WebSiteValidationDomain/Controls/PageTitle.ascx" />
+        <filedep name="/WebSiteValidationDomain/Controls/PageTitle.ascx.cs" />
+    </filedeps>
+</preserve>

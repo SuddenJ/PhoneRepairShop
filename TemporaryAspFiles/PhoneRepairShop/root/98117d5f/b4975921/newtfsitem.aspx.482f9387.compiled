@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/EX/NewTfsItem.aspx" hash="fffffff44bb1fa49" filehash="4687af05e90dfff2" flags="110000" assembly="App_Web_yd1za513" type="ASP.pages_ex_newtfsitem_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormView.master" />
+        <filedep name="/MasterPages/FormView.master.cs" />
+        <filedep name="/Pages/EX/NewTfsItem.aspx" />
+        <filedep name="/Pages/EX/NewTfsItem.aspx.cs" />
+    </filedeps>
+</preserve>

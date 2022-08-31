@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/Trace.aspx" hash="fffffff44bb1fa49" filehash="83a98182fc2eb860" flags="110000" assembly="App_Web_bwq4vd5e" type="ASP.api_trace_aspx">
+    <filedeps>
+        <filedep name="/Api/Trace.aspx" />
+        <filedep name="/Api/Trace.aspx.cs" />
+    </filedeps>
+</preserve>

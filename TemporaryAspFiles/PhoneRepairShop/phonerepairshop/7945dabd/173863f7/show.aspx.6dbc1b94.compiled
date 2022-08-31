@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Wiki/Show.aspx" hash="fffffff44bb1fa49" filehash="97a4179a97127e50" flags="110000" assembly="App_Web_dlrg4kxh" type="ASP.wiki_show_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+        <filedep name="/PhoneRepairShop/MasterPages/Workspace.master" />
+        <filedep name="/PhoneRepairShop/MasterPages/Workspace.master.cs" />
+        <filedep name="/PhoneRepairShop/Wiki/Show.aspx" />
+        <filedep name="/PhoneRepairShop/Wiki/Show.aspx.cs" />
+    </filedeps>
+</preserve>

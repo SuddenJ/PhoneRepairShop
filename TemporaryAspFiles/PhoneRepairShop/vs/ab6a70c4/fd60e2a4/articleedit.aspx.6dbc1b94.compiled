@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Wiki/ArticleEdit.aspx" hash="fffffff44bb1fa49" filehash="f167d4bebf83e62e" flags="110000" assembly="App_Web_fweiy13j" type="ASP.wiki_articleedit_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/TabView.master" />
+        <filedep name="/MasterPages/TabView.master.cs" />
+        <filedep name="/Wiki/ArticleEdit.aspx" />
+        <filedep name="/Wiki/ArticleEdit.aspx.cs" />
+    </filedeps>
+</preserve>

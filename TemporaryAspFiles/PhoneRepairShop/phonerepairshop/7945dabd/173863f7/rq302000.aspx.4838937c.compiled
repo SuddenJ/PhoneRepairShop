@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/Pages/RQ/RQ302000.aspx" hash="fffffff44bb1fa49" filehash="6816783354cbedc0" flags="110000" assembly="App_Web_4ynk4kum" type="ASP.pages_rq_rq302000_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormDetail.master" />
+        <filedep name="/PhoneRepairShop/MasterPages/FormDetail.master.cs" />
+        <filedep name="/PhoneRepairShop/Pages/Includes/CRApprovalReasonPanel.inc" />
+        <filedep name="/PhoneRepairShop/Pages/RQ/RQ302000.aspx" />
+        <filedep name="/PhoneRepairShop/Pages/RQ/RQ302000.aspx.cs" />
+    </filedeps>
+</preserve>

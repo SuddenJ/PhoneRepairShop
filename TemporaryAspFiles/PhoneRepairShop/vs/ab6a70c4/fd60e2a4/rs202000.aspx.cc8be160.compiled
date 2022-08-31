@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/CstPublished/Pages_RS/rs202000.aspx" hash="fffffff44bb1fa49" filehash="64f4b898d662552f" flags="110000" assembly="App_Web_bsmv2tw1" type="ASP.cstpublished_pages_rs_rs202000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/CstPublished/Pages_RS/rs202000.aspx" />
+        <filedep name="/CstPublished/Pages_RS/RS202000.aspx.cs" />
+        <filedep name="/MasterPages/FormView.master" />
+        <filedep name="/MasterPages/FormView.master.cs" />
+        <filedep name="/MasterPages/ListView.master" />
+        <filedep name="/MasterPages/ListView.master.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Customization/CustomizationDialogs.ascx" hash="fffffff44bb1fa49" filehash="c65f0062a076d060" flags="110000" assembly="App_Web_zfot4ydt" type="ASP.customization_customizationdialogs_ascx">
+    <filedeps>
+        <filedep name="/Customization/CustomizationDialogs.ascx" />
+        <filedep name="/Customization/CustomizationDialogs.ascx.cs" />
+    </filedeps>
+</preserve>

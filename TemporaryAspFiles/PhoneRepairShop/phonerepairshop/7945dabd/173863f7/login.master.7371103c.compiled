@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/MasterPages/Login.master" hash="fffffff44bb1fa49" filehash="ef5bad8d719a6b49" flags="110000" assembly="App_Web_w1amzoeh" type="ASP.masterpages_login_master">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/MasterPages/Login.master" />
+        <filedep name="/PhoneRepairShop/MasterPages/Login.master.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Wiki/SitePageEdit.aspx" hash="fffffff44bb1fa49" filehash="c49b7d9578354085" flags="110000" assembly="App_Web_sietpn2r" type="ASP.wiki_sitepageedit_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/TabView.master" />
+        <filedep name="/MasterPages/TabView.master.cs" />
+        <filedep name="/Wiki/SitePageEdit.aspx" />
+        <filedep name="/Wiki/SitePageEdit.aspx.cs" />
+    </filedeps>
+</preserve>

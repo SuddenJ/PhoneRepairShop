@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/Cache.aspx" hash="fffffff44bb1fa49" filehash="5a27f5d95cb8cfb5" flags="110000" assembly="App_Web_ymjdn3ak" type="ASP.api_cache_aspx">
+    <filedeps>
+        <filedep name="/Api/Cache.aspx" />
+        <filedep name="/Api/Cache.aspx.cs" />
+    </filedeps>
+</preserve>

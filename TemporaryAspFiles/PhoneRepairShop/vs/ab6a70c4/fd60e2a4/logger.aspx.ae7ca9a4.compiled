@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/Logger.aspx" hash="fffffff44bb1fa49" filehash="3dbe08dbd2cc0676" flags="110000" assembly="App_Web_bwq4vd5e" type="ASP.api_logger_aspx">
+    <filedeps>
+        <filedep name="/Api/Logger.aspx" />
+        <filedep name="/Api/Logger.aspx.cs" />
+    </filedeps>
+</preserve>

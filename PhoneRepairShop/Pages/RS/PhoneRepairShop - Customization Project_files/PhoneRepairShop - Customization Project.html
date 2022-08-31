@@ -1,0 +1,2180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0134)http://localhost/PhoneRepairShop/(W(10013))/frames/projectbrowser.aspx?Project=PhoneRepairShop&ScreenId=SM204590&EditScreenID=RS203000 -->
+<html xmlns="http://www.w3.org/1999/xhtml" onkeypress="   if (event.charCode == 32 &amp;&amp; event.ctrlKey) DoPublish();"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>:root{ --primary-color:#007ACC;--background-color:#F5F7F8; }</style><link href="./PhoneRepairShop - Customization Project_files/font-awesome.css" type="text/css" rel="stylesheet"><link href="./PhoneRepairShop - Customization Project_files/00_Controls.css" type="text/css" rel="stylesheet"><title>PhoneRepairShop - Customization Project</title><link rel="icon" type="image/png" href="http://localhost/PhoneRepairShop/Icons/site.png?timestamp=637388659980000000"><link rel="shortcut icon" type="image/x-icon" href="http://localhost/PhoneRepairShop/Icons/site.ico?timestamp=637388659980000000">
+       
+	<script type="text/javascript">
+	    var projectFrame = new Object();
+	    var framesetOpen = true;
+		// main frame load event handler
+	    window.onload = function ()
+	    {
+	       // PXToolBar.prototype.AutoOpen = true;
+	    	//var frame = px.searchFrame(window.top, "main");
+	    	if (window['px_cm'])
+	    	{
+	    		window.px_cm.registerAfterLoad(function ()
+	    		{
+	    	        var tb = px_alls['ToolBar'];
+		           // tb.AutoOpen = true;
+	    			if (tb && tb.items && tb.items.length > 1)
+	    			{
+	    				var item = tb.items[1];
+	    				if (item)
+	    				{
+	    					item.element.onclick = function ()
+	    					{
+	    						var frMain = px.searchFrame(window.top, "main");
+	    						var ds = frMain && frMain['px_alls'] && frMain['px_alls']['ds'];
+	    						if (ds.pressSave)
+	    						{
+	    							ds.pressSave();
+	    						}
+	    					};
+	    				}
+	    			}
+	    		});
+	    	}
+	    }
+
+        function DoPublish()
+	    {
+            function publishCallback()
+            {
+                var ds = px_alls['ds'];
+                ds.executeCallback("actionPublishSingle");                
+            }
+
+
+            var frMain = px.searchFrame(window.top, "main");
+            var ds = frMain && frMain['px_alls'] && frMain['px_alls']['ds'];
+            if (ds.pressSave)
+            {
+                ds.pressSave(publishCallback);
+            }
+            else
+            {
+                publishCallback();
+            }
+
+        }
+		projectFrame.afterMainLoad = function ()
+		{
+			var frMain = px.searchFrame(window.top, "main"), mainDoc;
+			try { mainDoc = frMain && frMain.document; } catch (ex) { }
+			if (mainDoc == null) return;
+
+			if (window.__projectName)
+				window.document.title = window.__projectName + " - Customization Project";// mainDoc.title;
+
+			// change the adderes bar
+			var path = frMain.location.pathname;
+			if (path)
+			{
+				var project = window.__projectName ? ("Project=" + window.__projectName) : null;
+				__px(frMain).updateBrowserUrl(true, project);
+			}
+			projectFrame.syncPosition(frMain.__nodeGuid, frMain.__queryString);
+
+		  
+		    frMain.document.documentElement.onkeypress = 
+                function(event)
+                {
+                    //debugger;
+                    if (event.charCode == 32 && event.ctrlKey)
+                        window.top.DoPublish();
+                };
+
+		}
+
+		projectFrame.hideMenu_Click = function ()
+		{
+			var ft = px.elemByID("frameT");
+			if (ft)
+			{
+				var hideImg = px.elemByID("hideFrame"), splitter = px_all["sp1"];
+				var cells = ft.rows[0].cells, visible = (cells[1].style.display == "");
+				var panelL = px_all["panelL"], panelLT = px_all["panelLT"];
+
+				splitter.setEnabled(!visible);
+				cells[0].style.display = visible ? "none" : "";
+				cells[1].style.display = visible ? "none" : "";
+				if (px.isRTL())
+					cells[2].style.paddingRight = visible ? "22px" : "";
+				else
+					cells[2].style.paddingLeft = visible ? "22px" : "";
+
+				projectFrame.setHiddenCss(ft, "menuHidden", visible);
+				if (visible) px.setTitle(hideImg.parentNode, showNavigationPane);
+				else px.setTitle(hideImg.parentNode, hideNavigationPane);
+
+				px_cm.repaintImage(hideImg, visible ? "control@ShowFrame" : "control@HideFrame");
+				px_cm.notifyOnResize(visible);
+			}
+		}
+
+		projectFrame.setHiddenCss = function (elem, cssName, set)
+		{
+			if (set)
+			{
+				if (elem.className.indexOf(cssName) < 0)
+					elem.className += ((elem.className.length > 0) ? " " : "") + cssName;
+			}
+			else elem.className = elem.className.replace(cssName, "").replace(/\s+$/, '');
+		}
+
+		projectFrame.refreshMenu = function ()
+		{
+			var tree = px_alls["treeProj"];
+			if (tree) tree.refresh();
+		}
+
+		projectFrame.syncPosition = function (nodeID, queryString)
+		{
+			var tree = px_alls["treeProj"];
+			if (queryString)
+			{
+				var n = projectFrame.findNode(tree.nodes, queryString);
+				if (n) { n.select(); n.activate(); n.ensureVisible(); }
+			}
+			else tree.sync(nodeID, true);
+		}
+
+		projectFrame.findNode = function (nodes, queryString)
+		{
+			if (nodes == null) return null;
+
+			queryString = queryString.toLowerCase();
+			var node;
+			for (var i = 0; i < nodes.length; i++)
+			{
+				node = nodes.getNode(i);
+				if (node.navigateUrl && node.navigateUrl.toLowerCase().indexOf(queryString) > 0)
+					return node;
+				if (node.hasChild)
+				{
+					node = projectFrame.findNode(node.childNodes, queryString);
+					if (node != null) return node;
+				}
+			}
+			return null;
+		}
+
+		function afterCallback(context, ev)
+		{
+			var publish = "actionPublish@";
+			if (ev.command.substring(0, publish.length) == publish)
+			{
+				var panel = window['px_alls'] && window['px_alls']['PanelCompiler'];
+				if (panel && panel.getVisible && panel.getVisible())
+				{
+					panel.setLoaded(false);
+					panel.load();
+				}
+			}
+		}
+	</script>
+    <style type="text/css">
+        .browser-title {
+            color: white;
+            font-size: 22px;
+            padding-left: 10px;
+        }
+
+        .browser-navigation {
+            color: white;
+            padding-right: 20px;
+        }
+
+        .nodeHint {
+            color: #aaa;
+            font-style: italic;
+            font-weight: normal !important;
+            
+        }
+
+    </style>
+<style type="text/css">
+	.form { height:50px;width:100%; }
+	.PanelSaveTFS_PXFormView2_CaptionL { background-position:left top;width:5px; }
+	.PanelSaveTFS_PXFormView2_CaptionR { background-position:right top;width:5px; }
+	.PanelSaveTFS_PXFormView2_CaptionM {  }
+	.PanelOpenTFS_PXFormView3_CaptionL { background-position:left top;width:5px; }
+	.PanelOpenTFS_PXFormView3_CaptionR { background-position:right top;width:5px; }
+	.PanelOpenTFS_PXFormView3_CaptionM {  }
+	.PanelCreateLIB_PXFormView1_CaptionL { background-position:left top;width:5px; }
+	.PanelCreateLIB_PXFormView1_CaptionR { background-position:right top;width:5px; }
+	.PanelCreateLIB_PXFormView1_CaptionM {  }
+	.PanelOpenLIB_PXFormView22_CaptionL { background-position:left top;width:5px; }
+	.PanelOpenLIB_PXFormView22_CaptionR { background-position:right top;width:5px; }
+	.PanelOpenLIB_PXFormView22_CaptionM {  }
+	div.fld-lc .fld-l120 { width:120px; }
+	div.fld-lc .fld-c120 { margin-left:120px; }
+	.UploadPackageDlg_UploadPackagePanel_btnUpload { width:126px; }
+	.PanelCheckinFiles_gridCheckinFiles { table-layout:fixed;width:100%; }
+	.PanelValidateExt_PXFormView4 { width:100%; }
+	.PanelValidateExt_PXFormView4_CaptionL { background-position:left top;width:5px; }
+	.PanelValidateExt_PXFormView4_CaptionR { background-position:right top;width:5px; }
+	.PanelValidateExt_PXFormView4_CaptionM {  }
+	.PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials { height:100%;width:100%; }
+	.PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_CaptionL { background-position:left top;width:5px; }
+	.PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_CaptionR { background-position:right top;width:5px; }
+	.PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_CaptionM {  }
+
+</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apps/enhance/main" src="./PhoneRepairShop - Customization Project_files/app-bundle.js.download"></script><style type="text/css">.aurelia-hide { display:none !important; }</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="controls/global/index" src="./PhoneRepairShop - Customization Project_files/controls-bundle.js.download"></script><style type="text/css">.qp-drop-down,
+.qp-drop-down * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+qp-drop-down {
+	display: block;
+	border: 0;
+}
+
+qp-drop-down.GridCellEditor div.drop-down__editor {
+	height: 100%;
+	-webkit-box-sizing: content-box;
+	        box-sizing: content-box;
+	width: 100%;
+}
+
+.drop-down__display-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:26px;  
+  height: 100%;
+  pointer-events: none;
+
+  margin: 0;
+  border: 0;
+  padding: 0 4px 0 6px;
+  line-height: 24px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drop-down__options-pane {
+  max-height: 210px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 1000;
+  height: initial;
+  display: block;
+
+  border: #D2D4D7 1px Solid;
+  background-color: White;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.64);
+  -webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.64);
+}
+
+.drop-down__option {
+  display: block;
+  height: 18px;
+  padding: 4px 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+</style><style type="text/css">.qp-branch-selector,
+.qp-branch-selector * {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+qp-branch-selector {
+	display: block;
+}
+
+qp-branch-selector qp-loader-indicator {
+	pointer-events: none;
+}
+
+.branch-selector input {
+	color: transparent;
+}
+
+.branch-selector__display-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 26px;
+	height: 100%;
+	pointer-events: none;
+
+	margin: 0;
+	border: 0;
+	padding: 0 4px 0 6px;
+	line-height: 24px;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.branch-selector__button {
+	background: #fff;
+	border: 0;
+	width: 16px;
+	color: rgba(0, 0, 0, .64);
+	cursor: pointer;
+	padding: 2px;
+}
+
+
+.edit-mode .branch-selector__display-text {
+	visibility: hidden;
+}
+
+.edit-mode input {
+	color: initial;
+}
+
+.branch-selector__branch-tree {
+	width: auto;
+	overflow-y: auto;
+	position: absolute;
+	z-index: 1000;
+	background: white;
+}
+
+.branch-selector__node {
+	display: block;
+	height: 18px;
+	padding: 4px 6px;
+	font-size: 13px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+}
+
+.branch-selector__node.can-select {
+	cursor: pointer;
+}
+
+.branch-selector__node-organization {
+	margin: 2px 0;
+}
+
+.branch-selector__node-branch {
+
+	padding-left: 30px;
+	position: relative;
+}
+
+.branch-selector__node-branch::before {
+
+	display: block;
+	position: absolute;
+	content: '';
+	width: 15px;
+	left: 10px;
+	/* left: 0;//2.35em; */
+	top: -50%;
+	height: 100%;
+	border-bottom: 1px dotted #bbb;
+	border-left: 1px dotted #bbb;
+}
+
+.branch-selector__node-organization+.branch-selector__node-branch::before {
+	height: 60%;
+	top: -15%;
+}
+
+qp-tooltip .tooltip-level {
+	margin: 5px 0;
+	padding: 0 2px;
+}
+
+qp-tooltip .branch-level-1 {
+	position: relative;
+	padding-left: 15px;
+}
+
+qp-tooltip .branch-level-1::before {
+
+	display: block;
+	position: absolute;
+	content: '';
+	width: 8px;
+	left: 4px;
+	/* left: 0;//2.35em; */
+	height: 60%;
+	top: -15%;
+	border-bottom: 1px dotted #bbb;
+	border-left: 1px dotted #bbb;
+}
+</style><style type="text/css">
+qp-text-editor, qp-number-editor 
+{
+	display: block;
+}
+
+qp-text-editor[style*="width"] > *, qp-number-editor[style*="width"] > *
+{
+	width: 100% !important;
+}
+
+qp-text-editor[style*="height"] > *, qp-number-editor[style*="height"] > *
+{
+	height: 100% !important;
+}</style><style type="text/css">.qp-field-editor,
+.qp-field-editor * {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+qp-selector {
+	display: block;
+}
+.qp-field-editor{
+	background-color: #fff;	
+}
+
+input.editor-input {
+	
+	color: transparent;
+}
+
+
+.qp-field-editor__display-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 26px;
+	height: 100%;
+	pointer-events: none;
+
+	margin: 0;
+	border: 0;
+	padding: 0 4px 0 6px;
+	line-height: 24px;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.qp-field-editor__button {
+	margin: 2px 4px 0 0;
+	background: #fff;
+	border: 0;
+	width: 20px;
+	color: #000;
+	cursor: pointer;
+	padding: 1px 6px;
+}
+
+
+.edit-mode .qp-field-editor__display-text {
+	visibility: hidden;
+}
+
+.edit-mode input.editor-input {
+	color: initial;
+}
+
+.dialog-container{
+	background:white;
+	z-index: 1000;
+	/* position: absolute; */
+	max-height: 500px;
+	
+}
+.dialog-container.hide-selector{
+	display: none;
+}
+</style><style type="text/css">.qp-tooltip-container:after {
+	position: absolute;
+	left: 50%;
+	top: -16px;
+	border: 8px solid transparent;
+	content: ' ';
+	border-bottom-color: #007ACC;
+	border-bottom-color: var(--primary-color, #007ACC);
+	-webkit-transform: translateX(-4px);
+	        transform: translateX(-4px);
+}
+
+.qp-tooltip-container {
+	z-index: 20000;
+
+	min-width: 100%;
+
+	background-color: #007ACC;
+	background-color: var(--primary-color, #007ACC);
+
+
+	-webkit-box-sizing: border-box;
+
+
+	        box-sizing: border-box;
+	-webkit-transform: translateY(8px);
+	        transform: translateY(8px);
+
+	pointer-events: all;
+
+	font-size: 13px;
+	border-radius: 5px;
+	background-color: #007ACC;
+	background-color: var(--primary-color, #007ACC);
+	border: 1px solid #007ACC;
+	border: 1px solid var(--primary-color, #007ACC);
+	color: RGBA(255, 255, 255, 0.87);
+	font-weight: 700;
+
+	padding: 5px;
+
+}
+</style><style type="text/css">::-webkit-input-placeholder {
+  font-style: italic;
+}
+::-moz-placeholder {
+  font-style: italic;
+}
+:-ms-input-placeholder {
+  font-style: italic;
+}
+
+qp-grid, qp-grid * 
+{
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+qp-grid
+{
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #D2D4D7;
+  font-size: 13px;
+}
+qp-grid i.ac
+{
+  position: relative;
+}
+
+.grid-filter-bar
+{
+  border-bottom: 1px solid #E0E4E8;
+  padding: 5px;
+  background-color: #F5F7F8;
+}
+.grid-filter-text
+{
+  width: 200px;
+  border: 1px solid #D2D4D7;
+  padding: 4px 6px;
+}
+
+.grid-header
+{
+  position: relative;
+  background-color: #F5F7F8;
+  border-bottom: 1px solid #E0E4E8;
+}
+.grid-header.scroll-margin
+{
+  padding-right: 17px;
+}
+.grid-header i.arrow-down, .grid-header i.arrow-up
+{
+  position: absolute;
+  z-index: 10000;
+}
+.grid-header i.arrow-down
+{
+  top: 0px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+.grid-header i.arrow-up
+{
+  bottom: 0px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.grid-resize-handle
+{
+  position: absolute;
+  top: 0px; bottom: 0px;
+  cursor: col-resize;
+  width: 4px;
+  z-index: 1000;
+}
+.grid-resize-area
+{
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 20000;
+  cursor: col-resize;
+}
+.grid-resize-indicator
+{
+  width: 1px;  
+  border: 1px black solid;
+  position: absolute;
+  height: 100%;
+}
+
+.grid-header table, .grid-content table
+{
+  table-layout: fixed;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  border-collapse: separate;
+  border-width: 0px;
+  border-spacing: 0px;
+  outline: 0;
+}
+
+.grid-header th
+{
+  position: relative;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+  font-weight: bold;
+  padding: 6px 4px;
+  padding-right: 15px;
+  border-left: 1px solid #E0E4E8;
+  overflow: hidden;
+  white-space: normal;
+  text-align: left;
+  vertical-align: top;
+}
+.grid-header th:first-child
+{
+  border-left-width: 0;
+}
+.grid-header th:hover
+{
+  background-color: #E0E4E8;
+  color: RGBA(0, 0, 0, 0.87);
+  cursor: pointer;
+}
+
+.grid-header th i.ac
+{
+  position: absolute;
+  top: 6px; right: 4px;
+}
+
+.grid-header-wrap
+{
+  overflow: hidden;
+  position: relative;
+  border-right: 1px solid #E0E4E8;
+}
+
+.grid-content .row-selector-col
+{
+  width: 16px;
+}
+.grid-header .row-selector-col
+{
+  width: 15px;
+}
+.grid-header th.row-selector, .grid-content-wrap td.row-selector
+{
+  padding: 0px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.grid-content-wrap td.row-selector
+{
+  background-color: #F5F7F8 !important; 
+  border-right: 1px solid #E0E4E8;
+}
+
+.grid-content
+{
+  position: relative;
+  height: 100%;
+}
+.grid-content qp-loader-indicator
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.5;
+  z-index: 100;
+}
+.grid-content qp-loader-indicator > *
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.grid-content-wrap
+{
+  overflow: auto;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.grid-content-wrap td
+{
+  line-height:  16px;
+  min-height: 17px;
+  border-bottom: 1px solid #E0E4E8;
+  overflow: hidden;
+  padding: 7px 8px 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+
+.grid-content-wrap tr.alt-row td
+{
+  background-color: #F2F6FA;
+}
+/* 
+.grid-content-wrap tr:hover td
+{
+  background-color: #E0E4E8;
+  color: RGBA(0, 0, 0, 0.87);
+  cursor: default;
+} */
+
+.grid-content-wrap tr.active td
+{
+  background-color: #E0E4E8;
+}
+.grid-content-wrap tr.active td.active
+{
+  background-color: #B5D7EF;
+}
+
+</style><style type="text/css">.loader-indicator-img {
+    color:#999999;
+    color:var(#999999, --primary-color);
+}
+
+.loader-indicator-img .progress {
+  stroke-width: 10;
+  stroke: currentColor;
+  stroke-linecap: square;  
+  -webkit-animation: dash 2.5s infinite;  
+          animation: dash 2.5s infinite;
+}
+
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+
+  25% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: -250;
+  }
+
+  75% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+}
+
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+
+  25% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: -250;
+  }
+
+  75% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+}
+</style><style type="text/css">/* qp-editor-wrapper,
+qp-editor-wrapper * {
+  box-sizing: border-box;
+
+} */
+
+qp-suggester {
+  display: block;
+  position: absolute;
+  /* z-index: 1000; */
+  top: 100%;
+  /* overflow: hidden; */
+
+
+}
+
+.qp-suggester,
+.qp-suggester * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+
+
+}
+
+.qp-suggester.loading{
+  -webkit-filter:grayscale(.5);
+          filter:grayscale(.5);
+}
+.qp-suggester.show-above {
+  -webkit-transform:translateY(-100%);
+          transform:translateY(-100%);
+  -webkit-transform:translateY(calc(-100% - 1px));
+          transform:translateY(calc(-100% - 1px));
+}
+
+.qp-suggester.show-left {
+  -webkit-transform:translateX(-100%);
+          transform:translateX(-100%);  
+}
+
+.qp-suggester.show-left.show-above {
+  -webkit-transform:translate(-100%,-100%);
+          transform:translate(-100%,-100%);  
+}
+
+qp-suggestion {
+  display: block;
+  height:24px;
+  padding: 4px 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.loading-placeholder.loading {
+  position: relative;
+}
+.loading-placeholder.loading:before{
+  position: absolute;
+  top:2px;
+  left: 5px;
+  right:5px;
+  bottom: 2px;
+  content:'';
+  background-color: #ccc;
+}
+</style></head>
+<body>
+	
+<script>
+window.ClientLocalizedStrings = {
+noResultsFound: 'No results found.',
+lastUpdate: {
+JustNow: 'Updated a moment ago',
+MinsAgo: 'Updated {{mins}} min ago',
+HoursAgo: 'Updated {{hours}} hr ago',
+DaysAgo: 'Updated {{days}} d ago',
+LongAgo: 'Updated more than a week ago'
+}}
+
+window.globalControlsModules=["controls/global"];
+
+requirejs = {
+	baseUrl: '/PhoneRepairShop/scripts/ca/',
+	paths: {
+		root: ""
+	},
+	waitSeconds: 30,
+	urlArgs: "b=637389097320000000",
+	packages: [],
+	stubModules: [
+	'text'
+	],
+	shim: {},
+	bundles: {"apps/enhance/app-bundle":["apps/enhance/main"],
+"controls/global/controls-bundle":["controls/global/index"]}
+}
+</script><script src="./PhoneRepairShop - Customization Project_files/vendor-bundle.js.download" data-main="apps/enhance/main" defer=""></script><!--8/30/2022 11:09:47 AM-->
+	<form name="form1" method="post" action="http://localhost/PhoneRepairShop/(W(10013))/frames/projectbrowser.aspx?PopupPanel=On" id="form1" enctype="multipart/form-data">
+<div>
+<input type="hidden" name="__RequestVerificationToken" id="__RequestVerificationToken" value="4VLCkhdPOo5Q1ikSa8tmrxALkDquTkgzuwyS7HV0cBqYE9mXp6Nk_ecSl7hb7aMDp_KumB5vh6xqS8eJ7susSfnHepU1">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="ds_ToolBar_state" id="ds_ToolBar_state" value="">
+<input type="hidden" name="ds_ctl00_state" id="ds_ctl00_state" value="">
+<input type="hidden" name="form_state" id="form_state" value="%3CPXBoundPanel%20PageCount%3D%220%22%20PageIndex%3D%220%22%20DataKey%3D%22filter%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="__SmartPanelVisible" id="__SmartPanelVisible" value="">
+<input type="hidden" name="panelProj_state" id="panelProj_state" value="">
+<input type="hidden" name="panelProj_treeProj_state" id="panelProj_treeProj_state" value="%3CPXTreeView%20SelectedNodeID%3D%22panelProj_treeProj_node_0_3%22%20SelectedValue%3D%224d2e098a-4df8-4225-bda6-ec1d702bcfb1%22%20ParentValue%3D%220afd5685-2d11-462d-a10f-87c79a524f21%22%2F%3E">
+<input type="hidden" name="panelF_state" id="panelF_state" value="">
+<input type="hidden" name="PanelCompiler_state" id="PanelCompiler_state" value="">
+<input type="hidden" name="PanelSaveTFS_state" id="PanelSaveTFS_state" value="">
+<input type="hidden" name="PanelSaveTFS_PXFormView2_state" id="PanelSaveTFS_PXFormView2_state" value="%3CPXBoundPanel%20PageCount%3D%221%22%20PageIndex%3D%220%22%20DataKey%3D%22viewsolutionconfig%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="PanelSaveTFS_PXFormView2_PXTreeSelector1_state" id="PanelSaveTFS_PXFormView2_PXTreeSelector1_state" value="">
+<input type="hidden" name="PanelSaveTFS_PXFormView2_PXTextEdit2_state" id="PanelSaveTFS_PXFormView2_PXTextEdit2_state" value="">
+<input type="hidden" name="PanelSaveTFS_PXButton3_state" id="PanelSaveTFS_PXButton3_state" value="">
+<input type="hidden" name="PanelSaveTFS_PXButton4_state" id="PanelSaveTFS_PXButton4_state" value="">
+<input type="hidden" name="PanelOpenTFS_state" id="PanelOpenTFS_state" value="">
+<input type="hidden" name="PanelOpenTFS_PXFormView3_state" id="PanelOpenTFS_PXFormView3_state" value="%3CPXBoundPanel%20PageCount%3D%221%22%20PageIndex%3D%220%22%20DataKey%3D%22viewsolutionconfig%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="PanelOpenTFS_PXFormView3_PXTreeSelector2_state" id="PanelOpenTFS_PXFormView3_PXTreeSelector2_state" value="">
+<input type="hidden" name="PanelOpenTFS_PXButton5_state" id="PanelOpenTFS_PXButton5_state" value="">
+<input type="hidden" name="PanelOpenTFS_PXButton6_state" id="PanelOpenTFS_PXButton6_state" value="">
+<input type="hidden" name="PanelCreateLIB_state" id="PanelCreateLIB_state" value="">
+<input type="hidden" name="PanelCreateLIB_PXFormView1_state" id="PanelCreateLIB_PXFormView1_state" value="%3CPXBoundPanel%20PageCount%3D%221%22%20PageIndex%3D%220%22%20DataKey%3D%22viewsolutionconfig%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="PanelCreateLIB_PXFormView1_edPathSelector_state" id="PanelCreateLIB_PXFormView1_edPathSelector_state" value="">
+<input type="hidden" name="PanelCreateLIB_PXFormView1_PXTextEdit1_state" id="PanelCreateLIB_PXFormView1_PXTextEdit1_state" value="">
+<input type="hidden" name="PanelCreateLIB_PXButton7_state" id="PanelCreateLIB_PXButton7_state" value="">
+<input type="hidden" name="PanelCreateLIB_PXButton8_state" id="PanelCreateLIB_PXButton8_state" value="">
+<input type="hidden" name="PanelOpenLIB_state" id="PanelOpenLIB_state" value="">
+<input type="hidden" name="PanelOpenLIB_PXFormView22_state" id="PanelOpenLIB_PXFormView22_state" value="%3CPXBoundPanel%20PageCount%3D%221%22%20PageIndex%3D%220%22%20DataKey%3D%22viewsolutionconfig%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="PanelOpenLIB_PXFormView22_edPathSelector_state" id="PanelOpenLIB_PXFormView22_edPathSelector_state" value="">
+<input type="hidden" name="PanelOpenLIB_PXButton1_state" id="PanelOpenLIB_PXButton1_state" value="">
+<input type="hidden" name="PanelOpenLIB_PXButton2_state" id="PanelOpenLIB_PXButton2_state" value="">
+<input type="hidden" name="UploadPackageDlg_state" id="UploadPackageDlg_state" value="">
+<input type="hidden" name="UploadPackageDlg_UploadPackagePanel_state" id="UploadPackageDlg_UploadPackagePanel_state" value="">
+<input type="hidden" name="UploadPackageDlg_UploadPackagePanel_fldImportSource_state" id="UploadPackageDlg_UploadPackagePanel_fldImportSource_state" value="">
+<input type="hidden" name="UploadPackageDlg_UploadPackagePanel_btnUpload_state" id="UploadPackageDlg_UploadPackagePanel_btnUpload_state" value="">
+<input type="hidden" name="PanelCheckinFiles_state" id="PanelCheckinFiles_state" value="">
+<input type="hidden" name="PanelCheckinFiles_gridCheckinFiles_state" id="PanelCheckinFiles_gridCheckinFiles_state" value="%3CPXGrid%20TotalRowCount%3D%22-1%22%20PageSize%3D%22200%22%20PageIndex%3D%220%22%3E%3CLevels%2F%3E%3CClientState%2F%3E%3C%2FPXGrid%3E">
+<input type="hidden" name="PanelCheckinFiles_PXButtonUpdate_state" id="PanelCheckinFiles_PXButtonUpdate_state" value="">
+<input type="hidden" name="PanelCheckinFiles_PXButton9_state" id="PanelCheckinFiles_PXButton9_state" value="">
+<input type="hidden" name="PanelValidateExt_state" id="PanelValidateExt_state" value="">
+<input type="hidden" name="PanelValidateExt_PXFormView4_state" id="PanelValidateExt_PXFormView4_state" value="%3CPXBoundPanel%20PageCount%3D%221%22%20PageIndex%3D%220%22%20DataKey%3D%22viewvalidateextensions%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="PanelValidateExt_PXFormView4_Msg_state" id="PanelValidateExt_PXFormView4_Msg_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_state" id="PanelManageISVSolutionInitials_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_state" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_state" value="%3CPXBoundPanel%20PageCount%3D%221%22%20PageIndex%3D%220%22%20DataKey%3D%22viewmanageisvsolutioninitials%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials_state" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_PXButtonValidateSolutionObjects_state" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_PXButtonValidateSolutionObjects_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_ctl04_state" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_ctl04_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edMessages_state" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edMessages_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXButtonISVSave_state" id="PanelManageISVSolutionInitials_PXButtonISVSave_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXButtonISVSaveClose_state" id="PanelManageISVSolutionInitials_PXButtonISVSaveClose_state" value="">
+<input type="hidden" name="PanelManageISVSolutionInitials_PXButtonISVCancel_state" id="PanelManageISVSolutionInitials_PXButtonISVCancel_state" value="">
+<input type="hidden" name="L10nEditor_state" id="L10nEditor_state" value="">
+<input type="hidden" name="inputBox_state" id="inputBox_state" value="">
+<input type="hidden" name="msgBox_state" id="msgBox_state" value="">
+<input type="hidden" name="__DataSourceSessionID" id="__DataSourceSessionID" value="">
+<input type="hidden" name="ds_state" id="ds_state" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+
+<script src="./PhoneRepairShop - Customization Project_files/js-tools.min.js.download" type="text/javascript"></script>
+<script src="./PhoneRepairShop - Customization Project_files/PX.ScriptBatch.axd" type="text/javascript"></script>
+<script src="./PhoneRepairShop - Customization Project_files/PX.ScriptBatch(1).axd" type="text/javascript"></script>
+<script src="./PhoneRepairShop - Customization Project_files/PX.ScriptBatch(2).axd" type="text/javascript"></script>
+<script src="./PhoneRepairShop - Customization Project_files/PX.ScriptBatch(3).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var hideNavigationPane="Hide Navigation Pane";var showNavigationPane="Show Navigation Pane";var __appPath = '/PhoneRepairShop/';var __nodePath="84351bc9-bf6c-48b5-9dea-f8207283b64a";var __nodeGuid="9b393502-b104-4b46-b848-ebb342aa7da9";var __loadImgUri = "/PhoneRepairShop/App_Themes/Default/Images/spinner.gif?imgTimeStamp=637388659980000000";
+var __loadStr = "";
+var _numbFormatInfo = {"negativeSign":"-","currencySymbol":"$","percentSymbol":"%","number":{"groupSeparator":",","decimalSeparator":".","groupSizes":[3],"negativePattern":1,"decimalDigits":2},"currency":{"groupSeparator":",","decimalSeparator":".","groupSizes":[3],"positivePattern":0,"negativePattern":0,"decimalDigits":2},"percent":{"groupSeparator":",","decimalSeparator":".","groupSizes":[3],"positivePattern":1,"negativePattern":1,"decimalDigits":2}};
+var _dateFormatInfo = {"am":"AM","pm":"PM","shortDate":"M/d/yyyy","shortTime":"h:mm tt","longDate":"dddd, MMMM d, yyyy","longTime":"h:mm:ss tt","timeSeparator":":","yearFix":0,"monthNames":"January,February,March,April,May,June,July,August,September,October,November,December,","abbrMonthNames":"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec,","dayNames":"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday","abbrDayNames":"Sun,Mon,Tue,Wed,Thu,Fri,Sat"};
+
+__createPxContext(window);
+var __PXToolBar = {"styles":{"normal":"toolBtnNormal","hover":"","pushed":"toolBtnPushed","disabled":"toolBtnDisabled","dropDown":"toolBtnDD","dropNormal":"toolBtnDropN","dropHover":"","dropPushed":"toolBtnDropP"}};
+var _ds_ToolBar = {"styles":{"normal":"toolModNormal","pushed":"toolModPushed","disabled":"toolModDisabled","dropDown":"","dropNormal":"","dropPushed":""},"commandSourceID":"ds","items":[{"type":"PXToolBarButton","usesSignalR":0},{"type":"PXToolBarButton","usesSignalR":0},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionPublishSingle"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionValidate"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionPublishClear"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionShowDlgCheckinFiles"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionSavePackage"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionLoadPackage"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionManageISVSolutionInitials"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionNavigate"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionEditProject"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionPublishMultiple"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"export"},{"type":"PXToolBarButton","usesSignalR":0},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionSolutionNew"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionSolutionBind"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionSolutionOpen"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionAnalyzeReferencedAssemblies"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionValidateExt"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionExportSolutionObjects"},{"type":"PXToolBarButton","usesSignalR":0},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionCreateFromTFS"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionSaveToTFS"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"LongRun","images":{"normal":"/PhoneRepairShop/App_Themes/Default/Images/spinnerSmall.gif?imgTimeStamp=637388659980000000","disabled":"main@Success","hover":"main@Fail"}},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"ElapsedTime"}]};
+var _confirmMsg = "Any unsaved changes will be discarded.";
+var __PXMenu = {"styles":{"menu":"menuIsland","item":"menuItem","hover":"menuItem","disabled":"menuDisabled","spacer":"menuSpacer","topSel":"menuTopSelected"},"expandEffects":{"delay":300,"shadowWidth":3,"type":"Inset"}};
+var _ds_ToolBar_menu0 = {"commandSourceID":"ds","items":{"i0":{"syncText":1,"commandName":"actionFile@actionNavigate"},"i1":{"syncText":1,"commandName":"actionFile@export"},"i2":{"syncText":1,"commandName":"actionFile@actionEditProject"},"i3":{"syncText":1,"commandName":"actionFile@actionSavePackage"},"i4":{"syncText":1,"commandName":"actionFile@actionLoadPackage"},"i5":{"syncText":1,"commandName":"actionFile@actionManageISVSolutionInitials"},"i6":{"syncText":1,"commandName":"actionFile@actionExportSolutionObjects"}},"menuStyle":2,"allowFocus":0};
+var _ds_ToolBar_menu1 = {"commandSourceID":"ds","items":{"i0":{"syncText":1,"commandName":"actionPublish@actionPublishSingle"},"i1":{"syncText":1,"commandName":"actionPublish@actionValidate"},"i2":{"syncText":1,"commandName":"actionPublish@actionPublishMultiple"},"i3":{"syncText":1,"commandName":"actionPublish@actionPublishClear"}},"menuStyle":2,"allowFocus":0};
+var _ds_ToolBar_menu13 = {"commandSourceID":"ds","items":{"i0":{"syncText":1,"commandName":"actionSolution@actionSolutionNew"},"i1":{"syncText":1,"commandName":"actionSolution@actionSolutionBind"},"i2":{"syncText":1,"commandName":"actionSolution@actionSolutionOpen"},"i3":{"syncText":1,"commandName":"actionSolution@actionValidateExt"},"i4":{"syncText":1,"commandName":"actionSolution@actionAnalyzeReferencedAssemblies"}},"menuStyle":2,"allowFocus":0};
+var _ds_ToolBar_menu20 = {"commandSourceID":"ds","items":{"i0":{"syncText":1,"commandName":"actionTFS@actionSaveToTFS"},"i1":{"syncText":1,"commandName":"actionTFS@actionCreateFromTFS"}},"menuStyle":2,"allowFocus":0};
+var __PXShortcutManager = {};
+var _ds_ctl00 = {"targetId":"ds"};
+var __PXFormView = {"maxFileSizeMsg":"The file exceeds the maximal allowed size (25000 KB).","allowedFiles":".als;.csv;.dat;.doc;.docx;.epl;.exe;.gif;.ico;.ics;.jpeg;.jpg;.js;.mdb;.msi;.ofx;.pdf;.pfx;.png;.pptx;.qbo;.qfx;.sql;.swf;.tif;.txt;.xlsx;.zip;.zpl;.cer;.ppt;.rar;.rtf;.xls;.xml","allowedFilesMsg":"Only the following file types are allowed: {0}.","callbacks":[{"name":"Refresh","repaintControls":1,"blockPage":1,"postData":0},{"name":"Search","repaintControls":1,"blockPage":1},{"name":"Save","repaintControls":1,"blockPage":1,"commitChanges":1},{"name":"Delete","repaintControls":1,"blockPage":1},{"name":"AddNew","repaintControls":1,"blockPage":1,"postData":0},{"name":"NoteShow","blockPage":1,"postData":0},{"name":"NoteSave","repaintControls":3,"blockPage":1,"postData":0},{"name":"FilesMenuShow","blockPage":1,"postData":0},{"name":"ActivityShow","blockPage":1,"postData":0},{"name":"LinkShow","repaintControls":3,"blockPage":1,"postData":0},{"name":"LinkUpdate","repaintControls":3,"blockPage":1,"postData":0},{"name":"LinkSend","repaintControls":3,"blockPage":1,"postData":0},{"name":"NotifyMenuShow","repaintControls":3,"blockPage":1,"postData":0},{"name":"NotifyShow","repaintControls":3,"blockPage":1,"commitChanges":1,"postData":0},{"name":"CheckActivity","blockPage":1,"postData":0},{"name":"UploadFile","blockPage":1}],"errorCss":"FormError","warningCss":"FormWarn","infoCss":"FormInfo","minHeight":63,"filesMenuUrls":{"filesDisplayUrl":"~/Frames/GetFile.ashx","fileInfoUrl":"~/Pages/SM/SM202510.aspx"}};
+var _form = {"dataKey":"filter,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":-1208597668,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"dataSourceID":"ds","dataMember":"Filter"};
+var __PXSmartPanel = {"callBackMode":{"blockPage":1,"postData":0}};
+var _panelProj = {"allowMove":0,"allowResize":0,"position":0,"autoSize":{"enabled":1}};
+var __PXTreeView = {"styles":{"root":"treeNode","leaf":"treeNode","parent":"treeNode","hover":"treeHover","disabled":"treeDisabled","selected":"treeSelected"},"searchUrl":"","levels":[{}],"callBackMode":{"blockPage":1,"postData":0}};
+var _panelProj_treeProj = {"dataSourceID":"ds","target":"main","showLines":0,"showDefaultImages":0,"preserveExpanded":1,"levels":[{"styles":{"leaf":"treeNode","parent":"treeNode treeFolder0","hover":"treeHover","disabled":"treeDisabled","selected":"treeSelected"}}]};
+var _panelProj_treeProj_menu = {"items":{"i0":{"commandName":"open"},"i1":{"commandName":"openTab"}},"menuStyle":2};
+var __PXSplitter = {"activeClass":"splitterA","hoverClass":"splitterH","restoreImage":"/PhoneRepairShop/App_Themes/Default/Images/split_dotH.gif?imgTimeStamp=637388659980000000","savePosition":1};
+var _sp1 = {"hoverClass":"splitterHF","restoreImage":"/PhoneRepairShop/App_Themes/Default/Images/split_dotV.gif?imgTimeStamp=637388659980000000","allowCollapse":0,"saveSizeUnits":1,"fixPanel1Size":1,"orientation":1,"panel1MinSize":150,"panel2MinSize":300,"autoSize":{"enabled":1,"container":1}};
+var _panelF = {"allowMove":0,"allowResize":0,"innerPageUrl":"/PhoneRepairShop/pages/au/au201000.aspx?timeStamp=4820fb5bde74dfdc31a9ac8d15504144314A915CDC0","iFrameName":"main","position":0,"autoSize":{"enabled":1},"clientEvents":{"afterLoad":"projectFrame.afterMainLoad"}};
+var _PanelCompiler = {"allowResize":0,"autoReload":1,"showAfterLoad":1,"innerPageUrl":"/PhoneRepairShop/Controls/Publish.aspx?compile=true&silent=true","iFrameName":"Compiler","blockPage":0,"position":0,"key":"ViewPublishProject","clientEvents":{"afterShow":"FireResize","afterHide":"FireResize","beforeLoad":"FireResize","initialize":"SetTooltip"}};
+var _PanelSaveTFS = {"autoRepaint":1,"key":"ViewSolutionConfig__PanelSaveTFS"};
+var _PanelSaveTFS_PXFormView2 = {"dataKey":"viewsolutionconfig,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":-1658284446,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"minHeight":0,"dataSourceID":"ds","dataMember":"ViewSolutionConfig","pageCount":1};
+var __PXTreeSelector = {"images":{"normal":"control@SelectorN","disabled":"control@SelectorD","hover":"control@SelectorH","pushed":"control@SelectorP"},"callBackMode":{"blockPage":1},"disableColor":null};
+var _PanelSaveTFS_PXFormView2_PXTreeSelector1 = {"bindingContainer":"PanelSaveTFS_PXFormView2","initialExpandLevel":0,"minDropWidth":413,"allowEditValue":1,"selectOnFocus":0,"defaultLocale":"en-US"};
+var _PanelSaveTFS_PXFormView2_PXTextEdit2 = {"bindingContainer":"PanelSaveTFS_PXFormView2","disableColor":null,"required":1,"defaultLocale":"en-US"};
+var __PXButton = {"styles":{"normal":"Button","hover":"ButtonH","disabled":"ButtonD","pushed":"ButtonP","dropDown":"ButtonDD","dropN":"ButtonDN","dropH":"ButtonDH"}};
+var _PanelSaveTFS_PXButton3 = {"dialogResult":1};
+var _PanelSaveTFS_PXButton4 = {"dialogResult":2};
+var _PanelOpenTFS = {"autoRepaint":1,"key":"ViewSolutionConfig__PanelOpenTFS"};
+var _PanelOpenTFS_PXFormView3 = {"dataKey":"viewsolutionconfig,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":-1658284446,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"minHeight":0,"dataSourceID":"ds","dataMember":"ViewSolutionConfig","pageCount":1};
+var _PanelOpenTFS_PXFormView3_PXTreeSelector2 = {"bindingContainer":"PanelOpenTFS_PXFormView3","initialExpandLevel":0,"minDropWidth":413,"allowEditValue":1,"selectOnFocus":0,"defaultLocale":"en-US"};
+var _PanelOpenTFS_PXButton5 = {"dialogResult":1};
+var _PanelOpenTFS_PXButton6 = {"dialogResult":2};
+var _PanelCreateLIB = {"autoRepaint":1,"key":"ViewSolutionConfig__PanelCreateLIB"};
+var _PanelCreateLIB_PXFormView1 = {"dataKey":"viewsolutionconfig,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":-1658284446,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"minHeight":0,"dataSourceID":"ds","dataMember":"ViewSolutionConfig","pageCount":1};
+var _PanelCreateLIB_PXFormView1_edPathSelector = {"bindingContainer":"PanelCreateLIB_PXFormView1","initialExpandLevel":0,"minDropWidth":413,"allowEditValue":1,"selectOnFocus":0,"defaultLocale":"en-US"};
+var _PanelCreateLIB_PXFormView1_PXTextEdit1 = {"bindingContainer":"PanelCreateLIB_PXFormView1","disableColor":null,"required":1,"defaultLocale":"en-US"};
+var _PanelCreateLIB_PXButton7 = {"dialogResult":1};
+var _PanelCreateLIB_PXButton8 = {"dialogResult":2};
+var _PanelOpenLIB = {"autoRepaint":1,"key":"ViewSolutionConfig__PanelOpenLIB"};
+var _PanelOpenLIB_PXFormView22 = {"dataKey":"viewsolutionconfig,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":-1658284446,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"minHeight":0,"dataSourceID":"ds","dataMember":"ViewSolutionConfig","pageCount":1};
+var _PanelOpenLIB_PXFormView22_edPathSelector = {"bindingContainer":"PanelOpenLIB_PXFormView22","initialExpandLevel":0,"minDropWidth":413,"allowEditValue":1,"selectOnFocus":0,"defaultLocale":"en-US"};
+var _PanelOpenLIB_PXButton1 = {"dialogResult":1};
+var _PanelOpenLIB_PXButton2 = {"dialogResult":2};
+var _UploadPackageDlg = {"importAction":"ReloadPage","dataSourceID":"ds","panelID":"UploadPackagePanel"};
+var _UploadPackageDlg_UploadPackagePanel = {};
+var _UploadPackageDlg_UploadPackagePanel_fldImportSource = {"maxFileSizeMsg":"The file exceeds the maximal allowed size (25000 KB).","allowedFileTypes":".zip","allowedTypesMessage":"Only the following file types are allowed: .zip.","sizeCheckerHandlerUrl":"/PhoneRepairShop/Frames/CheckFileSize.ashx","uniqueId":"0b2b26f6-45d8-4136-936d-dceeb7bd3e28","uploadForbiddenMessage":"File upload is forbidden."};
+var _UploadPackageDlg_UploadPackagePanel_btnUpload = {"styles":{"normal":"Button UploadPackageDlg_UploadPackagePanel_btnUpload"}};
+var _PanelCheckinFiles = {"key":"ViewCheckinFiles","autoCallBack":{"command":"actionShowDlgCheckinFiles","target":"ds"}};
+var __PXGrid = {"allowNote":0,"gridViewText":"Grid View","xslFile":"/PhoneRepairShop/WebResource.axd?d=XHZfdZvU-cDEin7-31jR2vakiU6x36kRSPutFc92EzUEZr1ViQH8eGcLzu-1wvh0BIgzic7YezkHJDiKAxZCWxfo3lD6ngVVbuQVGFOiy_HQiltv0&t=637389108520000000","xslEditFile":"/PhoneRepairShop/WebResource.axd?d=tCHUT5t3THuIHLZaeI9NycT3ccHulkCadx3BQ_Ml6Srth6Bqkv6pWKnZdd4XHNo6MGmC2alh_0_dpybBjiSL5q9tEEFiWBK1dFFNIxWbMx6b_nrT8Xano791J_Eu-AS17ZJGdQ2&t=637389108520000000","callbacks":[{"name":"Refresh","blockPage":1,"postData":0},{"name":"Save","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":0},{"name":"FetchRow","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":0},{"name":"InitRow","blockPage":1,"postData":0},{"name":"NoteShow","blockPage":1,"postData":0},{"name":"NoteSave","repaintControls":3,"blockPage":1,"postData":0},{"name":"FilterShow","blockPage":1,"postData":0},{"name":"ExportExcel","blockPage":1,"postData":0},{"name":"FilesMenu","blockPage":1,"postData":0},{"name":"LayoutSave","blockPage":1,"commitChanges":1,"postData":0},{"name":"LayoutReset","blockPage":1,"postData":0},{"name":"Navigate","blockPage":1,"postData":0},{"name":"FilterDialog","blockPage":1,"postData":0},{"name":"ColumnsDialog","blockPage":1,"postData":0},{"name":"DelDefault","blockPage":1,"postData":0,"postDataControls":0},{"name":"FilterSave","blockPage":1,"postData":0}],"recordNumMsg":"{0} of {1} records","editStr":"Edit","exportCommand":1,"timeStr":"Time","rowChangedMsg":"Data in the current row has been changed. Do you want to save changes?","gridChangedMsg":"The grid has unsaved changes. Do you want to save changes?","filterAppliedMsg":"Filter Applied","filterAllMsg":"All","filterEmptyMsg":"Is Empty","filterNameMsg":"Enter new filter name here","filterRemoveMsg":"The current filter with all conditions will be deleted","filterChangesInSharedMsg":"You have modified the shared filter. Do you want to save your changes?","filterNames":["Equals","Does Not Equal","Is Greater Than","Is Greater Than or Equal To","Is Less Than","Is Less Than or Equal To","Contains","Starts With","Ends With","Does Not Contain","Is Between","Is Empty","Is Not Empty","Today","Overdue","Today+Overdue","Tomorrow","This Week","Next Week","This Month","Next Month","Is In","Is Not In","External Reference","Nested selector filter"],"emptyMsg":{"comboAddMessage":"No records found.\r\nTry to change filter or modify parameters above to see records here.","namedComboMessage":"No records found as \u0027{0}\u0027.\r\nTry to change filter or modify parameters above to see records here.","namedComboAddMessage":"No records found as \u0027{0}\u0027.\r\nTry to change filter or modify parameters above to see records here.","filteredMessage":"No records found.\r\nTry to change filter to see records here.","filteredAddMessage":"No records found.\r\nTry to change filter to see records here.","namedFilteredMessage":"No records found as \u0027{0}\u0027.\r\nTry to change filter to see records here.","namedFilteredAddMessage":"No records found as \u0027{0}\u0027.\r\nTry to change filter to see records here.","anonFilteredMessage":"No records found.\r\nTry to change filter to see records here.","anonFilteredAddMessage":"No records found.\r\nTry to change filter to see records here."},"emptyMessageMode":2,"autoSaveLayout":0,"exportImages":{"processing":"/PhoneRepairShop/App_Themes/Default/Images/spinnerSmall.gif?imgTimeStamp=637388659980000000"},"levels":[{}],"filesMenuUrls":{"filesDisplayUrl":"/PhoneRepairShop/Frames/GetFile.ashx","fileInfoUrl":"/PhoneRepairShop/Pages/SM/SM202510.aspx"}};
+var _PanelCheckinFiles_gridCheckinFiles = {"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"dataMember":"ViewCheckinFiles","autoAdjustColumns":1,"autoSaveLayout":1,"batchUpdate":1,"exportImages":{"processing":"/PhoneRepairShop/App_Themes/Default/Images/spinnerSmall.gif?imgTimeStamp=637388659980000000"},"levels":[{"dataKey":"Path,Key","columns":[{"type":1,"dataType":3,"dataField":"Selected"},{"type":1,"dataType":3,"dataField":"Conflict","allowUpdate":0},{"dataField":"Path","allowUpdate":0},{"width":"70px","dataField":"Key","visible":0,"allowShowHide":0}]}],"autoSize":{"enabled":1,"minHeight":250},"dataSourceID":"ds","allowPaging":1,"pageSize":200,"totalRowCount":-1};
+var _PanelCheckinFiles_gridCheckinFiles_menu = {"commandSourceID":"PanelCheckinFiles_gridCheckinFiles","items":{"i0":{"commandName":"Refresh"},"i1":{"commandName":"AddNew"},"i2":{"commandName":"Delete"},"i3":{"commandName":"AdjustColumns"},"i4":{"commandName":"ExportExcel"}},"menuStyle":2};
+var _PanelCheckinFiles_gridCheckinFiles_menu0 = {"commandSourceID":"PanelCheckinFiles_gridCheckinFiles","items":{"i1":{"commandName":"LayoutSave"},"i2":{"commandName":"LayoutReset"}},"menuStyle":2};
+var _PanelCheckinFiles_PXButtonUpdate = {"autoCallBack":{"command":"actionFileCheckIn","target":"ds"}};
+var _PanelCheckinFiles_PXButton9 = {"dialogResult":2,"autoCallBack":{"command":"actionRemoveConflicts","target":"ds"}};
+var _PanelValidateExt = {"autoRepaint":1,"key":"ViewValidateExtensions"};
+var _PanelValidateExt_PXFormView4 = {"dataKey":"viewvalidateextensions,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":134863627,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"autoSize":{"enabled":1},"minHeight":0,"dataSourceID":"ds","dataMember":"ViewValidateExtensions","pageCount":1};
+var __PXHtmlView = {"spinnerUrl":"/PhoneRepairShop/App_Themes/Default/Images/spinner.gif?imgTimeStamp=637388659980000000","closeUrl":"main@CloseWB"};
+var _PanelValidateExt_PXFormView4_Msg = {"autoSize":{"enabled":1}};
+var _PanelManageISVSolutionInitials = {"autoRepaint":1,"key":"ViewManageISVSolutionInitials"};
+var _PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials = {"dataKey":"viewmanageisvsolutioninitials,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":1936295618,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"autoSize":{"enabled":1},"minHeight":0,"dataSourceID":"ds","dataMember":"ViewManageISVSolutionInitials","pageCount":1};
+var _PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials = {"bindingContainer":"PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials","disableColor":null,"defaultLocale":"en-US"};
+var _PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_PXButtonValidateSolutionObjects = {"autoCallBack":{"command":"actionValidateInitials","target":"ds"}};
+var _PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_ctl04 = {"bindingContainer":"PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials","buttons":""};
+var _PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edMessages = {"autoSize":{"enabled":1,"minHeight":350}};
+var _PanelManageISVSolutionInitials_PXButtonISVSave = {"autoCallBack":{"command":"actionISVInitialsSave","target":"ds"}};
+var _PanelManageISVSolutionInitials_PXButtonISVSaveClose = {"dialogResult":1,"autoCallBack":{"command":"actionISVInitialsSaveClose","target":"ds"}};
+var _PanelManageISVSolutionInitials_PXButtonISVCancel = {"dialogResult":2,"autoCallBack":{"command":"actionISVInitialsCancel","target":"ds"}};
+var _L10nEditor = {"commandSourceID":"ds","loadOnDemand":1,"autoReload":1,"commandName":"SaveLoc","autoCallBack":{"behavior":{"postData":0}}};
+var __PXInputBox = {"activeEnter":0,"buttonCss":"MessageButton","autoAdjustSize":1,"callBackMode":{"blockPage":1,"postData":0}};
+var _inputBox = {};
+var __PXMessage = {"buttonCss":"MessageButton","autoAdjustSize":1,"callBackMode":{"blockPage":1,"postData":0}};
+var _msgBox = {};
+var _ds = {"callbacks":[{"name":"actionFile","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFile@actionNavigate","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFile@export","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFile@actionEditProject","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFile@actionSavePackage","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFile@actionLoadPackage","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFile@actionManageISVSolutionInitials","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFile@actionExportSolutionObjects","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublish","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublish@actionPublishSingle","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublish@actionValidate","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublish@actionPublishMultiple","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublish@actionPublishClear","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublishSingle","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionValidate","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublishClear","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionShowDlgCheckinFiles","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionFileCheckIn","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionRemoveConflicts","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSavePackage","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionLoadPackage","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionManageISVSolutionInitials","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionValidateInitials","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionISVInitialsSave","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionISVInitialsSaveClose","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionISVInitialsCancel","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionNavigate","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionEditProject","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionPublishMultiple","repaintControls":1,"blockPage":1,"postData":3},{"name":"export","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionSolution","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolution@actionSolutionNew","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolution@actionSolutionBind","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolution@actionSolutionOpen","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolution@actionValidateExt","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolution@actionAnalyzeReferencedAssemblies","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolutionNew","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolutionBind","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSolutionOpen","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionAnalyzeReferencedAssemblies","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionValidateExt","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionExportSolutionObjects","repaintControls":1,"blockPage":1,"postData":3},{"name":"actionTFS","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionTFS@actionSaveToTFS","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionTFS@actionCreateFromTFS","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionCreateFromTFS","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"actionSaveToTFS","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"attachFromMobile","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"LongRun","repaintControls":1,"postData":3},{"name":"ElapsedTime","repaintControls":1,"postData":3},{"name":"SaveLoc","blockPage":1,"postData":2,"container":"L10nEditor"},{"name":"RepaintControls","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"ReloadPage","repaintControls":1,"blockPage":1,"postData":3},{"name":"Commit","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"ShowImportGraphErrors","repaintControls":1,"blockPage":1,"postData":3}],"sourceName":"ds","isDefault":1,"popupMessage":null,"longRunAbort":"Press to abort","dataKey":"/wEWAA==","isNewRecord":1,"commandStates":[{"name":"actionFile","displayName":"File","tooltip":null},{"name":"actionFile@actionNavigate","displayName":"Manage Customization Projects","tooltip":null},{"name":"actionFile@export","displayName":"Edit Project XML","tooltip":null},{"name":"actionFile@actionEditProject","displayName":"Edit Project Items","tooltip":null},{"name":"actionFile@actionSavePackage","displayName":"Export Project Package","tooltip":null},{"name":"actionFile@actionLoadPackage","displayName":"Replace from Package","tooltip":null},{"name":"actionFile@actionManageISVSolutionInitials","displayName":"Validate Project Prefix","tooltip":null},{"name":"actionFile@actionExportSolutionObjects","displayName":"Export Project Items Workbook","tooltip":null},{"name":"actionPublish","displayName":"Publish","tooltip":null},{"name":"actionPublish@actionPublishSingle","displayName":"Publish Current Project (Ctrl+Space)","tooltip":null},{"name":"actionPublish@actionValidate","displayName":"Validate Current Project","tooltip":null},{"name":"actionPublish@actionPublishMultiple","displayName":"Multiple Projects","tooltip":null},{"name":"actionPublish@actionPublishClear","displayName":"Publish with Cleanup","tooltip":null},{"name":"actionPublishSingle","visible":0,"displayName":"Publish Current Project (Ctrl+Space)","tooltip":null},{"name":"actionValidate","visible":0,"displayName":"Validate Current Project","tooltip":null},{"name":"actionPublishClear","visible":0,"displayName":"Publish with Cleanup","tooltip":null},{"name":"actionShowDlgCheckinFiles","visible":0,"displayName":"actionShowDlgCheckinFiles","tooltip":null},{"name":"actionFileCheckIn","displayName":"Update Customization Project","tooltip":"Update modified files from the file system."},{"name":"actionRemoveConflicts","displayName":"Discard all changes","tooltip":null},{"name":"actionSavePackage","visible":0,"displayName":"Export Project Package","tooltip":"Export the project to a file."},{"name":"actionLoadPackage","visible":0,"displayName":"Replace from Package","tooltip":null},{"name":"actionManageISVSolutionInitials","visible":0,"displayName":"Validate Project Prefix","tooltip":null},{"name":"actionValidateInitials","enabled":0,"displayName":"VALIDATE PROJECT ITEMS","tooltip":null},{"name":"actionISVInitialsSave","displayName":"SAVE","tooltip":null},{"name":"actionISVInitialsSaveClose","displayName":"SAVE & CLOSE","tooltip":null},{"name":"actionISVInitialsCancel","displayName":"CANCEL","tooltip":null},{"name":"actionNavigate","visible":0,"displayName":"Manage Customization Projects","tooltip":null},{"name":"actionEditProject","visible":0,"displayName":"Edit Project Items","tooltip":null},{"name":"actionPublishMultiple","visible":0,"displayName":"Multiple Projects","tooltip":null},{"name":"export","visible":0,"displayName":"Edit Project XML","tooltip":"Export the current customization project."},{"name":"actionSolution","displayName":"Extension Library","tooltip":null},{"name":"actionSolution@actionSolutionNew","displayName":"Create New","tooltip":null},{"name":"actionSolution@actionSolutionBind","displayName":"Bind to Existing","tooltip":null},{"name":"actionSolution@actionSolutionOpen","displayName":"Open in Visual Studio","tooltip":null},{"name":"actionSolution@actionValidateExt","displayName":"Show Active Extensions","tooltip":null},{"name":"actionSolution@actionAnalyzeReferencedAssemblies","displayName":"Analyze Referenced Assemblies","tooltip":null},{"name":"actionSolutionNew","visible":0,"displayName":"Create New","tooltip":null},{"name":"actionSolutionBind","visible":0,"displayName":"Bind to Existing","tooltip":null},{"name":"actionSolutionOpen","visible":0,"displayName":"Open in Visual Studio","tooltip":null},{"name":"actionAnalyzeReferencedAssemblies","visible":0,"displayName":"Analyze Referenced Assemblies","tooltip":null},{"name":"actionValidateExt","visible":0,"displayName":"Show Active Extensions","tooltip":null},{"name":"actionExportSolutionObjects","visible":0,"displayName":"Export Project Items Workbook","tooltip":null},{"name":"actionTFS","displayName":"Source Control","tooltip":null},{"name":"actionTFS@actionSaveToTFS","displayName":"Save Project to Folder...","tooltip":null},{"name":"actionTFS@actionCreateFromTFS","displayName":"Open Project from Folder...","tooltip":null},{"name":"actionCreateFromTFS","visible":0,"displayName":"Open Project from Folder...","tooltip":null},{"name":"actionSaveToTFS","visible":0,"displayName":"Save Project to Folder...","tooltip":null},{"name":"LongRun","visible":0,"enabled":0,"displayName":null,"tooltip":null},{"name":"ElapsedTime","visible":0,"enabled":0,"displayName":null,"tooltip":null}],"showProcessWindow":0,"primaryView":"Filter","confirmations":[{"commandName":"actionPublishSingle","checkDirty":1,"message":null,"shortcutChar":32,"shortcutCtrl":1},{"commandName":"actionValidateInitials","checkDirty":1,"message":"The changes need to be saved. Do you want to proceed?"}],"clientEvents":{"commandPerformed":"afterCallback"},"saveCommandName":null,"cancelCommandName":null};
+//]]>
+</script>
+
+		<table cellpadding="0" cellspacing="0" style="width:100%" class="toolSysTable">
+			<tbody><tr>
+			<td>
+
+                <span class="browser-title">Customization Project Editor</span>
+			</td>
+                <td style="text-align: right;">
+                    <a href="javascript:window.history.back()" class="browser-navigation">Back</a>
+                    <a href="javascript:location.reload()" class="browser-navigation">Reload</a>
+
+                </td>
+			</tr>
+		</tbody></table>
+		
+		<div name="ds" cellpadding="0" cellspacing="0" id="ds" class="dataSource" style="overflow:hidden;">
+	<div name="ds$ToolBar" id="ds_ToolBar" class="toolBarMod">
+		<ul id="ds_ToolBar_ul" class="toolsList">
+			<li><div class="toolsBtn">
+				<div class="toolModNormal" data-type="button">
+					File
+				</div>
+			</div></li><li><div class="toolsBtn">
+				<div class="toolModNormal" data-type="button">
+					Publish
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionPublishSingle">
+				<div class="toolModNormal" data-type="button">
+					Publish Current Project (Ctrl+Space)
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionValidate">
+				<div class="toolModNormal" data-type="button">
+					Validate Current Project
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionPublishClear">
+				<div class="toolModNormal" data-type="button">
+					Publish with Cleanup
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionShowDlgCheckinFiles">
+				<div class="toolModNormal" data-type="button">
+					actionShowDlgCheckinFiles
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionSavePackage" tooltip="Export the project to a file.">
+				<div class="toolModNormal" data-type="button">
+					Export Project Package
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionLoadPackage">
+				<div class="toolModNormal" data-type="button">
+					Replace from Package
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionManageISVSolutionInitials">
+				<div class="toolModNormal" data-type="button">
+					Validate Project Prefix
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionNavigate">
+				<div class="toolModNormal" data-type="button">
+					Manage Customization Projects
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionEditProject">
+				<div class="toolModNormal" data-type="button">
+					Edit Project Items
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionPublishMultiple">
+				<div class="toolModNormal" data-type="button">
+					Multiple Projects
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="export" tooltip="Export the current customization project.">
+				<div class="toolModNormal" data-type="button">
+					Edit Project XML
+				</div>
+			</div></li><li><div class="toolsBtn">
+				<div class="toolModNormal" data-type="button">
+					Extension Library
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionSolutionNew">
+				<div class="toolModNormal" data-type="button">
+					Create New
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionSolutionBind">
+				<div class="toolModNormal" data-type="button">
+					Bind to Existing
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionSolutionOpen">
+				<div class="toolModNormal" data-type="button">
+					Open in Visual Studio
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionAnalyzeReferencedAssemblies">
+				<div class="toolModNormal" data-type="button">
+					Analyze Referenced Assemblies
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionValidateExt">
+				<div class="toolModNormal" data-type="button">
+					Show Active Extensions
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionExportSolutionObjects">
+				<div class="toolModNormal" data-type="button">
+					Export Project Items Workbook
+				</div>
+			</div></li><li><div class="toolsBtn">
+				<div class="toolModNormal" data-type="button">
+					Source Control
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionCreateFromTFS">
+				<div class="toolModNormal" data-type="button">
+					Open Project from Folder...
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="actionSaveToTFS">
+				<div class="toolModNormal" data-type="button">
+					Save Project to Folder...
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="LongRun" enabled="false" tooltip="Nothing in progress">
+				<div class="toolModDisabled" data-type="button">
+					<div class="sprite-icon main-icon" icon="Success" id="ds_ToolBar_ctl72"><div class="main-icon-img main-Success"></div></div>
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="ElapsedTime" enabled="false" tooltip="Elapsed time">
+				<div class="toolModDisabled" data-type="button">
+					
+				</div>
+			</div></li>
+		</ul>
+	</div><div name="ds$ctl00" id="ds_ctl00" style="height:0px;width:0px;">
+
+	</div>
+</div>
+
+		<table id="frameT" style="width: 100%; height: 768px;" cellspacing="0" cellpadding="0" class="">
+	<tbody><tr>
+		<td class="leftFrame" style="width: 19%; height: 768px;">
+					<label id="projectLink" class="projectLink border-box">PhoneRepairShop</label>
+					<table name="form" id="form" class="FormView form" cellpadding="0" cellspacing="0" style="display:none;">
+			<tbody><tr>
+				<td id="form_content" class="FormContent" style="height:50px;vertical-align:Top;"><div style="height:100%;position:relative;overflow-x:hidden;overflow-y:auto;">
+
+		</div></td>
+			</tr>
+		</tbody></table>
+
+					<div name="panelProj" id="panelProj" tabindex="300" class="SmartPanelF" style="height: 725px;">
+			
+						<div name="panelProj$treeProj" id="panelProj_treeProj" tabindex="300" class="tree menuTree">
+				<ul id="panelProj_treeProj_nodes" class="tnUL" data-count="21" data-level="0">
+					<li class="tnLI tnFirst folder expanded containsActive"><div id="panelProj_treeProj_node_0" class="tnDiv tnTop" data-url="/PhoneRepairShop/pages/au/au201000.aspx" data-value="0afd5685-2d11-462d-a10f-87c79a524f21" data-path="!0afd5685-2d11-462d-a10f-87c79a524f21">
+						<div class="sprite-icon tree-icon" icon="Collapse" data-type="E">
+							<div class="tree-icon-img tree-Collapse">
+
+							</div>
+						</div><span class="treeNode treeFolder0">Screens</span>
+					</div><ul id="panelProj_treeProj_nodes_0" class="tnUL" data-count="4" data-level="1" style="">
+						<li class="tnLI tnFirst folder"><div id="panelProj_treeProj_node_0_0" class="tnDiv tnTop" data-url="/PhoneRepairShop/Pages/SM/SM204520.aspx?EditScreenID=IN202500" data-value="6dab52b5-c5c9-4b4a-8894-c5096eea6830" data-path="!6dab52b5-c5c9-4b4a-8894-c5096eea6830">
+							<div class="sprite-icon tree-icon" icon="Expand" data-type="E">
+								<div class="tree-icon-img tree-Expand">
+
+								</div>
+							</div><span class="treeNode">IN202500</span>
+						</div><ul id="panelProj_treeProj_nodes_0_0" class="tnUL" data-count="5" data-level="2" style="display:none;">
+							<li class="tnLI tnFirst"><div id="panelProj_treeProj_node_0_0_0" class="tnDiv tnTop" data-url="/PhoneRepairShop/pages/au/au201050.aspx?EditScreenID=IN202500" data-value="d4519d34-27de-426c-8ffe-e1aac04b7994" data-path="!d4519d34-27de-426c-8ffe-e1aac04b7994">
+								<span class="treeNode">Actions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_0_1" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201060.aspx?EditScreenID=IN202500" data-value="cbfe827e-68c3-4e7e-94a2-f040181a6806" data-path="!cbfe827e-68c3-4e7e-94a2-f040181a6806">
+								<span class="treeNode">Fields</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_0_2" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201010.aspx?EditScreenID=IN202500" data-value="805eba1e-f066-4e2c-a845-5cf18452cb3c" data-path="!805eba1e-f066-4e2c-a845-5cf18452cb3c">
+								<span class="treeNode">Conditions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_0_3" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201020.aspx?EditScreenID=IN202500" data-value="514c4317-f544-4f76-afed-c6123fd12372" data-path="!514c4317-f544-4f76-afed-c6123fd12372">
+								<span class="treeNode">Workflows</span>
+							</div></li><li class="tnLI tnLast"><div id="panelProj_treeProj_node_0_0_4" class="tnDiv tnBot" data-url="/PhoneRepairShop/pages/au/au201040.aspx?EditScreenID=IN202500" data-value="8f78ed00-9439-4bac-9c9a-06c64550f33d" data-path="!8f78ed00-9439-4bac-9c9a-06c64550f33d">
+								<span class="treeNode">Dialog Boxes</span>
+							</div></li>
+						</ul></li><li class="tnLI folder"><div id="panelProj_treeProj_node_0_1" class="tnDiv tnMid" data-url="/PhoneRepairShop/Pages/SM/SM204520.aspx?EditScreenID=RS201000" data-value="52a488f2-b7d8-44ac-b3b5-91350047339f" data-path="!52a488f2-b7d8-44ac-b3b5-91350047339f">
+							<div class="sprite-icon tree-icon" icon="Expand" data-type="E">
+								<div class="tree-icon-img tree-Expand">
+
+								</div>
+							</div><span class="treeNode">RS201000</span>
+						</div><ul id="panelProj_treeProj_nodes_0_1" class="tnUL" data-count="5" data-level="2" style="display:none;">
+							<li class="tnLI tnFirst"><div id="panelProj_treeProj_node_0_1_0" class="tnDiv tnTop" data-url="/PhoneRepairShop/pages/au/au201050.aspx?EditScreenID=RS201000" data-value="25580ce9-d3f2-4ee5-b29d-79334879fced" data-path="!25580ce9-d3f2-4ee5-b29d-79334879fced">
+								<span class="treeNode">Actions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_1_1" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201060.aspx?EditScreenID=RS201000" data-value="359f90d8-e1a4-46f1-96e0-c6fe229717ab" data-path="!359f90d8-e1a4-46f1-96e0-c6fe229717ab">
+								<span class="treeNode">Fields</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_1_2" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201010.aspx?EditScreenID=RS201000" data-value="370970ab-f335-4431-a794-c439a58ac169" data-path="!370970ab-f335-4431-a794-c439a58ac169">
+								<span class="treeNode">Conditions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_1_3" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201020.aspx?EditScreenID=RS201000" data-value="1f0c11e4-00ee-4412-a8de-0dd5ab4a8ab6" data-path="!1f0c11e4-00ee-4412-a8de-0dd5ab4a8ab6">
+								<span class="treeNode">Workflows</span>
+							</div></li><li class="tnLI tnLast"><div id="panelProj_treeProj_node_0_1_4" class="tnDiv tnBot" data-url="/PhoneRepairShop/pages/au/au201040.aspx?EditScreenID=RS201000" data-value="2e74ed24-adb5-4eca-89a5-0fe288d8629b" data-path="!2e74ed24-adb5-4eca-89a5-0fe288d8629b">
+								<span class="treeNode">Dialog Boxes</span>
+							</div></li>
+						</ul></li><li class="tnLI folder"><div id="panelProj_treeProj_node_0_2" class="tnDiv tnMid" data-url="/PhoneRepairShop/Pages/SM/SM204520.aspx?EditScreenID=RS202000" data-value="ee2b8903-a408-4a8f-82bc-2e3c2880ff74" data-path="!ee2b8903-a408-4a8f-82bc-2e3c2880ff74">
+							<div class="sprite-icon tree-icon" icon="Expand" data-type="E">
+								<div class="tree-icon-img tree-Expand">
+
+								</div>
+							</div><span class="treeNode">RS202000</span>
+						</div><ul id="panelProj_treeProj_nodes_0_2" class="tnUL" data-count="5" data-level="2" style="display:none;">
+							<li class="tnLI tnFirst"><div id="panelProj_treeProj_node_0_2_0" class="tnDiv tnTop" data-url="/PhoneRepairShop/pages/au/au201050.aspx?EditScreenID=RS202000" data-value="67bba2f4-0e8e-495b-b191-71ec1c96307e" data-path="!67bba2f4-0e8e-495b-b191-71ec1c96307e">
+								<span class="treeNode">Actions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_2_1" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201060.aspx?EditScreenID=RS202000" data-value="7134cb1a-4d72-4385-af51-206655b7fae8" data-path="!7134cb1a-4d72-4385-af51-206655b7fae8">
+								<span class="treeNode">Fields</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_2_2" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201010.aspx?EditScreenID=RS202000" data-value="b7d6e599-0b1c-48ef-9110-e461039245e7" data-path="!b7d6e599-0b1c-48ef-9110-e461039245e7">
+								<span class="treeNode">Conditions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_2_3" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201020.aspx?EditScreenID=RS202000" data-value="4446a8c2-bcd7-4730-ae29-a3d2e71f88e1" data-path="!4446a8c2-bcd7-4730-ae29-a3d2e71f88e1">
+								<span class="treeNode">Workflows</span>
+							</div></li><li class="tnLI tnLast"><div id="panelProj_treeProj_node_0_2_4" class="tnDiv tnBot" data-url="/PhoneRepairShop/pages/au/au201040.aspx?EditScreenID=RS202000" data-value="46664d3c-2e3c-46ad-bb66-ca7022a43b02" data-path="!46664d3c-2e3c-46ad-bb66-ca7022a43b02">
+								<span class="treeNode">Dialog Boxes</span>
+							</div></li>
+						</ul></li><li class="tnLI tnLast folder selected active"><div id="panelProj_treeProj_node_0_3" class="tnDiv tnBot" data-url="/PhoneRepairShop/Pages/SM/SM204520.aspx?EditScreenID=RS203000" data-value="4d2e098a-4df8-4225-bda6-ec1d702bcfb1" data-path="!4d2e098a-4df8-4225-bda6-ec1d702bcfb1">
+							<div class="sprite-icon tree-icon" icon="Expand" data-type="E">
+								<div class="tree-icon-img tree-Expand">
+
+								</div>
+							</div><span class="treeNode treeSelected">RS203000</span>
+						</div><ul id="panelProj_treeProj_nodes_0_3" class="tnUL" data-count="5" data-level="2" style="display:none;">
+							<li class="tnLI tnFirst"><div id="panelProj_treeProj_node_0_3_0" class="tnDiv tnTop" data-url="/PhoneRepairShop/pages/au/au201050.aspx?EditScreenID=RS203000" data-value="483f1a47-992c-4a54-ac21-7ba466ef5276" data-path="!483f1a47-992c-4a54-ac21-7ba466ef5276">
+								<span class="treeNode">Actions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_3_1" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201060.aspx?EditScreenID=RS203000" data-value="c2bc4931-19ab-4597-87bd-6d175c6af911" data-path="!c2bc4931-19ab-4597-87bd-6d175c6af911">
+								<span class="treeNode">Fields</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_3_2" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201010.aspx?EditScreenID=RS203000" data-value="ab1bd596-d326-4253-a033-4814212881f2" data-path="!ab1bd596-d326-4253-a033-4814212881f2">
+								<span class="treeNode">Conditions</span>
+							</div></li><li class="tnLI"><div id="panelProj_treeProj_node_0_3_3" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au201020.aspx?EditScreenID=RS203000" data-value="e02919ae-5c5a-4331-88b3-99aad8da0afb" data-path="!e02919ae-5c5a-4331-88b3-99aad8da0afb">
+								<span class="treeNode">Workflows</span>
+							</div></li><li class="tnLI tnLast"><div id="panelProj_treeProj_node_0_3_4" class="tnDiv tnBot" data-url="/PhoneRepairShop/pages/au/au201040.aspx?EditScreenID=RS203000" data-value="53b11dac-b232-4793-95b7-213ef80f118a" data-path="!53b11dac-b232-4793-95b7-213ef80f118a">
+								<span class="treeNode">Dialog Boxes</span>
+							</div></li>
+						</ul></li>
+					</ul></li><li class="tnLI"><div id="panelProj_treeProj_node_1" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au203001.aspx" data-value="0ca0a7c9-9af9-4475-a44d-69b29cfb8477" data-path="!0ca0a7c9-9af9-4475-a44d-69b29cfb8477">
+						<span class="treeNode">Data Access</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_2" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au204000.aspx" data-value="3fbca97d-1a9b-4eed-9cbc-60f230d582b2" data-path="!3fbca97d-1a9b-4eed-9cbc-60f230d582b2">
+						<span class="treeNode">Code</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_3" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au204500.aspx" data-value="07b37d1f-5828-4869-be0e-5a7127285e9d" data-path="!07b37d1f-5828-4869-be0e-5a7127285e9d">
+						<span class="treeNode">Files (8)</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_4" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au206000.aspx" data-value="63c00e5f-2456-4965-b730-0072927caffb" data-path="!63c00e5f-2456-4965-b730-0072927caffb">
+						<span class="treeNode">Generic Inquiries (1)</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_5" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au207000.aspx" data-value="2d2fdfa0-20a4-4a72-b717-8c30bc95635b" data-path="!2d2fdfa0-20a4-4a72-b717-8c30bc95635b">
+						<span class="treeNode">Reports</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_6" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au206004.aspx" data-value="53061745-63ba-4723-a63f-4da46276fa8d" data-path="!53061745-63ba-4723-a63f-4da46276fa8d">
+						<span class="treeNode">Dashboards</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_7" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au208000.aspx" data-value="32206e90-1836-413c-8332-16b982afe25f" data-path="!32206e90-1836-413c-8332-16b982afe25f">
+						<span class="treeNode">Site Map (3)</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_8" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au209000.aspx" data-value="ab6d33d9-dead-4882-9895-96183144a06a" data-path="!ab6d33d9-dead-4882-9895-96183144a06a">
+						<span class="treeNode">Database Scripts (3)</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_9" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au205000.aspx" data-value="0666c02a-0e43-4bcd-bece-5629c06abbee" data-path="!0666c02a-0e43-4bcd-bece-5629c06abbee">
+						<span class="treeNode">System Locales</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_10" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au205500.aspx" data-value="f669bf51-0978-49d6-9214-6dc06559b441" data-path="!f669bf51-0978-49d6-9214-6dc06559b441">
+						<span class="treeNode">Import/Export Scenarios</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_11" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au205100.aspx" data-value="15dc76b4-a1c6-4c85-baa1-3662690a5158" data-path="!15dc76b4-a1c6-4c85-baa1-3662690a5158">
+						<span class="treeNode">Shared Filters</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_12" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au205200.aspx" data-value="caf606d1-c745-45ee-b7a6-c376832960e1" data-path="!caf606d1-c745-45ee-b7a6-c376832960e1">
+						<span class="treeNode">Access Rights</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_13" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au206001.aspx" data-value="dbcb4b08-fe0a-47a4-a6c2-8b2a5af76679" data-path="!dbcb4b08-fe0a-47a4-a6c2-8b2a5af76679">
+						<span class="treeNode">Wikis</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_14" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au206002.aspx" data-value="6e64bdaf-2821-4fc2-a6b9-feed687b1943" data-path="!6e64bdaf-2821-4fc2-a6b9-feed687b1943">
+						<span class="treeNode">Web Service Endpoints</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_15" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au206003.aspx" data-value="421a293d-18dc-4eb1-8fbd-1c6343313382" data-path="!421a293d-18dc-4eb1-8fbd-1c6343313382">
+						<span class="treeNode">Analytical Reports</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_16" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au210000.aspx" data-value="018f07ca-96de-4d5b-a8f2-37c99c58fedd" data-path="!018f07ca-96de-4d5b-a8f2-37c99c58fedd">
+						<span class="treeNode">Push Notifications</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_17" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au210010.aspx" data-value="5bf3f4ee-9ec0-4bc1-949e-7b30a1a6fa48" data-path="!5bf3f4ee-9ec0-4bc1-949e-7b30a1a6fa48">
+						<span class="treeNode">Business Events</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_18" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au220000.aspx" data-value="0235ef0e-34ce-4ec2-bb8d-abaf416bb3d2" data-path="!0235ef0e-34ce-4ec2-bb8d-abaf416bb3d2">
+						<span class="treeNode">Mobile Application</span>
+					</div></li><li class="tnLI"><div id="panelProj_treeProj_node_19" class="tnDiv tnMid" data-url="/PhoneRepairShop/pages/au/au230000.aspx" data-value="ebeb1e0d-bca9-459e-9131-7af0dbf4d5c3" data-path="!ebeb1e0d-bca9-459e-9131-7af0dbf4d5c3">
+						<span class="treeNode">User-Defined Fields</span>
+					</div></li><li class="tnLI tnLast"><div id="panelProj_treeProj_node_20" class="tnDiv tnBot" data-url="/PhoneRepairShop/pages/au/au210020.aspx" data-value="19995e98-3619-4aa8-876e-db7782ef4891" data-path="!19995e98-3619-4aa8-876e-db7782ef4891">
+						<span class="treeNode">Webhooks</span>
+					</div></li>
+				</ul>
+			</div><div id="panelProj_treeProj_menu" class="menuIsland" level="0" itemscount="2" name="panelProj$treeProj$menu" style="width:100px;position:absolute;display:none;">
+				<ul class="menu">
+					<li id="panelProj_treeProj_menu_item_0" class="menuItem" data-cmd="open"><div class="menuSpacer">
+						Open
+					</div></li><li id="panelProj_treeProj_menu_item_1" class="menuItem" data-cmd="openTab"><div class="menuSpacer">
+						Open in new tab
+					</div></li>
+				</ul>
+			</div>
+					
+		</div>
+				</td>
+		<td style="">
+					<div id="sp1" class="splitterFrame" style="width: 4px; height: 768px; cursor: w-resize; font-size: 0pt;">
+
+		</div>
+				</td>
+		<td class="rightFrame" style="width: 82%; height: 768px;">
+					<div style="position:relative">
+						<div id="hideFrameBox" class="hideFrameBox" onclick="projectFrame.hideMenu_Click()" tooltip="Hide Navigation Pane"> 
+							<div id="hideFrame" class="sprite-icon control-icon" icon="HideFrame">
+			<div class="control-icon-img control-HideFrame">
+
+			</div>
+		</div>
+						</div>
+					</div>
+				    
+					<table name="panelF" cellspacing="0" cellpadding="0" id="panelF" tabindex="400" class="SmartPanelF screenFrame" style="height: 768px;">
+			<tbody><tr>
+				<td id="panelF_cont" style="height: 768px;"><iframe frameborder="0" class="panelContent" src="./PhoneRepairShop - Customization Project_files/SM204520.html" id="main" name="main" allowfullscreen="on" style="height: 768px;">
+
+				</iframe></td>
+			</tr>
+		</tbody></table>
+					
+
+				</td>
+	</tr>
+</tbody></table>
+
+         
+		<script type="text/javascript" language="javascript">
+
+			function FireResize()
+			{
+				px_cm.notifyOnResize();
+			}
+
+			function SetTooltip()
+			{
+			    var title = "Press Escape to Close";
+			    var element = document.getElementById("PanelCompiler_cap");
+                if(element)
+			        __px(window).setTitle(element.firstChild, title);
+			}
+
+		</script>
+		<table name="PanelCompiler" cellspacing="0" cellpadding="0" id="PanelCompiler" tabindex="500" class="SmartPanel" style="display:none;height: 300px; width: 100%;">
+	<tbody><tr>
+		<td id="PanelCompiler_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;" tooltip="Press Escape to Close">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div><div class="sprite-icon control-icon" icon="Maximize" mode="m" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Maximize">
+
+			</div>
+		</div>Compilation</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelCompiler_cont" style="width:100%;height:300px;"><iframe frameborder="0" class="panelContent" id="Compiler" name="Compiler" allowfullscreen="on" src="./PhoneRepairShop - Customization Project_files/saved_resource.html">
+
+		</iframe></td>
+	</tr>
+</tbody></table>
+        
+        
+        
+
+
+
+        
+                
+        
+        
+        
+
+        
+	<table name="PanelSaveTFS" cellspacing="0" cellpadding="0" id="PanelSaveTFS" tabindex="800" class="SmartPanel" style="display:none;">
+	<tbody><tr>
+		<td id="PanelSaveTFS_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Save Project to Folder</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelSaveTFS_cont" style="width:;height:;"><div class="panelContent">
+			
+		<div name="PanelSaveTFS$PXFormView2" id="PanelSaveTFS_PXFormView2">
+		<div id="PanelSaveTFS_PXFormView2_s0" style="display:inline-block;">
+		<div class="stack-v stack-pout-v" style="position:relative;">
+			<div class="cell-pn">
+				<div class="cell-w">
+					<div note="1">
+
+					</div><div class="fld-lc note-m">
+						<div class="fld-l fld-ls">
+							<label for="PanelSaveTFS_PXFormView2_PXTreeSelector1_text">Parent Folder:</label>
+						</div><div class="fld-c fld-cs">
+							<div name="PanelSaveTFS$PXFormView2$PXTreeSelector1" id="PanelSaveTFS_PXFormView2_PXTreeSelector1" tabindex="-1" class="dropDown size-xl">
+								<div class="editorCont">
+									<div class="editorWrap">
+										<input name="PanelSaveTFS$PXFormView2$PXTreeSelector1$text" type="text" id="PanelSaveTFS_PXFormView2_PXTreeSelector1_text" tabindex="600" class="editor">
+									</div>
+								</div><div class="buttonsCont">
+									<span class="center"></span><div class="sprite-icon control-icon" icon="SelectorN" type="sel">
+										<div class="control-icon-img control-SelectorN">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pv">
+				<div class="cell-w">
+					<div note="1" class="req-l">
+
+					</div><div class="fld-lc note-m">
+						<div class="fld-l fld-ls">
+							<label for="PanelSaveTFS_PXFormView2_PXTextEdit2">Project Name:</label>
+						</div><div class="fld-c fld-cs">
+							<qp-text-editor config.bind="elements[&#39;PanelSaveTFS_PXFormView2_PXTextEdit2&#39;]" value.two-way="values[&#39;PanelSaveTFS_PXFormView2_PXTextEdit2&#39;]" faux-screen.bind="{&quot;id&quot;:&quot;PanelSaveTFS_PXFormView2_PXTextEdit2&quot;,&quot;name&quot;:&quot;PanelSaveTFS$PXFormView2$PXTextEdit2&quot;,&quot;class&quot;:&quot;editor required size-xl&quot;,&quot;tabIndex&quot;:601,&quot;propsTemplate&quot;:&quot;__PXTextEdit&quot;}" class="au-target" au-target-id="196"><!--view--><!--anchor--><!--view--><!--anchor--> <input ref="elemText" maxlength.bind="config.maxLength &amp; attr" enabled.bind="config.enabled ? null : false &amp; attr" spellcheck.bind="config.spellcheck ? null : false &amp; attr" placeholder.bind="config.placeholder &amp; attr" value.bind="value | meta : converter : hasFocus : config &amp; updateTrigger : &#39;blur&#39; : &#39;update&#39;" keydown.capture="processKeyDown($event)" focus.trigger="processFocus($event)" blur.trigger="processBlur($event)" paste.delegate="processPaste($event)" class="au-target editor required size-xl" au-target-id="96" type="text" id="PanelSaveTFS_PXFormView2_PXTextEdit2" name="PanelSaveTFS$PXFormView2$PXTextEdit2" tabindex="601"><!--anchor--><!--anchor--></qp-text-editor>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+			</div>
+		
+		<div data-panel="" id="PanelSaveTFS_PXPanel2" tabindex="851" class="groupBox buttonPanel" style="overflow:hidden;">
+		<div class="stack-h stack-pout-h" style="float:right;position:relative;">
+			<div class="cell-ph">
+				<div class="cell-w">
+					<div class="fld-lc">
+						<div class="fld-l fld-l">
+							&nbsp;
+						</div><div class="fld-c fld-c">
+							<button name="PanelSaveTFS$PXButton3" type="button" id="PanelSaveTFS_PXButton3" tabindex="851" class="Button">OK</button>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pn">
+				<div class="cell-w">
+					<button name="PanelSaveTFS$PXButton4" type="button" id="PanelSaveTFS_PXButton4" tabindex="852" class="Button">Cancel</button>
+				</div>
+			</div><div style="clear:left;">
+
+			</div>
+		</div>
+			</div>
+	
+		</div></td>
+	</tr>
+</tbody></table>
+            
+        
+        
+        
+
+	<table name="PanelOpenTFS" cellspacing="0" cellpadding="0" id="PanelOpenTFS" tabindex="1100" class="SmartPanel" style="display:none;">
+	<tbody><tr>
+		<td id="PanelOpenTFS_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Open Project from Folder</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelOpenTFS_cont" style="width:;height:;"><div class="panelContent">
+			
+		<div name="PanelOpenTFS$PXFormView3" id="PanelOpenTFS_PXFormView3">
+		<div id="PanelOpenTFS_PXFormView3_s0" style="display:inline-block;">
+		<div class="stack-v stack-pout-v" style="position:relative;">
+			<div class="cell-pn">
+				<div class="cell-w">
+					<div note="1">
+
+					</div><div class="fld-lc note-m">
+						<div class="fld-l fld-ls">
+							<label for="PanelOpenTFS_PXFormView3_PXTreeSelector2_text">Containing Folder:</label>
+						</div><div class="fld-c fld-cs">
+							<div name="PanelOpenTFS$PXFormView3$PXTreeSelector2" id="PanelOpenTFS_PXFormView3_PXTreeSelector2" tabindex="-1" class="dropDown size-xl">
+								<div class="editorCont">
+									<div class="editorWrap">
+										<input name="PanelOpenTFS$PXFormView3$PXTreeSelector2$text" type="text" id="PanelOpenTFS_PXFormView3_PXTreeSelector2_text" tabindex="900" class="editor">
+									</div>
+								</div><div class="buttonsCont">
+									<span class="center"></span><div class="sprite-icon control-icon" icon="SelectorN" type="sel">
+										<div class="control-icon-img control-SelectorN">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+			</div>
+		
+		<div data-panel="" id="PanelOpenTFS_PXPanel3" tabindex="1151" class="groupBox buttonPanel" style="overflow:hidden;">
+		<div class="stack-h stack-pout-h" style="float:right;position:relative;">
+			<div class="cell-ph">
+				<div class="cell-w">
+					<div class="fld-lc">
+						<div class="fld-l fld-l">
+							&nbsp;
+						</div><div class="fld-c fld-c">
+							<button name="PanelOpenTFS$PXButton5" type="button" id="PanelOpenTFS_PXButton5" tabindex="1151" class="Button">OK</button>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pn">
+				<div class="cell-w">
+					<button name="PanelOpenTFS$PXButton6" type="button" id="PanelOpenTFS_PXButton6" tabindex="1152" class="Button">Cancel</button>
+				</div>
+			</div><div style="clear:left;">
+
+			</div>
+		</div>
+			</div>
+	
+		</div></td>
+	</tr>
+</tbody></table>
+    
+        
+        
+        
+
+        
+	<table name="PanelCreateLIB" cellspacing="0" cellpadding="0" id="PanelCreateLIB" tabindex="1400" class="SmartPanel" style="display:none;">
+	<tbody><tr>
+		<td id="PanelCreateLIB_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Create Extension Library</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelCreateLIB_cont" style="width:;height:;"><div class="panelContent">
+			
+		<div name="PanelCreateLIB$PXFormView1" id="PanelCreateLIB_PXFormView1">
+		<div id="PanelCreateLIB_PXFormView1_s0" style="display:inline-block;">
+		<div class="stack-v stack-pout-v" style="position:relative;">
+			<div class="cell-pn">
+				<div class="cell-w">
+					<div note="1">
+
+					</div><div class="fld-lc note-m">
+						<div class="fld-l fld-ls">
+							<label for="PanelCreateLIB_PXFormView1_edPathSelector_text">Parent Folder:</label>
+						</div><div class="fld-c fld-cs">
+							<div name="PanelCreateLIB$PXFormView1$edPathSelector" id="PanelCreateLIB_PXFormView1_edPathSelector" tabindex="-1" class="dropDown size-xl">
+								<div class="editorCont">
+									<div class="editorWrap">
+										<input name="PanelCreateLIB$PXFormView1$edPathSelector$text" type="text" id="PanelCreateLIB_PXFormView1_edPathSelector_text" tabindex="1200" class="editor">
+									</div>
+								</div><div class="buttonsCont">
+									<span class="center"></span><div class="sprite-icon control-icon" icon="SelectorN" type="sel">
+										<div class="control-icon-img control-SelectorN">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pv">
+				<div class="cell-w">
+					<div note="1" class="req-l">
+
+					</div><div class="fld-lc note-m">
+						<div class="fld-l fld-ls">
+							<label for="PanelCreateLIB_PXFormView1_PXTextEdit1">Project Name:</label>
+						</div><div class="fld-c fld-cs">
+							<qp-text-editor config.bind="elements[&#39;PanelCreateLIB_PXFormView1_PXTextEdit1&#39;]" value.two-way="values[&#39;PanelCreateLIB_PXFormView1_PXTextEdit1&#39;]" faux-screen.bind="{&quot;id&quot;:&quot;PanelCreateLIB_PXFormView1_PXTextEdit1&quot;,&quot;name&quot;:&quot;PanelCreateLIB$PXFormView1$PXTextEdit1&quot;,&quot;class&quot;:&quot;editor required size-xl&quot;,&quot;tabIndex&quot;:1201,&quot;propsTemplate&quot;:&quot;__PXTextEdit&quot;}" class="au-target" au-target-id="197"><!--view--><!--anchor--><!--view--><!--anchor--> <input ref="elemText" maxlength.bind="config.maxLength &amp; attr" enabled.bind="config.enabled ? null : false &amp; attr" spellcheck.bind="config.spellcheck ? null : false &amp; attr" placeholder.bind="config.placeholder &amp; attr" value.bind="value | meta : converter : hasFocus : config &amp; updateTrigger : &#39;blur&#39; : &#39;update&#39;" keydown.capture="processKeyDown($event)" focus.trigger="processFocus($event)" blur.trigger="processBlur($event)" paste.delegate="processPaste($event)" class="au-target editor required size-xl" au-target-id="96" type="text" id="PanelCreateLIB_PXFormView1_PXTextEdit1" name="PanelCreateLIB$PXFormView1$PXTextEdit1" tabindex="1201"><!--anchor--><!--anchor--></qp-text-editor>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+			</div>
+		
+		<div data-panel="" id="PanelCreateLIB_PXPanel12" tabindex="1451" class="groupBox buttonPanel" style="overflow:hidden;">
+		<div class="stack-h stack-pout-h" style="float:right;position:relative;">
+			<div class="cell-ph">
+				<div class="cell-w">
+					<div class="fld-lc">
+						<div class="fld-l fld-l">
+							&nbsp;
+						</div><div class="fld-c fld-c">
+							<button name="PanelCreateLIB$PXButton7" type="button" id="PanelCreateLIB_PXButton7" tabindex="1451" class="Button">OK</button>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pn">
+				<div class="cell-w">
+					<button name="PanelCreateLIB$PXButton8" type="button" id="PanelCreateLIB_PXButton8" tabindex="1452" class="Button">Cancel</button>
+				</div>
+			</div><div style="clear:left;">
+
+			</div>
+		</div>
+			</div>
+	
+		</div></td>
+	</tr>
+</tbody></table>
+            
+        
+        
+        
+
+	<table name="PanelOpenLIB" cellspacing="0" cellpadding="0" id="PanelOpenLIB" tabindex="1700" class="SmartPanel" style="display:none;">
+	<tbody><tr>
+		<td id="PanelOpenLIB_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Bind to Extension Library</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelOpenLIB_cont" style="width:;height:;"><div class="panelContent">
+			
+		<div name="PanelOpenLIB$PXFormView22" id="PanelOpenLIB_PXFormView22">
+		<div id="PanelOpenLIB_PXFormView22_s0" style="display:inline-block;">
+		<div class="stack-v stack-pout-v" style="position:relative;">
+			<div class="cell-pn">
+				<div class="cell-w">
+					<div note="1">
+
+					</div><div class="fld-lc note-m">
+						<div class="fld-l fld-l120">
+							<label for="PanelOpenLIB_PXFormView22_edPathSelector_text">Containing Folder:</label>
+						</div><div class="fld-c fld-c120">
+							<div name="PanelOpenLIB$PXFormView22$edPathSelector" id="PanelOpenLIB_PXFormView22_edPathSelector" tabindex="-1" class="dropDown size-xl">
+								<div class="editorCont">
+									<div class="editorWrap">
+										<input name="PanelOpenLIB$PXFormView22$edPathSelector$text" type="text" id="PanelOpenLIB_PXFormView22_edPathSelector_text" tabindex="1500" class="editor">
+									</div>
+								</div><div class="buttonsCont">
+									<span class="center"></span><div class="sprite-icon control-icon" icon="SelectorN" type="sel">
+										<div class="control-icon-img control-SelectorN">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+			</div>
+		
+		<div data-panel="" id="PanelOpenLIB_PXPanel1" tabindex="1751" class="groupBox buttonPanel" style="overflow:hidden;">
+		<div class="stack-h stack-pout-h" style="float:right;position:relative;">
+			<div class="cell-ph">
+				<div class="cell-w">
+					<div class="fld-lc">
+						<div class="fld-l fld-l">
+							&nbsp;
+						</div><div class="fld-c fld-c">
+							<button name="PanelOpenLIB$PXButton1" type="button" id="PanelOpenLIB_PXButton1" tabindex="1751" class="Button">OK</button>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pn">
+				<div class="cell-w">
+					<button name="PanelOpenLIB$PXButton2" type="button" id="PanelOpenLIB_PXButton2" tabindex="1752" class="Button">Cancel</button>
+				</div>
+			</div><div style="clear:left;">
+
+			</div>
+		</div>
+			</div>
+	
+		</div></td>
+	</tr>
+</tbody></table>
+    
+        	 
+
+		
+		<div id="UploadPackageDlg">
+	<table name="UploadPackageDlg$UploadPackagePanel" cellspacing="0" cellpadding="0" id="UploadPackageDlg_UploadPackagePanel" tabindex="3000" class="SmartPanel" style="display:none;height:90px;width:450px;">
+		<tbody><tr>
+			<td id="UploadPackageDlg_UploadPackagePanel_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+				<div class="control-icon-img control-Close">
+
+				</div>
+			</div>Open Package</td>
+		</tr><tr>
+			<td class="SmartPanelCN" id="UploadPackageDlg_UploadPackagePanel_cont" style="width:450px;height:90px;"><div class="panelContent">
+				
+	<table id="UploadPackageDlg_UploadPackagePanel_tbl" style="vertical-align: top; height: 100%; width: 100%" cellspacing="0" cellpadding="9">
+					<tbody><tr align="left">
+						<td>
+				<span id="UploadPackageDlg_UploadPackagePanel_lblImportSource" class="labelH" style="display:inline-block;width:63px;white-space: nowrap;">File path:</span>
+			</td>
+						<td style="width: 100%;">
+				<div name="UploadPackageDlg$UploadPackagePanel$fldImportSource" id="UploadPackageDlg_UploadPackagePanel_fldImportSource" style="width:100%;">
+							<table cellspacing="0" cellpadding="0" border="0" style="width:100%;border-collapse:collapse;">
+								<tbody><tr>
+									<td style="width:100%;"><input type="file" name="UploadPackageDlg$UploadPackagePanel$fldImportSource$upl" id="UploadPackageDlg_UploadPackagePanel_fldImportSource_upl" size="35" accept=".zip" style="width:100%;"></td><td style="width:16px;text-align:left;"><img id="UploadPackageDlg_UploadPackagePanel_fldImportSource_imgl" src="./PhoneRepairShop - Customization Project_files/spinnerSmall.gif" style="border-width:0px;display:none;"></td>
+								</tr>
+							</tbody></table><input name="UploadPackageDlg$UploadPackagePanel$fldImportSource$txt" type="text" id="UploadPackageDlg_UploadPackagePanel_fldImportSource_txt" style="height:0px;width:0px;display:none;visibility:hidden;position:absolute;left:0px;top:0px;">
+						</div>
+			</td>
+					</tr>
+					<tr align="right">
+						<td>
+			</td>
+						<td style="width: 100%; text-align: right;">
+				<button name="UploadPackageDlg$UploadPackagePanel$btnUpload" type="button" id="UploadPackageDlg_UploadPackagePanel_btnUpload" class="Button UploadPackageDlg_UploadPackagePanel_btnUpload">Upload</button>
+			</td>
+					</tr>
+				</tbody></table>
+				
+
+			</div></td>
+		</tr>
+	</tbody></table>
+</div>
+		
+
+        <table name="PanelCheckinFiles" cellspacing="0" cellpadding="0" id="PanelCheckinFiles" tabindex="2000" class="SmartPanel" style="display:none;height:400px;width:600px;">
+	<tbody><tr>
+		<td id="PanelCheckinFiles_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div><div class="sprite-icon control-icon" icon="Maximize" mode="m" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Maximize">
+
+			</div>
+		</div>Modified Files Detected</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelCheckinFiles_cont" style="width:600px;height:400px;"><div class="panelContent" style="overflow:hidden;">
+			 
+            <span class="labelH" style="color:black">Some files have been modified in the file system. Please resolve the conflicts.</span>
+            <table name="PanelCheckinFiles$gridCheckinFiles" id="PanelCheckinFiles_gridCheckinFiles" tabindex="2000" class="GridMain nobr PanelCheckinFiles_gridCheckinFiles" cellpadding="0" cellspacing="0" style="position:relative;">
+				<tbody><tr>
+					<td class="GridHeaderCell"><div id="PanelCheckinFiles_gridCheckinFiles_headerDiv" style="position:relative;overflow:hidden;">
+						<table id="PanelCheckinFiles_gridCheckinFiles_headerT" cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed;height:100%;width:0px;position:relative;">
+							<colgroup>
+								<col style="width:16px;"><col style="width:80px;"><col style="width:80px;"><col style="width:400px;">
+							</colgroup><thead>
+								<tr>
+									<td class="GridHeader GridRow" style="text-align:Center;padding:0px;"><div class="sprite-icon control-icon" icon="LocalMenu">
+										<div class="control-icon-img control-LocalMenu">
+
+										</div>
+									</div></td><td id="PanelCheckinFiles_gridCheckinFiles_colHS_0_0" class="GridHeader GridRow"><div class="GridHeaderWrap">
+										<div class="GridHeaderText">
+											Selected
+										</div>
+									</div></td><td id="PanelCheckinFiles_gridCheckinFiles_colHS_0_1" class="GridHeader GridRow"><div class="GridHeaderWrap">
+										<div class="GridHeaderText">
+											Conflict
+										</div>
+									</div></td><td id="PanelCheckinFiles_gridCheckinFiles_colHS_0_2" class="GridHeader GridRow"><div class="GridHeaderWrap">
+										<div class="GridHeaderText">
+											Path
+										</div>
+									</div></td><td id="PanelCheckinFiles_gridCheckinFiles_colHS_0_3" class="GridHeader GridRow" style="display:none;"><div class="GridHeaderWrap">
+										<div class="GridHeaderText">
+											Key
+										</div>
+									</div></td>
+								</tr>
+							</thead>
+						</table>
+					</div></td>
+				</tr><tr>
+					<td class="GridContentCell" style="vertical-align:Top;overflow:hidden;"><div id="PanelCheckinFiles_gridCheckinFiles_scrollDiv" style="position:relative;overflow:auto;"><table xmlns="http://www.w3.org/1999/xhtml" id="PanelCheckinFiles_gridCheckinFiles_dataT0" name="PanelCheckinFiles_gridCheckinFiles_dataT0" class="gridDataT" cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed;width:0px;" data-newrow="true">
+<colgroup>
+<col style="width:16px;">
+<col style="width:80px;">
+<col style="width:80px;">
+<col style="width:400px;">
+</colgroup>
+<thead><tr style="display:none;">
+<td class="GridHeader GridRow" style="padding:0px;"><div class="sprite-icon control-icon" icon="LocalMenu"><div class="control-icon-img control-LocalMenu">&nbsp;</div></div></td>
+<td class="GridHeader GridRow" id="PanelCheckinFiles_gridCheckinFiles_colH_0_0" name="PanelCheckinFiles_gridCheckinFiles_colH_0_0">Selected</td>
+<td class="GridHeader GridRow" id="PanelCheckinFiles_gridCheckinFiles_colH_0_1" name="PanelCheckinFiles_gridCheckinFiles_colH_0_1">Conflict</td>
+<td class="GridHeader GridRow" id="PanelCheckinFiles_gridCheckinFiles_colH_0_2" name="PanelCheckinFiles_gridCheckinFiles_colH_0_2">Path</td>
+<td class="GridHeader GridRow" id="PanelCheckinFiles_gridCheckinFiles_colH_0_3" name="PanelCheckinFiles_gridCheckinFiles_colH_0_3" style="display:none;">Key</td>
+</tr></thead>
+<tbody><tr xmlindex="" id="PanelCheckinFiles_gridCheckinFiles_newRow" style="display:none;">
+<td class="GridRowSelector GridHeader GridRow" style="padding:0px;">&nbsp;</td>
+<td class="GridRow"><div class="sprite-icon control-icon" icon="GridUncheck" check="1"><div class="control-icon-img control-GridUncheck">&nbsp;</div></div></td>
+<td class="GridRow GridReadOnly"><div class="sprite-icon control-icon" icon="GridUncheck" check="1"><div class="control-icon-img control-GridUncheck">&nbsp;</div></div></td>
+<td class="GridRow GridReadOnly ellipsis">&nbsp;</td>
+<td class="GridRow ellipsis" style="display:none;">&nbsp;</td>
+</tr></tbody>
+</table></div></td>
+				</tr>
+			</tbody></table><div id="PanelCheckinFiles_gridCheckinFiles_menu" class="menuIsland" level="0" itemscount="5" name="PanelCheckinFiles$gridCheckinFiles$menu" style="width:100px;position:absolute;display:none;">
+				<ul class="menu">
+					<li id="PanelCheckinFiles_gridCheckinFiles_menu_item_0" class="menuItem" data-cmd="Refresh"><div class="sprite-icon main-icon" icon="Refresh">
+						<div class="main-icon-img main-Refresh">
+
+						</div>
+					</div><div class="menuSpacer">
+						Refresh
+					</div></li><li id="PanelCheckinFiles_gridCheckinFiles_menu_item_1" class="menuItem" data-cmd="AddNew"><div class="sprite-icon main-icon" icon="RecordAdd">
+						<div class="main-icon-img main-RecordAdd">
+
+						</div>
+					</div><div class="menuSpacer">
+						New Line
+					</div></li><li id="PanelCheckinFiles_gridCheckinFiles_menu_item_2" class="menuDisabled" enabled="false" data-cmd="Delete"><div class="sprite-icon main-icon" icon="RecordDel">
+						<div class="main-icon-img main-RecordDel">
+
+						</div>
+					</div><div class="menuSpacer">
+						Delete
+					</div></li><li style="height:2px;background-repeat:repeat-x;background-image:url(/PhoneRepairShop/App_Themes/Default/Images/menu_separator.gif?imgTimeStamp=637388659980000000);"></li><li id="PanelCheckinFiles_gridCheckinFiles_menu_item_3" class="menuItem" data-cmd="AdjustColumns"><div class="sprite-icon main-icon" icon="Adjust">
+						<div class="main-icon-img main-Adjust">
+
+						</div>
+					</div><div class="menuSpacer">
+						Adjust
+					</div></li><li id="PanelCheckinFiles_gridCheckinFiles_menu_item_4" class="menuDisabled" enabled="false" data-cmd="ExportExcel"><div class="sprite-icon main-icon" icon="Excel">
+						<div class="main-icon-img main-Excel">
+
+						</div>
+					</div><div class="menuSpacer">
+						Export
+					</div></li>
+				</ul>
+			</div><div id="PanelCheckinFiles_gridCheckinFiles_menu0" class="menuIsland" level="0" itemscount="3" name="PanelCheckinFiles$gridCheckinFiles$menu0" style="width:100px;position:absolute;display:none;">
+				<ul class="menu">
+					<li id="PanelCheckinFiles_gridCheckinFiles_menu0_item_0" class="menuItem"><div class="menuSpacer">
+						&nbsp;
+					</div></li><li style="height:2px;background-repeat:repeat-x;background-image:url(/PhoneRepairShop/App_Themes/Default/Images/menu_separator.gif?imgTimeStamp=637388659980000000);"></li><li id="PanelCheckinFiles_gridCheckinFiles_menu0_item_1" class="menuItem" data-cmd="LayoutSave"><div class="sprite-icon main-icon" icon="Save">
+						<div class="main-icon-img main-Save">
+
+						</div>
+					</div><div class="menuSpacer">
+						Save layout
+					</div></li><li id="PanelCheckinFiles_gridCheckinFiles_menu0_item_2" class="menuDisabled" enabled="false" data-cmd="LayoutReset"><div class="sprite-icon main-icon" icon="Remove">
+						<div class="main-icon-img main-Remove">
+
+						</div>
+					</div><div class="menuSpacer">
+						Reset layout
+					</div></li>
+				</ul>
+			</div><span id="PanelCheckinFiles_gridCheckinFiles_xml" style="display:none;"><!-- <PXGrid ID="PanelCheckinFiles_gridCheckinFiles"><Levels Count="1"><Level i="0" KeyNames="Path;Key" AllowUpdate="True"><Layout CellPadding="0" CellSpacing="0" FooterVisible="False" HeaderVisible="True" WrapText="False" LevelIndent="22px" RowSelectorsVisible="True" RowSelectorsWidth="16px" HighlightMode="Both" ShowRowStatus="True" /><Styles Row="GridRow" AltRow="GridAltRow GridRow" SelRow="GridSelRow GridRow" ActiveCell="GridActiveCell GridActiveRow GridRow" ActiveRow="GridActiveRow GridRow" Error="GridError" Warning="GridWarn" RowForm="GridRowForm" RowSelector="GridRowSelector GridHeader GridRow" Header="GridHeader GridRow" Footer="GridHeader GridRow" SelHeader="GridHeader GridRow" SelFooter="GridHeader GridRow" CellButton="GridCellButton" CellEditor="GridCellEditor" EditorText="GridEditorText" ReadOnlyCell="GridReadOnly" /><Images ArrowDown="control@RedArrowDown" ArrowUp="control@RedArrowUp" CurrentRow="control@CurrentRow" EditRow="control@EditRow" NewRow="control@NewRow" GridCorner="control@LocalMenu" SortAsc="control@SortAsc" SortDesc="control@SortDesc" Checked="control@GridCheck" Unchecked="control@GridUncheck" DeletedRow="control@RowDeleted" ModifiedRow="control@RowModified" InsertedRow="control@RowInserted" RowError="control@Error" RowWarning="control@Warning" RowNote="control@RowNote" RowNoteEmpty="control@RowNoteEmpty" RowInfo="control@Info" RowFile="control@RowFile" RowFileEmpty="control@RowFileEmpty" Search="control@Search" Filter="control@Filter" FilterSortAsc="control@FilterSortAsc" FilterSortDesc="control@FilterSortDesc" /><Columns><Column i="0" Width="80px" Type="CheckBox"><Styles /><Header Text="Selected" /><Footer /></Column><Column i="1" Width="80px" Type="CheckBox" AllowUpdate="False"><Styles /><Header Text="Conflict" /><Footer /></Column><Column i="2" Width="400px" AllowUpdate="False" Ellipsis="True"><Styles /><Header Text="Path" /><Footer /></Column><Column i="3" Width="70px" Visible="False" Ellipsis="True"><Styles /><Header Text="Key" /><Footer /></Column></Columns><Row Visible="False"><Cells><Cell Value="" /><Cell Value="" /><Cell Value="" /><Cell Value="" /></Cells></Row></Level></Levels><Rows Level="0" HashCode="" /></PXGrid> --></span>
+            <div data-panel="" id="PanelCheckinFiles_PXPanel41" tabindex="2051" class="groupBox buttonPanel" style="overflow:hidden;">
+		<div class="stack-h stack-pout-h" style="float:right;position:relative;">
+			<div class="cell-ph">
+				<div class="cell-w">
+					<div class="fld-lc">
+						<div class="fld-l fld-l">
+							&nbsp;
+						</div><div class="fld-c fld-c">
+							<button name="PanelCheckinFiles$PXButtonUpdate" type="button" id="PanelCheckinFiles_PXButtonUpdate" tabindex="2051" class="Button" tooltip="Update modified files from the file system.">Update Customization Project</button>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pn">
+				<div class="cell-w">
+					<button name="PanelCheckinFiles$PXButton9" type="button" id="PanelCheckinFiles_PXButton9" tabindex="2052" class="Button">Discard all changes</button>
+				</div>
+			</div><div style="clear:left;">
+
+			</div>
+		</div>
+			</div>
+        
+		</div></td>
+	</tr>
+</tbody></table>
+        
+
+		
+
+		
+    	<table name="PanelValidateExt" cellspacing="0" cellpadding="0" id="PanelValidateExt" tabindex="2300" class="SmartPanel" style="display:none;height:600px;width:800px;">
+	<tbody><tr>
+		<td id="PanelValidateExt_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div><div class="sprite-icon control-icon" icon="Maximize" mode="m" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Maximize">
+
+			</div>
+		</div>Validate Extensions</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelValidateExt_cont" style="width:800px;height:600px;"><div class="panelContent">
+			
+    	    
+         	<div name="PanelValidateExt$PXFormView4" id="PanelValidateExt_PXFormView4" class="PanelValidateExt_PXFormView4">
+		<div style="height:100%;position:relative;">
+			
+            <table id="PanelValidateExt_PXFormView4_Msg" tabindex="2100" class="rich" cellpadding="0" cellspacing="0" style="table-layout:fixed;width:100%;white-space: pre; font-family: &#39;Courier New&#39;, monospace; font-size: 10pt; line-height: 16px; ">
+				<tbody><tr>
+					<td><div class="htmlviewinner border-box"></div></td>
+				</tr>
+			</tbody></table>
+			
+		</div>
+			</div>
+	
+		</div></td>
+	</tr>
+</tbody></table>
+    
+    <table name="PanelManageISVSolutionInitials" cellspacing="0" cellpadding="0" id="PanelManageISVSolutionInitials" tabindex="2600" class="SmartPanel" style="display:none;height:600px;width:800px;">
+	<tbody><tr>
+		<td id="PanelManageISVSolutionInitials_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Customization Project Prefix</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="PanelManageISVSolutionInitials_cont" style="width:800px;height:600px;"><div class="panelContent">
+			
+        <div name="PanelManageISVSolutionInitials$PXFormViewISVSolutionInitials" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials" class="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials">
+		<div style="height:100%;position:relative;">
+			
+                <div data-panel="" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_layoutPanel" tabindex="2600" class="groupBox">
+		<div id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_layoutPanel_s0" class="groupBox" style="display:inline-block;">
+		<div class="stack-v stack-pout-v" style="position:relative;">
+			<div class="cell-pn">
+				<div id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_layoutPanel_s0_s0" class="groupBox">
+		<div class="stack-h" style="position:relative;">
+			<div class="cell-ph">
+				<div class="cell-w">
+					<div note="1">
+
+					</div><div class="fld-lc note-m">
+						<div class="fld-l fld-lsm">
+							<label for="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials">Project Prefix:</label>
+						</div><div class="fld-c fld-csm">
+							<qp-text-editor config.bind="elements[&#39;PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials&#39;]" value.two-way="values[&#39;PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials&#39;]" faux-screen.bind="{&quot;id&quot;:&quot;PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials&quot;,&quot;name&quot;:&quot;PanelManageISVSolutionInitials$PXFormViewISVSolutionInitials$edInitials&quot;,&quot;class&quot;:&quot;editor size-s&quot;,&quot;tabIndex&quot;:2600,&quot;propsTemplate&quot;:&quot;__PXTextEdit&quot;,&quot;maxLength&quot;:4}" class="au-target" au-target-id="198"><!--view--><!--anchor--><!--view--><!--anchor--> <input ref="elemText" maxlength.bind="config.maxLength &amp; attr" enabled.bind="config.enabled ? null : false &amp; attr" spellcheck.bind="config.spellcheck ? null : false &amp; attr" placeholder.bind="config.placeholder &amp; attr" value.bind="value | meta : converter : hasFocus : config &amp; updateTrigger : &#39;blur&#39; : &#39;update&#39;" keydown.capture="processKeyDown($event)" focus.trigger="processFocus($event)" blur.trigger="processBlur($event)" paste.delegate="processPaste($event)" class="au-target editor size-s" au-target-id="96" type="text" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edInitials" name="PanelManageISVSolutionInitials$PXFormViewISVSolutionInitials$edInitials" tabindex="2600" maxlength="4"><!--anchor--><!--anchor--></qp-text-editor>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-pn">
+				<div class="cell-w">
+					<button name="PanelManageISVSolutionInitials$PXFormViewISVSolutionInitials$PXButtonValidateSolutionObjects" type="button" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_PXButtonValidateSolutionObjects" disabled="disabled" tabindex="2601" class="Button ButtonD">VALIDATE PROJECT ITEMS</button>
+				</div>
+			</div><div style="clear:left;">
+
+			</div>
+		</div>
+				</div>
+			</div>
+		</div>
+		</div>
+			</div>
+                <fieldset name="PanelManageISVSolutionInitials$PXFormViewISVSolutionInitials$ctl04" id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_ctl04" tabindex="2650" class="groupBox">
+				<legend>
+					VALIDATION RESULT
+				</legend><div style="position:relative;">
+
+		</div>
+			</fieldset>
+                <table id="PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edMessages" tabindex="2502" class="rich" cellpadding="0" cellspacing="0" textmode="MultiLine" style="table-layout:fixed;height:100%;width:100%;white-space: pre; font-family: &#39;Courier New&#39;, monospace; font-size: 10pt; line-height: 16px; ">
+				<tbody><tr>
+					<td><div class="htmlviewinner border-box"></div></td>
+				</tr>
+			</tbody></table>
+            
+		</div>
+			</div>
+        <div data-panel="" id="PanelManageISVSolutionInitials_PXPanelValidationISVButtons" tabindex="2651" class="groupBox buttonPanel" style="overflow:hidden;">
+		<div class="stack-h stack-pout-h" style="float:right;position:relative;">
+			<div class="cell-ph">
+				<div class="cell-w">
+					<div class="fld-lc">
+						<div class="fld-l fld-l">
+							&nbsp;
+						</div><div class="fld-c fld-c">
+							<button name="PanelManageISVSolutionInitials$PXButtonISVSave" type="button" id="PanelManageISVSolutionInitials_PXButtonISVSave" tabindex="2651" class="Button">SAVE</button>
+						</div>
+					</div>
+				</div>
+			</div><div class="cell-ph">
+				<div class="cell-w">
+					<button name="PanelManageISVSolutionInitials$PXButtonISVSaveClose" type="button" id="PanelManageISVSolutionInitials_PXButtonISVSaveClose" tabindex="2652" class="Button">SAVE &amp; CLOSE</button>
+				</div>
+			</div><div class="cell-pn">
+				<div class="cell-w">
+					<button name="PanelManageISVSolutionInitials$PXButtonISVCancel" type="button" id="PanelManageISVSolutionInitials_PXButtonISVCancel" tabindex="2653" class="Button">CANCEL</button>
+				</div>
+			</div><div style="clear:left;">
+
+			</div>
+		</div>
+			</div>
+    
+		</div></td>
+	</tr>
+</tbody></table>
+
+	<table name="L10nEditor" cellspacing="0" cellpadding="0" id="L10nEditor" tabindex="2700" class="SmartPanel" style="display:none;">
+	<tbody><tr>
+		<td id="L10nEditor_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Translations</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="L10nEditor_cont" style="width:;height:;"><div class="panelContent">
+
+		</div></td>
+	</tr>
+</tbody></table><table name="inputBox" cellspacing="0" cellpadding="0" id="inputBox" tabindex="2800" class="SmartPanel" style="display:none;width:400px;">
+	<tbody><tr>
+		<td id="inputBox_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Copy to clipboard (Ctrl+C)</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="inputBox_cont" style="width:400px;height:;"><table tabindex="2800" border="0" style="width:100%;">
+			<tbody><tr>
+				<td><input name="inputBox$ctl01" type="text" class="editor" style="width:400px;"></td>
+			</tr><tr>
+				<td align="right"><button type="button" class="Button MessageButton" id="inputBox_0">OK</button><button type="button" class="Button MessageButton" id="inputBox_1">Cancel</button></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+</tbody></table><table name="msgBox" cellspacing="0" cellpadding="0" id="msgBox" tabindex="2900" class="SmartPanel" style="display:none;width:400px;">
+	<tbody><tr>
+		<td id="msgBox_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Note</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="msgBox_cont" style="width:400px;height:;"><table cellpadding="4" border="0" style="width:100%;">
+			<tbody><tr style="height:60%;">
+				<td><img src="./PhoneRepairShop - Customization Project_files/information.gif" style="border-width:0px;"></td><td style="width:100%;"></td>
+			</tr><tr style="height:20%;">
+				<td colspan="2" style="text-align:Center;"><button type="button" id="msgBox_0" class="Button MessageButton">OK</button></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+</tbody></table>
+<script type="text/javascript">
+//<![CDATA[
+var __px_controls =  new Array("ds_ToolBar:PXToolBar", "ds_ctl00:PXShortcutManager", "form:PXFormView", "panelProj:PXSmartPanel", "panelProj_treeProj:PXTreeView", "sp1:PXSplitter", "panelF:PXSmartPanel", "PanelCompiler:PXSmartPanel", "PanelSaveTFS:PXSmartPanel", "PanelSaveTFS_PXFormView2:PXFormView", "PanelSaveTFS_PXFormView2_PXTreeSelector1:PXTreeSelector", "PanelSaveTFS_PXButton3:PXButton", "PanelSaveTFS_PXButton4:PXButton", "PanelOpenTFS:PXSmartPanel", "PanelOpenTFS_PXFormView3:PXFormView", "PanelOpenTFS_PXFormView3_PXTreeSelector2:PXTreeSelector", "PanelOpenTFS_PXButton5:PXButton", "PanelOpenTFS_PXButton6:PXButton", "PanelCreateLIB:PXSmartPanel", "PanelCreateLIB_PXFormView1:PXFormView", "PanelCreateLIB_PXFormView1_edPathSelector:PXTreeSelector", "PanelCreateLIB_PXButton7:PXButton", "PanelCreateLIB_PXButton8:PXButton", "PanelOpenLIB:PXSmartPanel", "PanelOpenLIB_PXFormView22:PXFormView", "PanelOpenLIB_PXFormView22_edPathSelector:PXTreeSelector", "PanelOpenLIB_PXButton1:PXButton", "PanelOpenLIB_PXButton2:PXButton", "UploadPackageDlg:PXUploadFilePanel", "UploadPackageDlg_UploadPackagePanel:PXSmartPanel", "UploadPackageDlg_UploadPackagePanel_fldImportSource:PXFileUpload", "UploadPackageDlg_UploadPackagePanel_btnUpload:PXButton", "PanelCheckinFiles:PXSmartPanel", "PanelCheckinFiles_gridCheckinFiles:PXGrid", "PanelCheckinFiles_PXButtonUpdate:PXButton", "PanelCheckinFiles_PXButton9:PXButton", "PanelValidateExt:PXSmartPanel", "PanelValidateExt_PXFormView4:PXFormView", "PanelValidateExt_PXFormView4_Msg:PXHtmlView", "PanelManageISVSolutionInitials:PXSmartPanel", "PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials:PXFormView", "PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_PXButtonValidateSolutionObjects:PXButton", "PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_ctl04:PXGroupBox", "PanelManageISVSolutionInitials_PXFormViewISVSolutionInitials_edMessages:PXHtmlView", "PanelManageISVSolutionInitials_PXButtonISVSave:PXButton", "PanelManageISVSolutionInitials_PXButtonISVSaveClose:PXButton", "PanelManageISVSolutionInitials_PXButtonISVCancel:PXButton", "L10nEditor:PXSmartPanel", "inputBox:PXInputBox", "msgBox:PXMessage", "ds:PXBaseDataSource");
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var hideScript = 1; 
+var __projectName = 'PhoneRepairShop'; //]]>
+</script>
+<div id="ds_ToolBar_menu0" class="menuIsland" level="0" itemscount="7" name="ds$ToolBar$menu0" style="width: 100px; position: absolute; display: none; top: -999px; left: -999px;">
+		<ul class="menu">
+			<li id="ds_ToolBar_menu0_item_0" class="menuItem" data-cmd="actionFile@actionNavigate"><div class="menuSpacer">
+				Manage Customization Projects
+			</div></li><li id="ds_ToolBar_menu0_item_1" class="menuItem" data-cmd="actionFile@export"><div class="menuSpacer">
+				Edit Project XML
+			</div></li><li id="ds_ToolBar_menu0_item_2" class="menuItem" data-cmd="actionFile@actionEditProject"><div class="menuSpacer">
+				Edit Project Items
+			</div></li><li id="ds_ToolBar_menu0_item_3" class="menuItem" data-cmd="actionFile@actionSavePackage"><div class="menuSpacer">
+				Export Project Package
+			</div></li><li id="ds_ToolBar_menu0_item_4" class="menuItem" data-cmd="actionFile@actionLoadPackage"><div class="menuSpacer">
+				Replace from Package
+			</div></li><li id="ds_ToolBar_menu0_item_5" class="menuItem" data-cmd="actionFile@actionManageISVSolutionInitials"><div class="menuSpacer">
+				Validate Project Prefix
+			</div></li><li id="ds_ToolBar_menu0_item_6" class="menuItem" data-cmd="actionFile@actionExportSolutionObjects"><div class="menuSpacer">
+				Export Project Items Workbook
+			</div></li>
+		</ul>
+	</div><div id="ds_ToolBar_menu1" class="menuIsland" level="0" itemscount="4" name="ds$ToolBar$menu1" style="width: 100px; position: absolute; display: none; top: -999px; left: -999px;">
+		<ul class="menu">
+			<li id="ds_ToolBar_menu1_item_0" class="menuItem" data-cmd="actionPublish@actionPublishSingle"><div class="menuSpacer">
+				Publish Current Project (Ctrl+Space)
+			</div></li><li id="ds_ToolBar_menu1_item_1" class="menuItem" data-cmd="actionPublish@actionValidate"><div class="menuSpacer">
+				Validate Current Project
+			</div></li><li id="ds_ToolBar_menu1_item_2" class="menuItem" data-cmd="actionPublish@actionPublishMultiple"><div class="menuSpacer">
+				Multiple Projects
+			</div></li><li id="ds_ToolBar_menu1_item_3" class="menuItem" data-cmd="actionPublish@actionPublishClear"><div class="menuSpacer">
+				Publish with Cleanup
+			</div></li>
+		</ul>
+	</div><div id="ds_ToolBar_menu13" class="menuIsland" level="0" itemscount="5" name="ds$ToolBar$menu13" style="width: 100px; position: absolute; display: none; top: -999px; left: -999px;">
+		<ul class="menu">
+			<li id="ds_ToolBar_menu13_item_0" class="menuItem" data-cmd="actionSolution@actionSolutionNew"><div class="menuSpacer">
+				Create New
+			</div></li><li id="ds_ToolBar_menu13_item_1" class="menuItem" data-cmd="actionSolution@actionSolutionBind"><div class="menuSpacer">
+				Bind to Existing
+			</div></li><li id="ds_ToolBar_menu13_item_2" class="menuItem" data-cmd="actionSolution@actionSolutionOpen"><div class="menuSpacer">
+				Open in Visual Studio
+			</div></li><li id="ds_ToolBar_menu13_item_3" class="menuItem" data-cmd="actionSolution@actionValidateExt"><div class="menuSpacer">
+				Show Active Extensions
+			</div></li><li id="ds_ToolBar_menu13_item_4" class="menuItem" data-cmd="actionSolution@actionAnalyzeReferencedAssemblies"><div class="menuSpacer">
+				Analyze Referenced Assemblies
+			</div></li>
+		</ul>
+	</div><div id="ds_ToolBar_menu20" class="menuIsland" level="0" itemscount="2" name="ds$ToolBar$menu20" style="width: 100px; position: absolute; display: none; top: -999px; left: -999px;">
+		<ul class="menu">
+			<li id="ds_ToolBar_menu20_item_0" class="menuItem" data-cmd="actionTFS@actionSaveToTFS"><div class="menuSpacer">
+				Save Project to Folder...
+			</div></li><li id="ds_ToolBar_menu20_item_1" class="menuItem" data-cmd="actionTFS@actionCreateFromTFS"><div class="menuSpacer">
+				Open Project from Folder...
+			</div></li>
+		</ul>
+	</div></form>
+
+
+<div id="tooltip" style="z-index: 20000; visibility: hidden; position: absolute; max-width: 300px; left: -100px; top: -87px;" class="" data-message="Hide Navigation Pane">Hide Navigation Pane<div class="arrow top"></div></div><div style="position: absolute; top: 1px; left: 0px; height: 0px; width: 0px; font-size: 0pt; overflow: hidden;"><input type="text" controlid="panelProj_treeProj" style="z-index: -1; font-size: 0pt; position: absolute; height: 1px; width: 1px; padding: 0px; border-width: 0px; top: 0px; left: 0px; cursor: default; display: none;"></div></body></html>

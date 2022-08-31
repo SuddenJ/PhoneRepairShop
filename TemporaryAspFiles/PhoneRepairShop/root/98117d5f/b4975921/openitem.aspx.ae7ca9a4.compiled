@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/OpenItem.aspx" hash="fffffff44bb1fa49" filehash="2773d323a1ae95e4" flags="110000" assembly="App_Web_ymjdn3ak" type="ASP.api_openitem_aspx">
+    <filedeps>
+        <filedep name="/Api/OpenItem.aspx" />
+        <filedep name="/Api/OpenItem.aspx.cs" />
+    </filedeps>
+</preserve>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Search/Search.aspx" hash="fffffff44bb1fa49" filehash="2b25ebe98a2af390" flags="110000" assembly="App_Web_20l5okjn" type="ASP.search_search_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageFooter.ascx" />
+        <filedep name="/Controls/PageFooter.ascx.cs" />
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/Search/Search.aspx" />
+        <filedep name="/Search/Search.aspx.cs" />
+    </filedeps>
+</preserve>

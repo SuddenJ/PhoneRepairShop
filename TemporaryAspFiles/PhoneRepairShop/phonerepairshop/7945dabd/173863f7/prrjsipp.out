@@ -1,0 +1,6 @@
+﻿c:\windows\system32\inetsrv> "C:\Users\Josh\Documents\AcumaticaLearning\PhoneRepairShop\bin\roslyn\csc.exe" /shared /keepalive:"10" /noconfig  /fullpaths @"C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\phonerepairshop\7945dabd\173863f7\prrjsipp.cmdline"
+
+
+Microsoft (R) Visual C# Compiler version 2.9.0.63208 (958f2354)
+Copyright (C) Microsoft Corporation. All rights reserved.
+

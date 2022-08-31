@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/EP/EP506000.aspx" hash="fffffff44bb1fa49" filehash="9869dfd4414cb745" flags="110000" assembly="App_Web_2kxxse0e" type="ASP.pages_ep_ep506000_aspx">
+    <filedeps>
+        <filedep name="/MasterPages/ClearWorkspace.master" />
+        <filedep name="/MasterPages/ClearWorkspace.master.cs" />
+        <filedep name="/Pages/EP/EP506000.aspx" />
+        <filedep name="/Pages/EP/EP506000.aspx.cs" />
+    </filedeps>
+</preserve>

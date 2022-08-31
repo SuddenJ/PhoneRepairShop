@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/WebSiteValidationDomain/App_Themes/Default/" hash="fffffff44bb1fa49" filehash="ffd5ed1b0e10a35b" flags="110000" assembly="App_Theme_Default.edg-ge2v" type="ASP.Default">
+    <filedeps>
+        <filedep name="/WebSiteValidationDomain/App_Themes/Default/" />
+    </filedeps>
+</preserve>

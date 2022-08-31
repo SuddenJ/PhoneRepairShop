@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/MasterPages/TabView.master" hash="fffffff44bb1fa49" filehash="efb1541308b20a58" flags="110000" assembly="App_Web_yblzbs02" type="ASP.masterpages_tabview_master">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/TabView.master" />
+        <filedep name="/MasterPages/TabView.master.cs" />
+    </filedeps>
+</preserve>

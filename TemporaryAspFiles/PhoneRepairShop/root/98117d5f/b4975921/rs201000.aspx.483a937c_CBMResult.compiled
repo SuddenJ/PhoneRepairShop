@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="7" virtualPath="/Pages/RS/RS201000.aspx" hash="fffffff44bb1fa49" filehash="fffffff3923d5fee" flags="100000" CCUpreservationFileName="rs201000.aspx.483a937c_CBMResult.ccu">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/ListView.master" />
+        <filedep name="/MasterPages/ListView.master.cs" />
+        <filedep name="/Pages/RS/RS201000.aspx" />
+        <filedep name="/Pages/RS/RS201000.aspx.cs" />
+    </filedeps>
+</preserve>

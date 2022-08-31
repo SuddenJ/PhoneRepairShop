@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/ProcessPages.aspx" hash="fffffff44bb1fa49" filehash="b6567fdb731eafc5" flags="110000" assembly="App_Web_bwq4vd5e" type="ASP.api_processpages_aspx">
+    <filedeps>
+        <filedep name="/Api/ProcessPages.aspx" />
+        <filedep name="/Api/ProcessPages.aspx.cs" />
+    </filedeps>
+</preserve>

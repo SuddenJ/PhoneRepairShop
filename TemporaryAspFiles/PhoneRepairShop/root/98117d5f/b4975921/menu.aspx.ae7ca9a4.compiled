@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Api/Menu.aspx" hash="fffffff44bb1fa49" filehash="4eac821672d4f8e1" flags="110000" assembly="App_Web_ymjdn3ak" type="ASP.api_menu_aspx">
+    <filedeps>
+        <filedep name="/Api/Menu.aspx" />
+        <filedep name="/Api/Menu.aspx.cs" />
+    </filedeps>
+</preserve>

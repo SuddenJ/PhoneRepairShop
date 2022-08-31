@@ -1,0 +1,7 @@
+﻿C:\Program Files\IIS Express> "C:\Users\Josh\Documents\AcumaticaLearning\PhoneRepairShop\bin\roslyn\csc.exe" /shared /keepalive:"900" /noconfig  /fullpaths @"C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\vs\ab6a70c4\fd60e2a4\ejhvxz11.cmdline"
+
+
+Microsoft (R) Visual C# Compiler version 2.9.0.63208 (958f2354)
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\vs\ab6a70c4\fd60e2a4\App_Web_ejhvxz11.0.cs(179,72): warning CS0436: The type 'Page_FS301000' in 'C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\vs\ab6a70c4\fd60e2a4\App_Web_ejhvxz11.0.cs' conflicts with the imported type 'Page_FS301000' in 'PX.Objects.FS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in 'C:\Users\Josh\Documents\AcumaticaLearning\TemporaryAspFiles\PhoneRepairShop\vs\ab6a70c4\fd60e2a4\App_Web_ejhvxz11.0.cs'.

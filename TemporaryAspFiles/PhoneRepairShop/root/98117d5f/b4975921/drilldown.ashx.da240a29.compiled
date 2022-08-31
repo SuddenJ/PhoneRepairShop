@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="2" virtualPath="/Mobile/drilldown.ashx" hash="ffffffffa46abde8" filehash="4235c97b0239" flags="110000" assembly="App_Web_3i5qzfsr" type="drilldown">
+    <filedeps>
+        <filedep name="/Mobile/drilldown.ashx" />
+    </filedeps>
+</preserve>

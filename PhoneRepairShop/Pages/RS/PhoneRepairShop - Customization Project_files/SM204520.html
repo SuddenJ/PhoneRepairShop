@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)http://localhost/PhoneRepairShop/(W(10013))/pages/sm/sm204590.aspx?timeStamp=CstMode&unum=1 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>:root{ --primary-color:#007ACC;--background-color:#F5F7F8; }</style><link href="./font-awesome.css" type="text/css" rel="stylesheet"><link href="./00_Controls.css" type="text/css" rel="stylesheet"><title>
+	Aspx Pages
+</title><meta http-equiv="content-script-type" content="text/javascript"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><style type="text/css">
+	.ctl00_phDS_formTitle { width:100%; }
+	.ctl00_phDS_formTitle_CaptionL { background-position:left top;width:5px; }
+	.ctl00_phDS_formTitle_CaptionR { background-position:right top;width:5px; }
+	.ctl00_phDS_formTitle_CaptionM {  }
+	.ctl00_phF_FormEditContent { width:100%; }
+	.ctl00_phF_FormEditContent_CaptionL { background-position:left top;width:5px; }
+	.ctl00_phF_FormEditContent_CaptionR { background-position:right top;width:5px; }
+	.ctl00_phF_FormEditContent_CaptionM {  }
+
+</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apps/enhance/main" src="./app-bundle.js.download"></script><style type="text/css">.aurelia-hide { display:none !important; }</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="controls/global/index" src="./controls-bundle.js.download"></script><style type="text/css">.qp-drop-down,
+.qp-drop-down * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+qp-drop-down {
+	display: block;
+	border: 0;
+}
+
+qp-drop-down.GridCellEditor div.drop-down__editor {
+	height: 100%;
+	-webkit-box-sizing: content-box;
+	        box-sizing: content-box;
+	width: 100%;
+}
+
+.drop-down__display-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:26px;  
+  height: 100%;
+  pointer-events: none;
+
+  margin: 0;
+  border: 0;
+  padding: 0 4px 0 6px;
+  line-height: 24px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drop-down__options-pane {
+  max-height: 210px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 1000;
+  height: initial;
+  display: block;
+
+  border: #D2D4D7 1px Solid;
+  background-color: White;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.64);
+  -webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.64);
+}
+
+.drop-down__option {
+  display: block;
+  height: 18px;
+  padding: 4px 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+</style><style type="text/css">.qp-branch-selector,
+.qp-branch-selector * {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+qp-branch-selector {
+	display: block;
+}
+
+qp-branch-selector qp-loader-indicator {
+	pointer-events: none;
+}
+
+.branch-selector input {
+	color: transparent;
+}
+
+.branch-selector__display-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 26px;
+	height: 100%;
+	pointer-events: none;
+
+	margin: 0;
+	border: 0;
+	padding: 0 4px 0 6px;
+	line-height: 24px;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.branch-selector__button {
+	background: #fff;
+	border: 0;
+	width: 16px;
+	color: rgba(0, 0, 0, .64);
+	cursor: pointer;
+	padding: 2px;
+}
+
+
+.edit-mode .branch-selector__display-text {
+	visibility: hidden;
+}
+
+.edit-mode input {
+	color: initial;
+}
+
+.branch-selector__branch-tree {
+	width: auto;
+	overflow-y: auto;
+	position: absolute;
+	z-index: 1000;
+	background: white;
+}
+
+.branch-selector__node {
+	display: block;
+	height: 18px;
+	padding: 4px 6px;
+	font-size: 13px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+}
+
+.branch-selector__node.can-select {
+	cursor: pointer;
+}
+
+.branch-selector__node-organization {
+	margin: 2px 0;
+}
+
+.branch-selector__node-branch {
+
+	padding-left: 30px;
+	position: relative;
+}
+
+.branch-selector__node-branch::before {
+
+	display: block;
+	position: absolute;
+	content: '';
+	width: 15px;
+	left: 10px;
+	/* left: 0;//2.35em; */
+	top: -50%;
+	height: 100%;
+	border-bottom: 1px dotted #bbb;
+	border-left: 1px dotted #bbb;
+}
+
+.branch-selector__node-organization+.branch-selector__node-branch::before {
+	height: 60%;
+	top: -15%;
+}
+
+qp-tooltip .tooltip-level {
+	margin: 5px 0;
+	padding: 0 2px;
+}
+
+qp-tooltip .branch-level-1 {
+	position: relative;
+	padding-left: 15px;
+}
+
+qp-tooltip .branch-level-1::before {
+
+	display: block;
+	position: absolute;
+	content: '';
+	width: 8px;
+	left: 4px;
+	/* left: 0;//2.35em; */
+	height: 60%;
+	top: -15%;
+	border-bottom: 1px dotted #bbb;
+	border-left: 1px dotted #bbb;
+}
+</style><style type="text/css">
+qp-text-editor, qp-number-editor 
+{
+	display: block;
+}
+
+qp-text-editor[style*="width"] > *, qp-number-editor[style*="width"] > *
+{
+	width: 100% !important;
+}
+
+qp-text-editor[style*="height"] > *, qp-number-editor[style*="height"] > *
+{
+	height: 100% !important;
+}</style><style type="text/css">.qp-field-editor,
+.qp-field-editor * {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+qp-selector {
+	display: block;
+}
+.qp-field-editor{
+	background-color: #fff;	
+}
+
+input.editor-input {
+	
+	color: transparent;
+}
+
+
+.qp-field-editor__display-text {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 26px;
+	height: 100%;
+	pointer-events: none;
+
+	margin: 0;
+	border: 0;
+	padding: 0 4px 0 6px;
+	line-height: 24px;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.qp-field-editor__button {
+	margin: 2px 4px 0 0;
+	background: #fff;
+	border: 0;
+	width: 20px;
+	color: #000;
+	cursor: pointer;
+	padding: 1px 6px;
+}
+
+
+.edit-mode .qp-field-editor__display-text {
+	visibility: hidden;
+}
+
+.edit-mode input.editor-input {
+	color: initial;
+}
+
+.dialog-container{
+	background:white;
+	z-index: 1000;
+	/* position: absolute; */
+	max-height: 500px;
+	
+}
+.dialog-container.hide-selector{
+	display: none;
+}
+</style><style type="text/css">.qp-tooltip-container:after {
+	position: absolute;
+	left: 50%;
+	top: -16px;
+	border: 8px solid transparent;
+	content: ' ';
+	border-bottom-color: #007ACC;
+	border-bottom-color: var(--primary-color, #007ACC);
+	-webkit-transform: translateX(-4px);
+	        transform: translateX(-4px);
+}
+
+.qp-tooltip-container {
+	z-index: 20000;
+
+	min-width: 100%;
+
+	background-color: #007ACC;
+	background-color: var(--primary-color, #007ACC);
+
+
+	-webkit-box-sizing: border-box;
+
+
+	        box-sizing: border-box;
+	-webkit-transform: translateY(8px);
+	        transform: translateY(8px);
+
+	pointer-events: all;
+
+	font-size: 13px;
+	border-radius: 5px;
+	background-color: #007ACC;
+	background-color: var(--primary-color, #007ACC);
+	border: 1px solid #007ACC;
+	border: 1px solid var(--primary-color, #007ACC);
+	color: RGBA(255, 255, 255, 0.87);
+	font-weight: 700;
+
+	padding: 5px;
+
+}
+</style><style type="text/css">::-webkit-input-placeholder {
+  font-style: italic;
+}
+::-moz-placeholder {
+  font-style: italic;
+}
+:-ms-input-placeholder {
+  font-style: italic;
+}
+
+qp-grid, qp-grid * 
+{
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+qp-grid
+{
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #D2D4D7;
+  font-size: 13px;
+}
+qp-grid i.ac
+{
+  position: relative;
+}
+
+.grid-filter-bar
+{
+  border-bottom: 1px solid #E0E4E8;
+  padding: 5px;
+  background-color: #F5F7F8;
+}
+.grid-filter-text
+{
+  width: 200px;
+  border: 1px solid #D2D4D7;
+  padding: 4px 6px;
+}
+
+.grid-header
+{
+  position: relative;
+  background-color: #F5F7F8;
+  border-bottom: 1px solid #E0E4E8;
+}
+.grid-header.scroll-margin
+{
+  padding-right: 17px;
+}
+.grid-header i.arrow-down, .grid-header i.arrow-up
+{
+  position: absolute;
+  z-index: 10000;
+}
+.grid-header i.arrow-down
+{
+  top: 0px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+.grid-header i.arrow-up
+{
+  bottom: 0px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.grid-resize-handle
+{
+  position: absolute;
+  top: 0px; bottom: 0px;
+  cursor: col-resize;
+  width: 4px;
+  z-index: 1000;
+}
+.grid-resize-area
+{
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 20000;
+  cursor: col-resize;
+}
+.grid-resize-indicator
+{
+  width: 1px;  
+  border: 1px black solid;
+  position: absolute;
+  height: 100%;
+}
+
+.grid-header table, .grid-content table
+{
+  table-layout: fixed;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  border-collapse: separate;
+  border-width: 0px;
+  border-spacing: 0px;
+  outline: 0;
+}
+
+.grid-header th
+{
+  position: relative;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+  font-weight: bold;
+  padding: 6px 4px;
+  padding-right: 15px;
+  border-left: 1px solid #E0E4E8;
+  overflow: hidden;
+  white-space: normal;
+  text-align: left;
+  vertical-align: top;
+}
+.grid-header th:first-child
+{
+  border-left-width: 0;
+}
+.grid-header th:hover
+{
+  background-color: #E0E4E8;
+  color: RGBA(0, 0, 0, 0.87);
+  cursor: pointer;
+}
+
+.grid-header th i.ac
+{
+  position: absolute;
+  top: 6px; right: 4px;
+}
+
+.grid-header-wrap
+{
+  overflow: hidden;
+  position: relative;
+  border-right: 1px solid #E0E4E8;
+}
+
+.grid-content .row-selector-col
+{
+  width: 16px;
+}
+.grid-header .row-selector-col
+{
+  width: 15px;
+}
+.grid-header th.row-selector, .grid-content-wrap td.row-selector
+{
+  padding: 0px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.grid-content-wrap td.row-selector
+{
+  background-color: #F5F7F8 !important; 
+  border-right: 1px solid #E0E4E8;
+}
+
+.grid-content
+{
+  position: relative;
+  height: 100%;
+}
+.grid-content qp-loader-indicator
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.5;
+  z-index: 100;
+}
+.grid-content qp-loader-indicator > *
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.grid-content-wrap
+{
+  overflow: auto;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.grid-content-wrap td
+{
+  line-height:  16px;
+  min-height: 17px;
+  border-bottom: 1px solid #E0E4E8;
+  overflow: hidden;
+  padding: 7px 8px 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+
+.grid-content-wrap tr.alt-row td
+{
+  background-color: #F2F6FA;
+}
+/* 
+.grid-content-wrap tr:hover td
+{
+  background-color: #E0E4E8;
+  color: RGBA(0, 0, 0, 0.87);
+  cursor: default;
+} */
+
+.grid-content-wrap tr.active td
+{
+  background-color: #E0E4E8;
+}
+.grid-content-wrap tr.active td.active
+{
+  background-color: #B5D7EF;
+}
+
+</style><style type="text/css">.loader-indicator-img {
+    color:#999999;
+    color:var(#999999, --primary-color);
+}
+
+.loader-indicator-img .progress {
+  stroke-width: 10;
+  stroke: currentColor;
+  stroke-linecap: square;  
+  -webkit-animation: dash 2.5s infinite;  
+          animation: dash 2.5s infinite;
+}
+
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+
+  25% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: -250;
+  }
+
+  75% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+}
+
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+
+  25% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: -250;
+  }
+
+  75% {
+    stroke-dasharray: 250, 0;
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dasharray: 0, 250;
+    stroke-dashoffset: 0;
+  }
+}
+</style><style type="text/css">/* qp-editor-wrapper,
+qp-editor-wrapper * {
+  box-sizing: border-box;
+
+} */
+
+qp-suggester {
+  display: block;
+  position: absolute;
+  /* z-index: 1000; */
+  top: 100%;
+  /* overflow: hidden; */
+
+
+}
+
+.qp-suggester,
+.qp-suggester * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+
+
+}
+
+.qp-suggester.loading{
+  -webkit-filter:grayscale(.5);
+          filter:grayscale(.5);
+}
+.qp-suggester.show-above {
+  -webkit-transform:translateY(-100%);
+          transform:translateY(-100%);
+  -webkit-transform:translateY(calc(-100% - 1px));
+          transform:translateY(calc(-100% - 1px));
+}
+
+.qp-suggester.show-left {
+  -webkit-transform:translateX(-100%);
+          transform:translateX(-100%);  
+}
+
+.qp-suggester.show-left.show-above {
+  -webkit-transform:translate(-100%,-100%);
+          transform:translate(-100%,-100%);  
+}
+
+qp-suggestion {
+  display: block;
+  height:24px;
+  padding: 4px 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.loading-placeholder.loading {
+  position: relative;
+}
+.loading-placeholder.loading:before{
+  position: absolute;
+  top:2px;
+  left: 5px;
+  right:5px;
+  bottom: 2px;
+  content:'';
+  background-color: #ccc;
+}
+</style></head>
+<body style="margin: 0px; min-width: 300px;">
+	
+<script>
+window.ClientLocalizedStrings = {
+noResultsFound: 'No results found.',
+lastUpdate: {
+JustNow: 'Updated a moment ago',
+MinsAgo: 'Updated {{mins}} min ago',
+HoursAgo: 'Updated {{hours}} hr ago',
+DaysAgo: 'Updated {{days}} d ago',
+LongAgo: 'Updated more than a week ago'
+}}
+
+window.globalControlsModules=["controls/global"];
+
+requirejs = {
+	baseUrl: '/PhoneRepairShop/scripts/ca/',
+	paths: {
+		root: ""
+	},
+	waitSeconds: 30,
+	urlArgs: "b=637389097320000000",
+	packages: [],
+	stubModules: [
+	'text'
+	],
+	shim: {},
+	bundles: {"apps/enhance/app-bundle":["apps/enhance/main"],
+"controls/global/controls-bundle":["controls/global/index"]}
+}
+</script><script src="./vendor-bundle.js.download" data-main="apps/enhance/main" defer=""></script><!--8/30/2022 11:09:47 AM-->
+	<form name="aspnetForm" method="post" action="http://localhost/PhoneRepairShop/(W(10013))/pages/sm/sm204590.aspx?timeStamp=CstMode&amp;unum=1" id="aspnetForm" autocomplete="off" enctype="multipart/form-data">
+<div>
+<input type="hidden" name="__RequestVerificationToken" id="__RequestVerificationToken" value="M2oj0gaR5KAnVReS51JZRTLMhrI9YNDB9OmTL1vz9_-L0peXhRhCSrCkhIg3lJ6xK-YD2AxkTqfcl5yPObnHKah-Tv41">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="ctl00_phDS_formTitle_state" id="ctl00_phDS_formTitle_state" value="%3CPXBoundPanel%20PageCount%3D%221%22%20PageIndex%3D%220%22%20DataKey%3D%22viewpagetitle%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="ctl00_phDS_formTitle_PageTitle_state" id="ctl00_phDS_formTitle_PageTitle_state" value="">
+<input type="hidden" name="ctl00_phDS_ds_ToolBar_state" id="ctl00_phDS_ds_ToolBar_state" value="">
+<input type="hidden" name="ctl00_phDS_ds_ctl00_state" id="ctl00_phDS_ds_ctl00_state" value="">
+<input type="hidden" name="ctl00_phF_FormEditContent_state" id="ctl00_phF_FormEditContent_state" value="%3CPXBoundPanel%20PageCount%3D%220%22%20PageIndex%3D%220%22%20DataKey%3D%22filter%2C%2FwEWAA%3D%3D%22%2F%3E">
+<input type="hidden" name="ctl00_phF_FormEditContent_EventEditBox_state" id="ctl00_phF_FormEditContent_EventEditBox_state" value="">
+<input type="hidden" name="__SmartPanelVisible" id="__SmartPanelVisible" value="">
+<input type="hidden" name="ctl00_phG_PanelSource_state" id="ctl00_phG_PanelSource_state" value="">
+<input type="hidden" name="ctl00_L10nEditor_state" id="ctl00_L10nEditor_state" value="">
+<input type="hidden" name="inputBox_state" id="inputBox_state" value="">
+<input type="hidden" name="msgBox_state" id="msgBox_state" value="">
+<input type="hidden" name="__DataSourceSessionID" id="__DataSourceSessionID" value="4dca4e38-4319-466d-b71c-59ab97d5964a">
+<input type="hidden" name="ctl00_phDS_ds_state" id="ctl00_phDS_ds_state" value="%3CPXBaseDataSource%2F%3E">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+
+<script src="./WebResource.axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var __screenID="SM.20.45.90";var __appPath = '/PhoneRepairShop/';var __nodePath="8bc09e07-35c8-4888-9b7e-226723cbacf2";var __nodeGuid="6c8862db-135e-4a74-8ea7-b19a150ac99d";//]]>
+</script>
+
+<script src="./OpenItem.js.download" type="text/javascript"></script>
+<script src="./js-tools.min.js.download" type="text/javascript"></script>
+<script src="./PX.ScriptBatch.axd" type="text/javascript"></script>
+<script src="./PX.ScriptBatch(1).axd" type="text/javascript"></script>
+<script src="./PX.ScriptBatch(2).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var __loadImgUri = "/PhoneRepairShop/App_Themes/Default/Images/spinner.gif?imgTimeStamp=637388659980000000";
+var __loadStr = "";
+var __cachePages = 1;
+var _numbFormatInfo = {"negativeSign":"-","currencySymbol":"$","percentSymbol":"%","number":{"groupSeparator":",","decimalSeparator":".","groupSizes":[3],"negativePattern":1,"decimalDigits":2},"currency":{"groupSeparator":",","decimalSeparator":".","groupSizes":[3],"positivePattern":0,"negativePattern":0,"decimalDigits":2},"percent":{"groupSeparator":",","decimalSeparator":".","groupSizes":[3],"positivePattern":1,"negativePattern":1,"decimalDigits":2}};
+var _dateFormatInfo = {"am":"AM","pm":"PM","shortDate":"M/d/yyyy","shortTime":"h:mm tt","longDate":"dddd, MMMM d, yyyy","longTime":"h:mm:ss tt","timeSeparator":":","yearFix":0,"monthNames":"January,February,March,April,May,June,July,August,September,October,November,December,","abbrMonthNames":"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec,","dayNames":"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday","abbrDayNames":"Sun,Mon,Tue,Wed,Thu,Fri,Sat"};
+
+__createPxContext(window);
+var __PXFormView = {"maxFileSizeMsg":"The file exceeds the maximal allowed size (25000 KB).","allowedFiles":".als;.csv;.dat;.doc;.docx;.epl;.exe;.gif;.ico;.ics;.jpeg;.jpg;.js;.mdb;.msi;.ofx;.pdf;.pfx;.png;.pptx;.qbo;.qfx;.sql;.swf;.tif;.txt;.xlsx;.zip;.zpl;.cer;.ppt;.rar;.rtf;.xls;.xml","allowedFilesMsg":"Only the following file types are allowed: {0}.","callbacks":[{"name":"Refresh","repaintControls":1,"blockPage":1,"postData":0},{"name":"Search","repaintControls":1,"blockPage":1},{"name":"Save","repaintControls":1,"blockPage":1,"commitChanges":1},{"name":"Delete","repaintControls":1,"blockPage":1},{"name":"AddNew","repaintControls":1,"blockPage":1,"postData":0},{"name":"NoteShow","blockPage":1,"postData":0},{"name":"NoteSave","repaintControls":3,"blockPage":1,"postData":0},{"name":"FilesMenuShow","blockPage":1,"postData":0},{"name":"ActivityShow","blockPage":1,"postData":0},{"name":"LinkShow","repaintControls":3,"blockPage":1,"postData":0},{"name":"LinkUpdate","repaintControls":3,"blockPage":1,"postData":0},{"name":"LinkSend","repaintControls":3,"blockPage":1,"postData":0},{"name":"NotifyMenuShow","repaintControls":3,"blockPage":1,"postData":0},{"name":"NotifyShow","repaintControls":3,"blockPage":1,"commitChanges":1,"postData":0},{"name":"CheckActivity","blockPage":1,"postData":0},{"name":"UploadFile","blockPage":1}],"errorCss":"FormError","warningCss":"FormWarn","infoCss":"FormInfo","minHeight":63,"filesMenuUrls":{"filesDisplayUrl":"~/Frames/GetFile.ashx","fileInfoUrl":"~/Pages/SM/SM202510.aspx"}};
+var _ctl00_phDS_formTitle = {"dataKey":"viewpagetitle,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":-1556763206,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"minHeight":0,"dataSourceID":"ds","dataMember":"ViewPageTitle","pageCount":1};
+var _confirmMsg = "Any unsaved changes will be discarded.";
+var _ctl00_phDS_formTitle_PageTitle = {"bindingContainer":"ctl00_phDS_formTitle","selectOnFocus":0,"disableColor":null,"defaultLocale":"en-US"};
+var __PXToolBar = {"styles":{"normal":"toolBtnNormal","hover":"","pushed":"toolBtnPushed","disabled":"toolBtnDisabled","dropDown":"toolBtnDD","dropNormal":"toolBtnDropN","dropHover":"","dropPushed":"toolBtnDropP"}};
+var _ctl00_phDS_ds_ToolBar = {"commandSourceID":"ctl00_phDS_ds","items":[{"type":"PXToolBarButton","usesSignalR":0,"commandName":"actionCheckin"},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"LongRun","images":{"normal":"/PhoneRepairShop/App_Themes/Default/Images/spinnerSmall.gif?imgTimeStamp=637388659980000000","disabled":"main@Success","hover":"main@Fail"}},{"type":"PXToolBarButton","usesSignalR":0,"commandName":"ElapsedTime"}]};
+var __PXShortcutManager = {};
+var _ctl00_phDS_ds_ctl00 = {"targetId":"ctl00_phDS_ds"};
+var _ctl00_phF_FormEditContent = {"dataKey":"filter,/wEWAA==","dataBound":1,"canAddFiles":0,"viewHash":1120999906,"callbacks":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"allowCollapse":0,"minHeight":0,"dataSourceID":"ds","dataMember":"Filter","pageCount":-1};
+var _ctl00_phF_FormEditContent_EventEditBox = {"bindingContainer":"ctl00_phF_FormEditContent","selectOnFocus":0,"disableColor":null,"clientEvents":{"initialize":"ActivateCsEditor"},"defaultLocale":"en-US"};
+var __PXSmartPanel = {"callBackMode":{"blockPage":1,"postData":0}};
+var _ctl00_phG_PanelSource = {"allowMove":0,"allowResize":0,"position":0,"autoSize":{"enabled":1,"container":1}};
+var _ctl00_L10nEditor = {"commandSourceID":"ctl00_phDS_ds","loadOnDemand":1,"autoReload":1,"commandName":"SaveLoc","autoCallBack":{"behavior":{"postData":0}}};
+var __PXInputBox = {"activeEnter":0,"buttonCss":"MessageButton","autoAdjustSize":1,"callBackMode":{"blockPage":1,"postData":0}};
+var _inputBox = {};
+var __PXMessage = {"buttonCss":"MessageButton","autoAdjustSize":1,"callBackMode":{"blockPage":1,"postData":0}};
+var _msgBox = {};
+var _ctl00_phDS_ds = {"callbacks":[{"name":"actionCheckin","repaintControlsIDs":"FormEditContent","blockPage":1,"commitChanges":1,"commitChangesIDs":"FormEditContent","postData":3},{"name":"attachFromMobile","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"LongRun","repaintControls":1,"postData":3},{"name":"ElapsedTime","repaintControls":1,"postData":3},{"name":"SaveLoc","blockPage":1,"postData":2,"container":"ctl00_L10nEditor"},{"name":"RepaintControls","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"ReloadPage","repaintControls":1,"blockPage":1,"postData":3},{"name":"Commit","repaintControls":1,"blockPage":1,"commitChanges":1,"postData":3},{"name":"ShowImportGraphErrors","repaintControls":1,"blockPage":1,"postData":3}],"sourceName":"ctl00$phDS$ds","isDefault":1,"popupMessage":null,"longRunAbort":"Press to abort","dataKey":"/wEWAA==","isNewRecord":1,"commandStates":[{"name":"actionCheckin","displayName":"Generate Customization Script","tooltip":"Find changes between the original and modified ASPX and save them in the customization format."},{"name":"LongRun","visible":0,"enabled":0,"displayName":null,"tooltip":null},{"name":"ElapsedTime","visible":0,"enabled":0,"displayName":null,"tooltip":null}],"showProcessWindow":0,"primaryView":"Filter","saveCommandName":null,"cancelCommandName":null};
+//]]>
+</script>
+
+		<div id="page-caption">
+			
+			<div class="phDS">
+				
+	<style type="text/css">
+		.CodeMirror-wrapping
+		{
+			background-color: White;
+			border: 1px solid gray;
+			margin: 0px;
+			border-right-width: 0px;
+			border-left-width: 0px;
+		}
+		.CodeMirror-line-numbers
+		{
+			font-family: monospace;
+			font-size: 10pt;
+			color: gray;
+			padding: .4em;
+			background-color: #eee;
+			border-right: 1px solid gray;
+			text-align: right;
+			padding-left: 15pt;
+		}
+	</style>
+	<script type="text/javascript" language="javascript">
+		var IsCodeEditorWindow = true;
+		function FireResize()
+		{
+			px_cm.notifyOnResize();
+		}
+	</script>
+	
+
+	<script src="./WebResource(1).axd" type="text/javascript">
+	</script>
+
+	
+		<script type="text/javascript" language="javascript">
+
+		window.IsEditorActive = false;
+		window.proxy = null;
+
+		function ActivateCsEditor(editor)
+		{
+			if (window.IsEditorActive)
+				return;
+			window.IsEditorActive = true;
+
+
+			var config = {
+				parserfile: ["/PhoneRepairShop/WebResource.axd?file=tokenizecsharp.js&amp;d=u-KKLqC8AcODIYspfD9vipiYb487RneELDiN2lh5bABSSz5X7EIaCnOZMbKfsClLbTRtzshM7NcCZtIbU7WYSD_v6Q31t03qUs7DtJCUcrBtTit4cZsmS9vwpIRin297--2uV1WwDhijYQFSQvlPMM8xQOvUDlaWv2fSwI2lYVbPWn6c0&amp;t=637389095040000000",
+					"/PhoneRepairShop/WebResource.axd?file=parsecsharp.js&amp;d=jyS3UJ9lo_Paq4DYh02UbPg7tAEZ5uO5dV8-QwH9GPx3FDolF1fYxayK0MGuI70VWpeRPkUbtTxRNAffseVlxklhr91V_J0_zz_2GrJxcNH5LxB3FqSUX_JpLY706kFNKvzINtXVTYqA5_kabkYIdc2uKuHXcF80QANDm2tANPIEjKRA0&amp;t=637389095040000000"],
+
+				stylesheet: "/PhoneRepairShop/WebResource.axd?file=csharpcolors.css&amp;d=SOR2kV8ZryRCdbf4JUbytLnK5iRXoFzwBO77j_2G_edRfOGA4UMpxsFYOFwnXbcJzHq1f1kSMe_-M7_LB95V5CF30s8AzN1G88X3iAQkISHaALR11RsmwXeMBRbfMZh265ZNefnRhBlGxhItY_tYKnJoMKYC59f8Da5_2luf2ZTa8Hgx0&amp;t=637389095040000000",
+				//path: "cseditor/",
+				height: "100%",
+				autoMatchParens: true,
+				textWrapping: false,
+				lineNumbers: true,
+				tabMode: "shift",
+				enterMode: "keep",
+				content: editor.getValue(),
+				basefiles: [
+					"/PhoneRepairShop/WebResource.axd?file=util.js&amp;d=5M0lcfWlBpZUlgOcB0ZfpQSK4BtEre8in5x3vZPbu57LJVUVjF7He2imRpfaD3JhqnWDUONVPE6uqJSzMmbNduNXiLWTGoHVWt1duQskp9-mjImRtLB-HXqIahGFYl324r2OcaV5GvL9648NC308PFvV4_k1&amp;t=637389095040000000",
+					"/PhoneRepairShop/WebResource.axd?file=stringstream.js&amp;d=kXL6TNqhYem1zAioz0mkkfzMzxEq6_GzR7QSdddzJesEKHPvwdNCGh9o17zVT7dH9h5qgRXsjs_56briDYhkiOyCPqgg4rsS8dXsHWf27WRbQOFDB_wCy0sXVKvtztkMOIVqzkYBCJyjWrbuYbpRluwOfGbjIvWUSAWpKaoXCJlWZf0B0&amp;t=637389095040000000",
+					"/PhoneRepairShop/WebResource.axd?file=select.js&amp;d=r8XyS5mgnBT4SnJ4Hn0CaIoZeeXSeYygCcMHG-nd2RZZAESHMGS9h3e8HEwDSWpi6kN7HqgSwEBnvCAOysmF95pMG3Q3BRfeY5BwpeWlxyajSk06kWl9OQm6y7XFcOLIxhn6QwkEJKCazU0WwWtm_gyoTm01&amp;t=637389095040000000",
+					"/PhoneRepairShop/WebResource.axd?file=undo.js&amp;d=UVYnLJBY7YGKT1HqLrrphCXCMYQ_BmAuwLQHQ9w8onqgfW45DbdZMY1uCMod9tHLXJuqn9aeu-_3InkUkvobdsCg2Ig8F4VfRsnKvVFlBBMVDEcWG55W9jm8W7vr1EWjG85V7CgLOc_wAnu1FXDJpKjWYFs1&amp;t=637389095040000000",
+					"/PhoneRepairShop/WebResource.axd?file=editor.js&amp;d=x6Lv3lJgtHGw4fdTioKdgWmXQtX0D36nUU8a6uBkY8om2uMrZDyfSGNrFstSEKaWBc2NNXIi5WKEJWsOQ3t-GO2oXpmsAAW5LAhLU36V_sK8m8mN3Zyp1X4MiV380Z5yRdHuchHzwLY-FoggqRJPFbMXWrA1&amp;t=637389095040000000",
+					"/PhoneRepairShop/WebResource.axd?file=tokenize.js&amp;d=EDelpCkfm4-ertzLtojBoJIGmXdTzVoILoqjBdWqVJjioEIIDNWnvPY_a3eBzY3GgUWIvoAZv5lHtSWCwq_9op4j73PpkWZdokP2OEMF0ZrnM0fO28RvYRczwdvAMpTXQZhzIKbQfIdxVpKZHqi9Z4W0sEmMfIHOpO0eXFgBQzQVhrGt0&amp;t=637389095040000000"]
+
+				//  "util.js", "stringstream.js", "select.js", "undo.js", "editor.js", "tokenize.js"],
+			};
+
+			var p = document.getElementById("SourcePlacehoder");
+
+			var replace = function(newElement)
+			{
+				p.appendChild(newElement);
+
+			};
+			window.proxy = new CodeMirror(replace, config);
+
+			editor.onCallback = function()
+			{
+				if (window.proxy.editor != null)
+				{
+					var code = window.proxy.getCode();
+					editor.updateValue(code);
+				}
+
+
+			};
+
+			
+			editor.baseRepaintText = editor.repaintText;
+			editor.repaintText = function(v)
+			{
+				
+
+				if (v === null || v === undefined)
+					v = "";
+				SetCode(v);
+				editor.baseRepaintText(v);
+			};
+
+
+			window.proxy.wrapping.id = "csproxywrapping";
+
+
+		}
+
+		function SetCode(v)
+		{
+			if (window.proxy.editor != null) {
+				window.proxy.setCode(v);
+				return;
+			                                 }
+			window.setTimeout(function() { SetCode(v); }, 10);
+		}
+
+
+		function JumpLine(file, line) {
+
+			if (!IsEditorActive)
+				return false;
+		
+			var combo = GetObject("edFileName");
+			var comboValue = combo.getValue();
+			if (comboValue != file) {
+				combo.updateValue(file);
+				return false; 
+		
+			                        }
+
+			var lineHandle = proxy.nthLine(line);
+			if (!!lineHandle)
+				proxy.jumpToLine(lineHandle);
+
+			return true;
+		                              }
+
+
+		var px_all2;
+		function IndexObjects()
+		{
+			if(px_all2)
+				return;
+			px_all2 = {};
+			for(var n in px_all)
+			{
+				var names = n.split("_");
+				var s = names[names.length - 1];
+				px_all2[s] = px_all[n];
+			}
+		}
+
+		function GetObject(id)
+		{
+			IndexObjects();
+			return px_all2[id];
+		}
+
+		function HideCompilerPanel()
+		{
+			var c = GetObject("PanelCompiler");
+			c.hide();
+	
+
+		}
+	</script>
+	
+		<div name="ctl00$phDS$formTitle" id="ctl00_phDS_formTitle" class="ctl00_phDS_formTitle">
+		<div style="position:relative;">
+			
+			<qp-text-editor config.bind="elements[&#39;ctl00_phDS_formTitle_PageTitle&#39;]" value.two-way="values[&#39;ctl00_phDS_formTitle_PageTitle&#39;]" faux-screen.bind="{&quot;id&quot;:&quot;ctl00_phDS_formTitle_PageTitle&quot;,&quot;name&quot;:&quot;ctl00$phDS$formTitle$PageTitle&quot;,&quot;class&quot;:&quot;label textEditLabel&quot;,&quot;tabIndex&quot;:1600,&quot;propsTemplate&quot;:&quot;__PXTextEdit&quot;,&quot;readOnly&quot;:true,&quot;value&quot;:&quot;ASPX Editor: RS203000 (Services and Prices)&quot;}" style="font-family:Arial,sans-serif;;font-size:14pt;width:90%;padding: 10px" class="au-target" au-target-id="196"><!--view--><!--anchor--><!--view--><!--anchor--> <input ref="elemText" maxlength.bind="config.maxLength &amp; attr" enabled.bind="config.enabled ? null : false &amp; attr" spellcheck.bind="config.spellcheck ? null : false &amp; attr" placeholder.bind="config.placeholder &amp; attr" value.bind="value | meta : converter : hasFocus : config &amp; updateTrigger : &#39;blur&#39; : &#39;update&#39;" keydown.capture="processKeyDown($event)" focus.trigger="processFocus($event)" blur.trigger="processBlur($event)" paste.delegate="processPaste($event)" class="au-target label textEditLabel" au-target-id="96" type="text" id="ctl00_phDS_formTitle_PageTitle" name="ctl00$phDS$formTitle$PageTitle" tabindex="1600" readonly=""><!--anchor--><!--anchor--></qp-text-editor>
+		
+		</div>
+</div>
+
+	<div name="ctl00$phDS$ds" cellpadding="0" cellspacing="0" id="ctl00_phDS_ds" class="dataSource" style="overflow:hidden;">
+	<div name="ctl00$phDS$ds$ToolBar" id="ctl00_phDS_ds_ToolBar" class="toolBar toolBarDS">
+		<ul id="ctl00_phDS_ds_ToolBar_ul" class="toolsList">
+			<li><div class="toolsBtn" data-cmd="actionCheckin" tooltip="Find changes between the original and modified ASPX and save them in the customization format.">
+				<div class="toolBtnNormal" data-type="button">
+					Generate Customization Script
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="LongRun" enabled="false" tooltip="Nothing in progress" status="aborted" error="2">
+				<div class="toolBtnDisabled" data-type="button">
+					<div class="sprite-icon main-icon" icon="Success" id="ctl00_phDS_ds_ToolBar_ctl06"><div class="main-icon-img main-Success"></div></div>
+				</div>
+			</div></li><li style="display:none;"><div class="toolsBtn" data-cmd="ElapsedTime" enabled="false" tooltip="Elapsed time" status="aborted">
+				<div class="toolBtnDisabled" data-type="button">
+					
+				</div>
+			</div></li>
+		</ul>
+	</div><div name="ctl00$phDS$ds$ctl00" id="ctl00_phDS_ds_ctl00" style="height:0px;width:0px;">
+
+	</div>
+</div>
+
+			</div>
+		</div><div style="display: none; height: 87px;"></div>
+
+		<div class="phF">
+			
+	<div name="ctl00$phF$FormEditContent" id="ctl00_phF_FormEditContent" class="ctl00_phF_FormEditContent" style="visibility: hidden; height: 0px; ">
+		<div style="height:100%;position:relative;">
+			
+
+			<qp-text-editor config.bind="elements[&#39;ctl00_phF_FormEditContent_EventEditBox&#39;]" value.two-way="values[&#39;ctl00_phF_FormEditContent_EventEditBox&#39;]" faux-screen.bind="{&quot;id&quot;:&quot;ctl00_phF_FormEditContent_EventEditBox&quot;,&quot;name&quot;:&quot;ctl00$phF$FormEditContent$EventEditBox&quot;,&quot;class&quot;:&quot;editor&quot;,&quot;tabIndex&quot;:1800,&quot;propsTemplate&quot;:&quot;__PXTextEdit&quot;,&quot;type&quot;:1,&quot;wrap&quot;:false}" style="font-family:Courier New;font-size:10pt;width: 100%; height: 100px;" class="au-target" au-target-id="197"><!--view--><!--anchor--><!--view--><textarea ref="elemText" maxlength.bind="config.maxLength &amp; attr" enabled.bind="config.enabled ? null : false &amp; attr" spellcheck.bind="config.spellcheck ? null : false &amp; attr" placeholder.bind="config.placeholder &amp; attr" wrap.bind="wrap ? &#39;off&#39;: null &amp; attr" rows.bind="config.rows &amp; attr" cols.bind="config.cols &amp; attr" value.bind="value | meta : converter : hasFocus : config &amp; updateTrigger : &#39;blur&#39; : &#39;update&#39;" keydown.capture="processKeyDown($event)" focus.trigger="processFocus($event)" blur.trigger="processBlur($event)" paste.delegate="processPaste($event)" class="au-target editor" au-target-id="94" id="ctl00_phF_FormEditContent_EventEditBox" name="ctl00$phF$FormEditContent$EventEditBox" tabindex="1800">    </textarea><!--anchor--> <!--anchor--><!--anchor--></qp-text-editor>
+		
+		</div>
+</div>
+
+		</div>
+
+		<div class="phG" resize-top="1">
+			
+	<div name="ctl00$phG$PanelSource" id="ctl00_phG_PanelSource" tabindex="2000" style="overflow: hidden; width: 100%; height: 681px;">
+	
+		<div id="SourcePlacehoder" style="width: 100%; height: 100%;">
+		<div class="CodeMirror-wrapping" id="csproxywrapping" style="position: relative; height: 100%; padding-left: 41px;"><textarea style="position: absolute; left: -10000px; width: 10px;"></textarea><iframe frameborder="0" src="javascript:false" style="border: 0px; width: 100%; height: 100%; display: block;" src="./saved_resource(1).html"></iframe><div style="position: absolute; height: 100%; top: 0px; left: 0px; overflow: hidden;"><div class="CodeMirror-line-numbers"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div>32</div><div>33</div><div>34</div><div>35</div><div>36</div><div>37</div><div>38</div><div>39</div><div>40</div><div>41</div><div>42</div><div>43</div><div>44</div><div>45</div><div>46</div><div>47</div><div>48</div><div>49</div><div>50</div><div>51</div><div>52</div><div>53</div><div>54</div></div></div></div></div>
+	
+</div>
+    
+    
+
+			
+			
+		</div>
+	
+
+	<table name="ctl00$L10nEditor" cellspacing="0" cellpadding="0" id="ctl00_L10nEditor" tabindex="2100" class="SmartPanel" style="display:none;">
+	<tbody><tr>
+		<td id="ctl00_L10nEditor_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Translations</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="ctl00_L10nEditor_cont" style="width:;height:;"><div class="panelContent">
+
+		</div></td>
+	</tr>
+</tbody></table><table name="ctl00$inputBox" cellspacing="0" cellpadding="0" id="inputBox" tabindex="2200" class="SmartPanel" style="display:none;width:400px;">
+	<tbody><tr>
+		<td id="inputBox_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Copy to clipboard (Ctrl+C)</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="inputBox_cont" style="width:400px;height:;"><table tabindex="2200" border="0" style="width:100%;">
+			<tbody><tr>
+				<td><input name="ctl00$inputBox$ctl01" type="text" class="editor" style="width:400px;"></td>
+			</tr><tr>
+				<td align="right"><button type="button" class="Button MessageButton" id="inputBox_0">OK</button><button type="button" class="Button MessageButton" id="inputBox_1">Cancel</button></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+</tbody></table><table name="ctl00$msgBox" cellspacing="0" cellpadding="0" id="msgBox" tabindex="2300" class="SmartPanel" style="display:none;width:400px;">
+	<tbody><tr>
+		<td id="msgBox_cap" class="SmartPanelC" style="vertical-align:middle;"><div class="sprite-icon control-icon" icon="Close" mode="c" style="float: right; opacity: 0.55;">
+			<div class="control-icon-img control-Close">
+
+			</div>
+		</div>Note</td>
+	</tr><tr>
+		<td class="SmartPanelCN" id="msgBox_cont" style="width:400px;height:;"><table cellpadding="4" border="0" style="width:100%;">
+			<tbody><tr style="height:60%;">
+				<td><img src="./information.gif" style="border-width:0px;"></td><td style="width:100%;"></td>
+			</tr><tr style="height:20%;">
+				<td colspan="2" style="text-align:Center;"><button type="button" id="msgBox_0" class="Button MessageButton">OK</button></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+</tbody></table>
+<script type="text/javascript">
+//<![CDATA[
+var __px_controls =  new Array("ctl00_phDS_formTitle:PXFormView", "ctl00_phDS_ds_ToolBar:PXToolBar", "ctl00_phDS_ds_ctl00:PXShortcutManager", "ctl00_phF_FormEditContent:PXFormView", "ctl00_phG_PanelSource:PXSmartPanel", "ctl00_L10nEditor:PXSmartPanel", "inputBox:PXInputBox", "msgBox:PXMessage", "ctl00_phDS_ds:PXBaseDataSource");
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+if (window['__px'] && __px(this)){__px(this).addEventHandler(document.documentElement, 'mousedown', ClosePageInfoContextMenu, true);
+__px(this).addEventHandler(document.documentElement, 'contextmenu', OpenPageInfoContextMenu, true);};window.RequiredReloadPage=true;
+var __queryString = 'EditScreenID=RS203000'; //]]>
+</script>
+<div style="top: 0px; left: 0px; background-color: transparent; z-index: 20000; position: absolute; width: 100%; height: 825px; display: none;"></div></form>
+
+
+<div id="tooltip" style="z-index: 20000; visibility: hidden; position: absolute; max-width: 300px; left: -100px; top: -87px;"></div></body></html>

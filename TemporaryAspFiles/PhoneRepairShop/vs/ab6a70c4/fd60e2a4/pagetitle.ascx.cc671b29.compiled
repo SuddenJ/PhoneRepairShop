@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Controls/PageTitle.ascx" hash="fffffff44bb1fa49" filehash="775bd1b5122dbeec" flags="110000" assembly="App_Web_41t3vwk0" type="ASP.controls_pagetitle_ascx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+    </filedeps>
+</preserve>

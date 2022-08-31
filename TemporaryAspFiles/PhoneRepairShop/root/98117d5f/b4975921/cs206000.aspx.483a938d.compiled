@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/Pages/CS/CS206000.aspx" hash="fffffff44bb1fa49" filehash="c65523e01bbc45f8" flags="110000" assembly="App_Web_dcqhxq4i" type="ASP.pages_cs_cs206000_aspx">
+    <filedeps>
+        <filedep name="/Controls/PageTitle.ascx" />
+        <filedep name="/Controls/PageTitle.ascx.cs" />
+        <filedep name="/MasterPages/FormView.master" />
+        <filedep name="/MasterPages/FormView.master.cs" />
+        <filedep name="/MasterPages/TabView.master" />
+        <filedep name="/MasterPages/TabView.master.cs" />
+        <filedep name="/Pages/CS/CS206000.aspx" />
+        <filedep name="/Pages/CS/CS206000.aspx.cs" />
+    </filedeps>
+</preserve>

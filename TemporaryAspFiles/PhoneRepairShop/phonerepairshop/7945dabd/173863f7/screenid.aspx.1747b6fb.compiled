@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="3" virtualPath="/PhoneRepairShop/App_Data/Templates/TabGrid/Pages/ScreenID.aspx" hash="fffffff44bb1fa49" filehash="16968359bb14fbbf" flags="110000" assembly="App_Web_j2ajw3vg" type="ASP.app_data_templates_tabgrid_pages_screenid_aspx">
+    <filedeps>
+        <filedep name="/PhoneRepairShop/App_Data/Templates/TabGrid/Pages/ScreenID.aspx" />
+        <filedep name="/PhoneRepairShop/App_Data/Templates/TabGrid/Pages/ScreenID.aspx.cs" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx" />
+        <filedep name="/PhoneRepairShop/Controls/PageTitle.ascx.cs" />
+        <filedep name="/PhoneRepairShop/MasterPages/TabDetail.master" />
+        <filedep name="/PhoneRepairShop/MasterPages/TabDetail.master.cs" />
+    </filedeps>
+</preserve>
